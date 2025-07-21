@@ -232,6 +232,7 @@ body::before {
     bottom: 30px;
     left: 30px;
     z-index: 10;
+    text-align: left;
 }
 
 .main-name {
@@ -246,10 +247,7 @@ body::before {
 }
 
 .first-name {
-    background: linear-gradient(45deg, #FFD700, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #FFD700; /* لون ذهبي عادي */
     line-height: 1;
     letter-spacing: -1px;
 }
@@ -264,11 +262,12 @@ body::before {
 .hero-buttons-overlay {
     position: absolute;
     bottom: 30px;
-    right: 30px;
+    left: 30px; /* محاذاة الأزرار لليسار */
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* جعل الأزرار في صف واحد */
     gap: 15px;
     z-index: 10;
+    align-items: flex-start; /* محاذاة الأزرار للأعلى داخل الـ flex container */
 }
 
 .action-btn {
