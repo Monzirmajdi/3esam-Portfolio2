@@ -741,3 +741,307 @@ if (typeof showTestimonial === 'function') {
     };
 }
 
+
+
+// ==================================================
+// Experience Grid Functionality
+// ==================================================
+
+// Experience data for the new grid layout
+const experienceData = {
+    0: {
+        company: "Tech Innovations Inc.",
+        period: "2023 - Present",
+        title: "Senior UI/UX Designer",
+        location: "San Francisco, CA",
+        type: "Full-time",
+        description: "Leading design initiatives for enterprise-level applications, creating comprehensive design systems, and mentoring junior designers. Responsible for user research, prototyping, and ensuring design consistency across products. Successfully redesigned the main product interface resulting in 40% increase in user engagement.",
+        responsibilities: [
+            "Lead design initiatives for enterprise applications",
+            "Create and maintain comprehensive design systems",
+            "Mentor junior designers and conduct design reviews",
+            "Conduct user research and usability testing",
+            "Collaborate with development teams for implementation",
+            "Ensure design consistency across all products"
+        ],
+        achievements: [
+            "Redesigned main product interface with 40% increase in user engagement",
+            "Established design system used across 15+ products",
+            "Led team of 5 designers on major product launches",
+            "Reduced design-to-development time by 30%"
+        ],
+        tags: ["UI/UX", "Branding", "Design Systems", "User Research", "Prototyping", "Team Leadership"]
+    },
+    1: {
+        company: "Creative Studio Pro",
+        period: "2022 - 2023",
+        title: "Art Director",
+        location: "New York, NY",
+        type: "Full-time",
+        description: "Directed creative campaigns for major brands, developed visual identities, and managed creative teams. Successfully launched 15+ brand campaigns with measurable impact on client engagement and sales. Specialized in creating cohesive brand experiences across digital and print media.",
+        responsibilities: [
+            "Direct creative campaigns for major brands",
+            "Develop comprehensive visual identities",
+            "Manage and mentor creative teams",
+            "Oversee brand strategy and implementation",
+            "Collaborate with clients on creative direction",
+            "Ensure brand consistency across all touchpoints"
+        ],
+        achievements: [
+            "Launched 15+ successful brand campaigns",
+            "Increased client engagement by average of 60%",
+            "Won 3 industry awards for creative excellence",
+            "Managed creative team of 8 professionals"
+        ],
+        tags: ["Art Direction", "Visual Identity", "Brand Strategy", "Creative Leadership", "Campaign Management"]
+    },
+    2: {
+        company: "Digital Solutions Agency",
+        period: "2020 - 2022",
+        title: "UI/UX Designer",
+        location: "Los Angeles, CA",
+        type: "Full-time",
+        description: "Designed user interfaces for web and mobile applications, conducted user research and usability testing. Collaborated with development teams to ensure pixel-perfect implementation of designs. Worked on diverse projects ranging from e-commerce platforms to mobile apps.",
+        responsibilities: [
+            "Design user interfaces for web and mobile applications",
+            "Conduct user research and usability testing",
+            "Create wireframes, prototypes, and design specifications",
+            "Collaborate with developers for accurate implementation",
+            "Participate in client presentations and feedback sessions",
+            "Maintain design documentation and style guides"
+        ],
+        achievements: [
+            "Designed 20+ web and mobile applications",
+            "Improved user satisfaction scores by 45% on average",
+            "Reduced development time through detailed specifications",
+            "Successfully delivered projects for 30+ clients"
+        ],
+        tags: ["Web Design", "Mobile Apps", "User Research", "Prototyping", "Usability Testing"]
+    }
+};
+
+// Initialize experience grid functionality
+function initExperienceGrid() {
+    const experienceCards = document.querySelectorAll('.experience-card');
+    const experienceModal = document.getElementById('experienceModal');
+    
+    // Add click event listeners to experience cards
+    experienceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const experienceId = this.getAttribute('data-experience');
+            showExperienceDetail(experienceId);
+        });
+        
+        // Add hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Handle modal close for experience modal
+    const experienceCloseBtn = experienceModal?.querySelector('.close-btn');
+    if (experienceCloseBtn) {
+        experienceCloseBtn.addEventListener('click', function() {
+            closeExperienceModal();
+        });
+    }
+    
+    // Close modal when clicking outside
+    if (experienceModal) {
+        experienceModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeExperienceModal();
+            }
+        });
+    }
+}
+
+// Show experience detail in modal
+function showExperienceDetail(experienceId) {
+    const experience = experienceData[experienceId];
+    const experienceModal = document.getElementById('experienceModal');
+    const experienceDetail = document.getElementById('experienceDetail');
+    
+    if (experience && experienceDetail) {
+        experienceDetail.innerHTML = `
+            <h2>${experience.title}</h2>
+            
+            <div class="experience-detail-header">
+                <div class="experience-detail-item">
+                    <h4>Company</h4>
+                    <p>${experience.company}</p>
+                </div>
+                <div class="experience-detail-item">
+                    <h4>Period</h4>
+                    <p>${experience.period}</p>
+                </div>
+                <div class="experience-detail-item">
+                    <h4>Location</h4>
+                    <p>${experience.location}</p>
+                </div>
+                <div class="experience-detail-item">
+                    <h4>Type</h4>
+                    <p>${experience.type}</p>
+                </div>
+            </div>
+            
+            <div class="experience-detail-description">
+                ${experience.description}
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.3rem;">Key Responsibilities</h3>
+                <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
+                    ${experience.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.3rem;">Key Achievements</h3>
+                <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
+                    ${experience.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div class="experience-detail-tags">
+                ${experience.tags.map(tag => `<span class="experience-detail-tag">${tag}</span>`).join('')}
+            </div>
+        `;
+        
+        // Show modal
+        experienceModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Add animation effect
+        setTimeout(() => {
+            experienceDetail.style.opacity = '1';
+            experienceDetail.style.transform = 'translateY(0)';
+        }, 100);
+    }
+}
+
+// Close experience modal
+function closeExperienceModal() {
+    const experienceModal = document.getElementById('experienceModal');
+    const experienceDetail = document.getElementById('experienceDetail');
+    
+    if (experienceModal) {
+        // Add exit animation
+        if (experienceDetail) {
+            experienceDetail.style.opacity = '0';
+            experienceDetail.style.transform = 'translateY(20px)';
+        }
+        
+        setTimeout(() => {
+            experienceModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }, 200);
+    }
+}
+
+// Add keyboard support for experience modal
+document.addEventListener('keydown', function(e) {
+    const experienceModal = document.getElementById('experienceModal');
+    
+    if (e.key === 'Escape' && experienceModal?.classList.contains('active')) {
+        closeExperienceModal();
+    }
+});
+
+// Touch support for experience cards
+let experienceCardTouchStartY = 0;
+let experienceCardTouchEndY = 0;
+
+document.addEventListener('touchstart', function(e) {
+    if (e.target.closest('.experience-card')) {
+        experienceCardTouchStartY = e.changedTouches[0].screenY;
+    }
+});
+
+document.addEventListener('touchend', function(e) {
+    if (e.target.closest('.experience-card')) {
+        experienceCardTouchEndY = e.changedTouches[0].screenY;
+        const diff = Math.abs(experienceCardTouchStartY - experienceCardTouchEndY);
+        
+        // If it's a tap (not a scroll), trigger click
+        if (diff < 10) {
+            const card = e.target.closest('.experience-card');
+            if (card) {
+                const experienceId = card.getAttribute('data-experience');
+                showExperienceDetail(experienceId);
+            }
+        }
+    }
+});
+
+// Initialize experience grid when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Add a small delay to ensure all elements are properly loaded
+    setTimeout(initExperienceGrid, 150);
+});
+
+// Add smooth transition effects for experience detail modal
+function addExperienceTransitionEffects() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .experience-detail {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .experience-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .experience-card:active {
+            transform: translateY(-5px) scale(0.98);
+        }
+        
+        @media (max-width: 768px) {
+            .experience-card:hover {
+                transform: none;
+            }
+            
+            .experience-card:active {
+                transform: scale(0.98);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize transition effects
+addExperienceTransitionEffects();
+
+// Update navigation to handle experience section
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('data-section') === 'about') {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to experience section
+                const experienceSection = document.querySelector('.experience-section');
+                if (experienceSection) {
+                    experienceSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    });
+});
+
