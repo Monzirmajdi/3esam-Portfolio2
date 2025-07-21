@@ -118,7 +118,7 @@ body {
 .logo-icon {
     width: 36px;
     height: 36px;
-    background: linear-gradient(45deg, #FFD700, #FFA500);
+    background: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
