@@ -1810,7 +1810,7 @@ img {
 .footer-logo .logo-icon {
     width: 24px;
     height: 24px;
-    background: linear-gradient(45deg, #FFD700, #DAA520);
+    background: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
