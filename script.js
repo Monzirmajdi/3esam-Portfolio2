@@ -1,10 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Get elements
-    const menuToggle = document.getElementById("menuToggle");
-    const sideMenu = document.getElementById("sideMenu");
-    const menuOverlay = document.getElementById("menuOverlay");
-    const sideMenuCloseBtn = document.getElementById("sideMenuCloseBtn");
-    const navItems = document.querySelectorAll(".nav-item");
+    const navLinks = document.querySelectorAll(".nav-link");
     const actionBtns = document.querySelectorAll(".action-btn");
     const modals = document.querySelectorAll(".modal");
     const closeBtns = document.querySelectorAll(".close-btn");
@@ -59,64 +55,47 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Toggle side menu
-    menuToggle.addEventListener("click", function(e) {
-        e.stopPropagation();
-        toggleMenu();
-    });
-
-    // Close menu when clicking overlay
-    menuOverlay.addEventListener("click", function() {
-        closeMenu();
-    });
-
-    // Close menu when clicking the close button
-    if (sideMenuCloseBtn) {
-        sideMenuCloseBtn.addEventListener("click", function() {
-            closeMenu();
-        });
-    }
-
-    // Function to toggle menu
-    function toggleMenu() {
-        sideMenu.classList.toggle("active");
-        menuOverlay.classList.toggle("active");
-        document.body.style.overflow = sideMenu.classList.contains("active") ? "hidden" : "auto";
-    }
-
-    // Function to close menu
-    function closeMenu() {
-        sideMenu.classList.remove("active");
-        menuOverlay.classList.remove("active");
-        document.body.style.overflow = "auto";
-    }
-
-    // Handle navigation item clicks
-    navItems.forEach(item => {
-        item.addEventListener("click", function(e) {
+    // Handle navigation link clicks
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
             e.preventDefault();
             const section = this.getAttribute("data-section");
             
-            // Close menu first
-            closeMenu();
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove("active"));
+            // Add active class to clicked link
+            this.classList.add("active");
             
             // Handle experience section scroll
             if (section === "experience") {
-                setTimeout(() => {
-                    const experienceSection = document.querySelector(".experience-section");
-                    if (experienceSection) {
-                        experienceSection.scrollIntoView({ 
-                            behavior: "smooth",
-                            block: "start"
-                        });
-                    }
-                }, 300);
+                const experienceSection = document.querySelector(".experience-section");
+                if (experienceSection) {
+                    experienceSection.scrollIntoView({ 
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
             }
             // Open modal if it exists
             else if (section === "portfolio" || section === "contact") {
-                setTimeout(() => {
-                    openModal(section);
-                }, 300);
+                openModal(section);
+            }
+            // Handle about section (scroll to testimonials for now)
+            else if (section === "about") {
+                const testimonialsSection = document.querySelector(".testimonials-section");
+                if (testimonialsSection) {
+                    testimonialsSection.scrollIntoView({ 
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            }
+            // Handle home section (scroll to top)
+            else if (section === "home") {
+                window.scrollTo({ 
+                    top: 0, 
+                    behavior: "smooth" 
+                });
             }
         });
     });
@@ -296,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Keyboard navigation
     document.addEventListener("keydown", function(e) {
-        // Close modals and menu with Escape key
+        // Close modals with Escape key
         if (e.key === "Escape") {
             modals.forEach(modal => {
                 if (modal.classList.contains("active")) {
@@ -304,9 +283,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.body.style.overflow = "auto";
                 }
             });
-            
-            // Close side menu
-            closeMenu();
         }
         
         // Carousel navigation with arrow keys (only in project detail modal)

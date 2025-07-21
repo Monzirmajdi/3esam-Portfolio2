@@ -6,6 +6,7 @@
     <title>Esam Ismael - Personal Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -15,161 +16,47 @@
             <span class="location-text">Saudi Arabia / Sudan</span>
         </div>
         
+        <!-- Navigation Bar -->
+        <nav class="main-nav">
+            <a href="#" class="nav-link active" data-section="home">HOME</a>
+            <a href="#" class="nav-link" data-section="about">ABOUT</a>
+            <a href="#" class="nav-link" data-section="portfolio">PROJECT</a>
+            <a href="#" class="nav-link" data-section="contact">CONTACT ME</a>
+        </nav>
+        
         <div class="logo">
             <div class="logo-icon">
                 <div class="star-icon">✦</div>
             </div>
             <span class="logo-text">Esam</span>
         </div>
-        
-        <button class="menu-toggle" id="menuToggle">
-            <div class="menu-grid">
-                <span class="menu-dot"></span>
-                <span class="menu-dot"></span>
-                <span class="menu-dot"></span>
-                <span class="menu-dot"></span>
-            </div>
-        </button>
     </header>
-
-    <!-- Side Menu -->
-    <div class="side-menu" id="sideMenu">
-        <div class="menu-content">
-            <div class="menu-header">
-                <h3>Menu</h3>
-                <span class="close-btn" id="sideMenuCloseBtn">&times;</span>
-            </div>
-            
-            <nav class="menu-nav">
-                <div class="nav-section">
-                    <a href="#" class="nav-item" data-section="home">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9,22 9,12 15,12 15,22"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">HOME</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="portfolio">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">PORTFOLIO</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="services">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="3"/>
-                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">SERVICES</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="skills">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="12,2 15.09,8.26 22,9 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9 8.91,8.26"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">SKILLS</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="faqs">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                                <point cx="12" cy="17"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">FAQs</span>
-                    </a>
-                </div>
-                
-                <div class="nav-section">
-                    <a href="#" class="nav-item" data-section="experience">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">EXPERIENCE</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="awards">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"/>
-                                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">AWARDS</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="testimonial">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">TESTIMONIAL</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="pricing">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="1" x2="12" y2="23"/>
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">PRICING</span>
-                    </a>
-                    <a href="#" class="nav-item" data-section="contact">
-                        <span class="nav-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </span>
-                        <span class="nav-text">Contact Form</span>
-                    </a>
-                </div>
-            </nav>
-            
-
-        </div>
-    </div>
-
-    <!-- Menu Overlay -->
-    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="hero-section">
-            <div class="hero-text">
-                <div class="greeting">Hello my name is</div>
-                <h1 class="main-name">
-                    <span class="first-name">Esam</span>
-                    <span class="last-name">Ismael</span>
-                </h1>
-            </div>
-            
-            <!-- فاصل جديد -->
-            <div class="hero-separator section-separator"></div>
-            
-            <!-- الصورة الأفقية -->
-            <div class="horizontal-image">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=400&fit=crop" alt="Esam Ismael">
-            </div>
-            
-            <!-- نص التمرير وأزرار الحركة في سطر واحد -->
-            <div class="hero-footer-actions">
-                <div class="scroll-text">Scroll down!</div>
-                <div class="action-buttons">
-                    <a href="#" class="action-btn" data-section="portfolio">View My Works →</a>
-                    <a href="#" class="action-btn" data-section="contact">Contact Me →</a>
+            <!-- الصورة الأفقية مع الاسم والأزرار -->
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=400&fit=crop" alt="Esam Ismael" class="hero-image">
+                
+                <!-- الاسم في أسفل يسار الصورة -->
+                <div class="hero-name-overlay">
+                    <h1 class="main-name">
+                        <span class="first-name">Esam</span>
+                        <span class="last-name">Ismael</span>
+                    </h1>
                 </div>
+                
+                <!-- الأزرار في أسفل يمين الصورة -->
+                <div class="hero-buttons-overlay">
+                    <a href="#" class="action-btn" data-section="contact">Contact Me</a>
+                    <a href="#" class="action-btn" data-section="portfolio">View My Works</a>
+                </div>
+            </div>
+            
+            <!-- كلمة Scroll Down في سطر منفصل أسفل الصورة -->
+            <div class="scroll-section">
+                <div class="scroll-text">Scroll down!</div>
             </div>
         </div>
     </main>
