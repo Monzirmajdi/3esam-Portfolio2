@@ -2145,7 +2145,7 @@ img {
 .about-intro h3 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #00ff88;
+    color: #ffd700;
     margin-bottom: 20px;
     font-family: 'Orbitron', monospace;
 }
@@ -2153,7 +2153,7 @@ img {
 .about-intro p {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
     margin-bottom: 40px;
 }
 
@@ -2174,7 +2174,7 @@ img {
 .about-detail-item p {
     font-size: 1rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffff;
 }
 
 .skills-grid {
@@ -2185,9 +2185,9 @@ img {
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    color: #00ff88;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #ffd700;
     padding: 8px 16px;
     border-radius: 25px;
     font-size: 0.9rem;
@@ -2196,8 +2196,8 @@ img {
 }
 
 .skill-tag:hover {
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(255, 215, 0, 0.2) 100%);
-    border-color: rgba(0, 255, 136, 0.5);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border-color: rgba(255, 215, 0, 0.5);
     transform: translateY(-2px);
 }
 
@@ -2212,7 +2212,7 @@ img {
 .stat-item {
     text-align: center;
     padding: 30px 20px;
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     transition: all 0.3s ease;
@@ -2220,21 +2220,21 @@ img {
 
 .stat-item:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 136, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
 }
 
 .stat-number {
     font-size: 3rem;
     font-weight: 700;
-    color: #00ff88;
+    color: #ffd700;
     font-family: 'Orbitron', monospace;
     margin-bottom: 10px;
 }
 
 .stat-label {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffff;
     font-weight: 500;
 }
 
