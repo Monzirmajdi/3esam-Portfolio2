@@ -1334,7 +1334,7 @@ img {
 .testimonial-card {
     background: linear-gradient(145deg, #111, #1c1c1c);
     padding: 50px;
-    border-radius: 20px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -1628,7 +1628,7 @@ img {
 .experience-card {
     background: linear-gradient(145deg, #111, #1a1a1a);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: 0;
     padding: 30px;
     position: relative;
     cursor: pointer;
