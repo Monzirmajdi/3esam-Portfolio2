@@ -1726,3 +1726,113 @@ body::before {
 }
 
 
+
+/* Apps Grid Styles */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: transparent;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    background-image: linear-gradient(#000, #000), 
+                      linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 50%, rgba(255, 255, 255, 0.03) 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.app-item:hover {
+    transform: translateY(-2px);
+    background-image: linear-gradient(#000, #000), 
+                      linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.app-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.app-name {
+    color: #ccc;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+}
+
+/* Education List Styles */
+.education-list {
+    margin-top: 15px;
+}
+
+.education-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: transparent;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background-image: linear-gradient(#000, #000), 
+                      linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(255, 255, 255, 0.02) 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.education-item h5 {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.education-item p {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Additional Info Styles */
+.additional-info {
+    margin-top: 15px;
+}
+
+.additional-info p {
+    color: #ccc;
+    margin-bottom: 8px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.additional-info strong {
+    color: #fff;
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 768px) {
+    .apps-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    
+    .app-item {
+        padding: 12px;
+    }
+    
+    .app-icon {
+        font-size: 20px;
+    }
+    
+    .app-name {
+        font-size: 11px;
+    }
+}
+
