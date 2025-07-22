@@ -52,35 +52,34 @@ body::before {
 /* Header Styles */
 .header {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    padding: 25px 50px;
+    padding: 15px 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.9);
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: auto;
+    max-width: 90%;
 }
 
 .header:hover {
-    background: rgba(0, 0, 0, 0.95);
-    border-bottom-color: rgba(255, 215, 0, 0.3);
-    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.8);
+    transform: translateX(-50%) translateY(-2px);
 }
 
 .location {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: #ccc;
-    font-weight: 400;
-    font-family: 'Cairo', sans-serif;
+    display: none; /* إخفاء الموقع الجغرافي من الهيدر الجديد */
 }
 
 .location-dot {
@@ -99,24 +98,25 @@ body::before {
 /* Navigation Bar Styles */
 .main-nav {
     display: flex;
-    gap: 50px;
+    gap: 20px;
     align-items: center;
 }
 
 .nav-link {
     color: #ccc;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 8px 16px;
+    border-radius: 20px;
     border: 1px solid transparent;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-family: 'Cairo', sans-serif;
+    white-space: nowrap;
 }
 
 .nav-link::before {
@@ -152,28 +152,32 @@ body::before {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    order: -1; /* وضع الشعار في البداية */
 }
 
 .logo-icon {
-    width: 40px;
-    height: 40px;
-   /* background: linear-gradient(45deg, #FFD700, #FFA500);*/
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     overflow: hidden;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .logo-icon:hover {
     transform: rotate(180deg);
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
 }
 
 .logo-image {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -2199,6 +2203,63 @@ img {
     
     .testimonials-subsection .subsection-title {
         font-size: 2rem;
+    }
+}
+
+
+/* Media Queries للهيدر الجديد */
+@media (max-width: 768px) {
+    .header {
+        top: 20px;
+        padding: 12px 20px;
+        gap: 15px;
+        max-width: 95%;
+    }
+    
+    .main-nav {
+        gap: 12px;
+    }
+    
+    .nav-link {
+        font-size: 11px;
+        padding: 6px 12px;
+        letter-spacing: 0.3px;
+    }
+    
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .logo-image {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+    
+    .main-nav {
+        gap: 8px;
+    }
+    
+    .nav-link {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .logo-image {
+        width: 14px;
+        height: 14px;
     }
 }
 
