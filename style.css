@@ -1070,15 +1070,15 @@ button, .nav-item, .action-btn, .social-link, .social-icon-link, .portfolio-item
     
     .testimonial-card {
         width: 90%;
-        padding: 10px 5px;
+        padding: 0px 0px;
     }
     
     .testimonials-section {
-        margin: 80px 0;
+        margin: 50px 0;
     }
     
     .testimonial-quote {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
 }
 
