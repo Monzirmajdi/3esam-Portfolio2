@@ -189,12 +189,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 <div class="carousel-indicators" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
                     ${project.images.map((_, index) => 
-                        `<span class="carousel-dot ${index === 0 ? "active" : ""}" onclick="goToImage(${index})" style="width: 12px; height: 12px; border-radius: 50%; background: ${index === 0 ? "#00ff88" : "rgba(255, 255, 255, 0.3)"}; cursor: pointer; transition: all 0.3s ease;"></span>`
+                        `<span class="carousel-dot ${index === 0 ? "active" : ""}" onclick="goToImage(${index})" style="width: 12px; height: 12px; border-radius: 50%; background: ${index === 0 ? "#FFD700" : "rgba(255, 215, 0, 0.3)"}; cursor: pointer; transition: all 0.3s ease;"></span>`
                     ).join("")}
                 </div>
                 
                 <div class="project-gallery" style="margin-top: 40px;">
-                    <h3 style="color: #00ff88; margin-bottom: 20px; grid-column: 1 / -1;">Project Gallery</h3>
+                    <h3 style="color: #FFD700; margin-bottom: 20px; grid-column: 1 / -1;">Project Gallery</h3>
                     ${project.images.map(img => `<img src="${img}" alt="${project.title}" style="cursor: pointer;" onclick="openImageInCarousel("${img}")">`).join("")}
                 </div>
             `;
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Update dots
             carouselDots.forEach((dot, index) => {
-                dot.style.background = index === currentImageIndex ? "#00ff88" : "rgba(255, 255, 255, 0.3)";
+                dot.style.background = index === currentImageIndex ? "#FFD700" : "rgba(255, 215, 0, 0.3)";
                 dot.classList.toggle("active", index === currentImageIndex);
             });
         }

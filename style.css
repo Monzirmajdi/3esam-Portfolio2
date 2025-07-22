@@ -1247,19 +1247,19 @@ img {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.3); /* Golden transparent */
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
 
 .dot:hover {
-    background: #FFD700;
+    background: #FFD700; /* Golden */
     transform: scale(1.1);
 }
 
 .dot.active {
-    background: #FFD700;
+    background: #FFD700; /* Golden */
     border-color: rgba(255, 215, 0, 0.3);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
