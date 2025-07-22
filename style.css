@@ -2104,3 +2104,223 @@ img {
     }
 }
 
+
+/* ABOUT SECTION */
+.about-section {
+    padding: 120px 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 100px;
+}
+
+.about-text {
+    position: relative;
+    z-index: 2;
+}
+
+.about-intro h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00ff88;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', monospace;
+}
+
+.about-intro p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+}
+
+.about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-detail-item h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', monospace;
+}
+
+.about-detail-item p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.skill-tag {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(255, 215, 0, 0.2) 100%);
+    border-color: rgba(0, 255, 136, 0.5);
+    transform: translateY(-2px);
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00ff88;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* EXPERIENCE SUBSECTION */
+.experience-subsection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.subsection-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.subsection-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', monospace;
+}
+
+.subsection-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+/* Responsive Design for About Section */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 80px 0;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 0 20px;
+        margin-bottom: 60px;
+    }
+    
+    .about-intro h3 {
+        font-size: 2rem;
+    }
+    
+    .about-intro p {
+        font-size: 1.1rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .stat-item {
+        padding: 20px 15px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .subsection-title {
+        font-size: 2rem;
+    }
+    
+    .experience-subsection {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+        justify-content: center;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+

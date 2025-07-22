@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function() {
             else if (section === "portfolio" || section === "contact") {
                 openModal(section);
             }
-            // Handle about section (scroll to testimonials for now)
+            // Handle about section
             else if (section === "about") {
-                const testimonialsSection = document.querySelector(".testimonials-section");
-                if (testimonialsSection) {
-                    testimonialsSection.scrollIntoView({ 
+                const aboutSection = document.querySelector(".about-section");
+                if (aboutSection) {
+                    aboutSection.scrollIntoView({ 
                         behavior: "smooth",
                         block: "start"
                     });
