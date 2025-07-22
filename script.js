@@ -451,18 +451,24 @@ function initTestimonialsSlider() {
         return;
     }
     
+    // Reset current index
+    currentTestimonialIndex = 0;
+    
     // Reset all cards first
-    testimonialCards.forEach(card => {
+    testimonialCards.forEach((card, index) => {
         card.classList.remove('active');
+        if (index === 0) {
+            card.classList.add('active');
+        }
     });
     
     // Reset all dots
-    testimonialDots.forEach(dot => {
+    testimonialDots.forEach((dot, index) => {
         dot.classList.remove('active');
+        if (index === 0) {
+            dot.classList.add('active');
+        }
     });
-    
-    // Show first testimonial
-    showTestimonial(0);
     
     // Start autoplay
     startTestimonialAutoplay();
@@ -475,7 +481,7 @@ function initTestimonialsSlider() {
     });
     
     // Pause autoplay on hover
-    const testimonialsSection = document.querySelector('.testimonials-subsection');
+    const testimonialsSection = document.querySelector('.testimonials-section');
     if (testimonialsSection) {
         testimonialsSection.addEventListener('mouseenter', pauseTestimonialAutoplay);
         testimonialsSection.addEventListener('mouseleave', startTestimonialAutoplay);
@@ -522,12 +528,18 @@ function goToTestimonial(index) {
 
 // Go to next testimonial
 function nextTestimonial() {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    if (testimonialCards.length === 0) return;
+    
     const nextIndex = (currentTestimonialIndex + 1) % testimonialCards.length;
     showTestimonial(nextIndex);
 }
 
 // Go to previous testimonial
 function previousTestimonial() {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    if (testimonialCards.length === 0) return;
+    
     const prevIndex = (currentTestimonialIndex - 1 + testimonialCards.length) % testimonialCards.length;
     showTestimonial(prevIndex);
 }
@@ -585,12 +597,15 @@ document.addEventListener('keydown', function(e) {
     // Only handle arrow keys when not in a modal
     const activeModal = document.querySelector('.modal.active');
     if (!activeModal) {
-        if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            goToTestimonial((currentTestimonialIndex - 1 + testimonialCards.length) % testimonialCards.length);
-        } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            goToTestimonial((currentTestimonialIndex + 1) % testimonialCards.length);
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        if (testimonialCards.length > 0) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                goToTestimonial((currentTestimonialIndex - 1 + testimonialCards.length) % testimonialCards.length);
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                goToTestimonial((currentTestimonialIndex + 1) % testimonialCards.length);
+            }
         }
     }
 });
