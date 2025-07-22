@@ -744,304 +744,279 @@ if (typeof showTestimonial === 'function') {
 
 
 // ==================================================
-// Experience Grid Functionality
+// Experience Card Flip Functionality
 // ==================================================
 
-// Experience data for the new grid layout
-const experienceData = {
-    0: {
-        company: "Tech Innovations Inc.",
-        period: "2023 - Present",
-        title: "Senior UI/UX Designer",
-        location: "San Francisco, CA",
-        type: "Full-time",
-        description: "Leading design initiatives for enterprise-level applications, creating comprehensive design systems, and mentoring junior designers. Responsible for user research, prototyping, and ensuring design consistency across products. Successfully redesigned the main product interface resulting in 40% increase in user engagement.",
-        responsibilities: [
-            "Lead design initiatives for enterprise applications",
-            "Create and maintain comprehensive design systems",
-            "Mentor junior designers and conduct design reviews",
-            "Conduct user research and usability testing",
-            "Collaborate with development teams for implementation",
-            "Ensure design consistency across all products"
-        ],
-        achievements: [
-            "Redesigned main product interface with 40% increase in user engagement",
-            "Established design system used across 15+ products",
-            "Led team of 5 designers on major product launches",
-            "Reduced design-to-development time by 30%"
-        ],
-        tags: ["UI/UX", "Branding", "Design Systems", "User Research", "Prototyping", "Team Leadership"]
-    },
-    1: {
-        company: "Creative Studio Pro",
-        period: "2022 - 2023",
-        title: "Art Director",
-        location: "New York, NY",
-        type: "Full-time",
-        description: "Directed creative campaigns for major brands, developed visual identities, and managed creative teams. Successfully launched 15+ brand campaigns with measurable impact on client engagement and sales. Specialized in creating cohesive brand experiences across digital and print media.",
-        responsibilities: [
-            "Direct creative campaigns for major brands",
-            "Develop comprehensive visual identities",
-            "Manage and mentor creative teams",
-            "Oversee brand strategy and implementation",
-            "Collaborate with clients on creative direction",
-            "Ensure brand consistency across all touchpoints"
-        ],
-        achievements: [
-            "Launched 15+ successful brand campaigns",
-            "Increased client engagement by average of 60%",
-            "Won 3 industry awards for creative excellence",
-            "Managed creative team of 8 professionals"
-        ],
-        tags: ["Art Direction", "Visual Identity", "Brand Strategy", "Creative Leadership", "Campaign Management"]
-    },
-    2: {
-        company: "Digital Solutions Agency",
-        period: "2020 - 2022",
-        title: "UI/UX Designer",
-        location: "Los Angeles, CA",
-        type: "Full-time",
-        description: "Designed user interfaces for web and mobile applications, conducted user research and usability testing. Collaborated with development teams to ensure pixel-perfect implementation of designs. Worked on diverse projects ranging from e-commerce platforms to mobile apps.",
-        responsibilities: [
-            "Design user interfaces for web and mobile applications",
-            "Conduct user research and usability testing",
-            "Create wireframes, prototypes, and design specifications",
-            "Collaborate with developers for accurate implementation",
-            "Participate in client presentations and feedback sessions",
-            "Maintain design documentation and style guides"
-        ],
-        achievements: [
-            "Designed 20+ web and mobile applications",
-            "Improved user satisfaction scores by 45% on average",
-            "Reduced development time through detailed specifications",
-            "Successfully delivered projects for 30+ clients"
-        ],
-        tags: ["Web Design", "Mobile Apps", "User Research", "Prototyping", "Usability Testing"]
-    }
-};
-
-// Initialize experience grid functionality
-function initExperienceGrid() {
+// Initialize experience card flip functionality
+function initExperienceCardFlip() {
     const experienceCards = document.querySelectorAll('.experience-card');
-    const experienceModal = document.getElementById('experienceModal');
     
     // Add click event listeners to experience cards
     experienceCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const experienceId = this.getAttribute('data-experience');
-            showExperienceDetail(experienceId);
-        });
+        const frontSide = card.querySelector('.experience-card-front');
+        const backSide = card.querySelector('.experience-card-back');
+        const closeBtn = card.querySelector('.experience-card-back-overlay');
         
-        // Add hover effects
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Handle modal close for experience modal
-    const experienceCloseBtn = experienceModal?.querySelector('.close-btn');
-    if (experienceCloseBtn) {
-        experienceCloseBtn.addEventListener('click', function() {
-            closeExperienceModal();
-        });
-    }
-    
-    // Close modal when clicking outside
-    if (experienceModal) {
-        experienceModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeExperienceModal();
-            }
-        });
-    }
-}
-
-// Show experience detail in modal
-function showExperienceDetail(experienceId) {
-    const experience = experienceData[experienceId];
-    const experienceModal = document.getElementById('experienceModal');
-    const experienceDetail = document.getElementById('experienceDetail');
-    
-    if (experience && experienceDetail) {
-        experienceDetail.innerHTML = `
-            <h2>${experience.title}</h2>
-            
-            <div class="experience-detail-header">
-                <div class="experience-detail-item">
-                    <h4>Company</h4>
-                    <p>${experience.company}</p>
-                </div>
-                <div class="experience-detail-item">
-                    <h4>Period</h4>
-                    <p>${experience.period}</p>
-                </div>
-                <div class="experience-detail-item">
-                    <h4>Location</h4>
-                    <p>${experience.location}</p>
-                </div>
-                <div class="experience-detail-item">
-                    <h4>Type</h4>
-                    <p>${experience.type}</p>
-                </div>
-            </div>
-            
-            <div class="experience-detail-description">
-                ${experience.description}
-            </div>
-            
-            <div style="margin: 30px 0;">
-                <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.3rem;">Key Responsibilities</h3>
-                <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
-                    ${experience.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div style="margin: 30px 0;">
-                <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.3rem;">Key Achievements</h3>
-                <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
-                    ${experience.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div class="experience-detail-tags">
-                ${experience.tags.map(tag => `<span class="experience-detail-tag">${tag}</span>`).join('')}
-            </div>
-        `;
-        
-        // Show modal
-        experienceModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Add animation effect
-        setTimeout(() => {
-            experienceDetail.style.opacity = '1';
-            experienceDetail.style.transform = 'translateY(0)';
-        }, 100);
-    }
-}
-
-// Close experience modal
-function closeExperienceModal() {
-    const experienceModal = document.getElementById('experienceModal');
-    const experienceDetail = document.getElementById('experienceDetail');
-    
-    if (experienceModal) {
-        // Add exit animation
-        if (experienceDetail) {
-            experienceDetail.style.opacity = '0';
-            experienceDetail.style.transform = 'translateY(20px)';
+        // Click on front side to flip to back
+        if (frontSide) {
+            frontSide.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                flipCard(card, true);
+            });
         }
         
+        // Click on close button to flip back to front
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                flipCard(card, false);
+            });
+        }
+        
+        // Click anywhere on back side (except close button) to flip back
+        if (backSide) {
+            backSide.addEventListener('click', function(e) {
+                // Only flip if not clicking on the close button
+                if (!e.target.closest('.experience-card-back-overlay')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    flipCard(card, false);
+                }
+            });
+        }
+        
+        // Add keyboard support
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const isFlipped = card.classList.contains('flipped');
+                flipCard(card, !isFlipped);
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                flipCard(card, false);
+            }
+        });
+        
+        // Make cards focusable for keyboard navigation
+        card.setAttribute('tabindex', '0');
+    });
+}
+
+// Flip card function
+function flipCard(card, toBack = true) {
+    if (!card) return;
+    
+    // Prevent multiple rapid clicks
+    if (card.classList.contains('flipping')) return;
+    
+    // Add flipping class to prevent interactions during animation
+    card.classList.add('flipping');
+    
+    if (toBack) {
+        // Flip to back side
+        card.classList.add('flipped');
+        
+        // Update icon from + to ×
+        const frontIcon = card.querySelector('.experience-card-icon');
+        if (frontIcon) {
+            frontIcon.textContent = '×';
+        }
+        
+        // Focus on the back side for accessibility
         setTimeout(() => {
-            experienceModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }, 200);
+            const backSide = card.querySelector('.experience-card-back');
+            if (backSide) {
+                backSide.focus();
+            }
+        }, 300);
+        
+    } else {
+        // Flip to front side
+        card.classList.remove('flipped');
+        
+        // Update icon from × to +
+        const frontIcon = card.querySelector('.experience-card-icon');
+        if (frontIcon) {
+            frontIcon.textContent = '+';
+        }
+        
+        // Focus on the front side for accessibility
+        setTimeout(() => {
+            const frontSide = card.querySelector('.experience-card-front');
+            if (frontSide) {
+                card.focus();
+            }
+        }, 300);
+    }
+    
+    // Remove flipping class after animation completes
+    setTimeout(() => {
+        card.classList.remove('flipping');
+    }, 600);
+    
+    // Add subtle haptic feedback for mobile devices
+    if ('vibrate' in navigator) {
+        navigator.vibrate(50);
     }
 }
 
-// Add keyboard support for experience modal
-document.addEventListener('keydown', function(e) {
-    const experienceModal = document.getElementById('experienceModal');
+// Close all flipped cards when clicking outside
+document.addEventListener('click', function(e) {
+    const clickedCard = e.target.closest('.experience-card');
+    const allCards = document.querySelectorAll('.experience-card');
     
-    if (e.key === 'Escape' && experienceModal?.classList.contains('active')) {
-        closeExperienceModal();
+    allCards.forEach(card => {
+        // If clicking outside any card, or clicking on a different card
+        if (!clickedCard || (clickedCard !== card)) {
+            if (card.classList.contains('flipped')) {
+                flipCard(card, false);
+            }
+        }
+    });
+});
+
+// Keyboard navigation for experience cards
+document.addEventListener('keydown', function(e) {
+    const focusedCard = document.activeElement.closest('.experience-card');
+    
+    if (focusedCard) {
+        const allCards = Array.from(document.querySelectorAll('.experience-card'));
+        const currentIndex = allCards.indexOf(focusedCard);
+        
+        switch(e.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+                e.preventDefault();
+                const nextIndex = (currentIndex + 1) % allCards.length;
+                allCards[nextIndex].focus();
+                break;
+                
+            case 'ArrowLeft':
+            case 'ArrowUp':
+                e.preventDefault();
+                const prevIndex = (currentIndex - 1 + allCards.length) % allCards.length;
+                allCards[prevIndex].focus();
+                break;
+                
+            case 'Escape':
+                e.preventDefault();
+                // Close all flipped cards
+                allCards.forEach(card => {
+                    if (card.classList.contains('flipped')) {
+                        flipCard(card, false);
+                    }
+                });
+                break;
+        }
     }
 });
 
-// Touch support for experience cards
-let experienceCardTouchStartY = 0;
-let experienceCardTouchEndY = 0;
+// Touch support for mobile devices
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
 
 document.addEventListener('touchstart', function(e) {
-    if (e.target.closest('.experience-card')) {
-        experienceCardTouchStartY = e.changedTouches[0].screenY;
+    const card = e.target.closest('.experience-card');
+    if (card) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
     }
 });
 
 document.addEventListener('touchend', function(e) {
-    if (e.target.closest('.experience-card')) {
-        experienceCardTouchEndY = e.changedTouches[0].screenY;
-        const diff = Math.abs(experienceCardTouchStartY - experienceCardTouchEndY);
+    const card = e.target.closest('.experience-card');
+    if (card) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
         
-        // If it's a tap (not a scroll), trigger click
-        if (diff < 10) {
-            const card = e.target.closest('.experience-card');
-            if (card) {
-                const experienceId = card.getAttribute('data-experience');
-                showExperienceDetail(experienceId);
+        const diffX = Math.abs(touchStartX - touchEndX);
+        const diffY = Math.abs(touchStartY - touchEndY);
+        
+        // If it's a tap (not a swipe), handle the flip
+        if (diffX < 10 && diffY < 10) {
+            const isFlipped = card.classList.contains('flipped');
+            const isCloseBtn = e.target.closest('.experience-card-back-overlay');
+            
+            if (isCloseBtn || (isFlipped && !isCloseBtn)) {
+                flipCard(card, false);
+            } else if (!isFlipped) {
+                flipCard(card, true);
             }
         }
     }
 });
 
-// Initialize experience grid when DOM is ready
+// Initialize experience card flip when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Add a small delay to ensure all elements are properly loaded
-    setTimeout(initExperienceGrid, 150);
+    setTimeout(initExperienceCardFlip, 200);
 });
 
-// Add smooth transition effects for experience detail modal
-function addExperienceTransitionEffects() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .experience-detail {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-        
-        .experience-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .experience-card:active {
-            transform: translateY(-5px) scale(0.98);
-        }
-        
-        @media (max-width: 768px) {
-            .experience-card:hover {
-                transform: none;
+// Intersection Observer for smooth animations when cards come into view
+function initExperienceCardAnimations() {
+    const cards = document.querySelectorAll('.experience-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add staggered animation delay
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                
+                observer.unobserve(entry.target);
             }
-            
-            .experience-card:active {
-                transform: scale(0.98);
-            }
-        }
-    `;
-    document.head.appendChild(style);
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+    });
+    
+    cards.forEach(card => {
+        // Set initial state for animation
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        observer.observe(card);
+    });
 }
 
-// Initialize transition effects
-addExperienceTransitionEffects();
-
-// Update navigation to handle experience section
+// Initialize animations
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    setTimeout(initExperienceCardAnimations, 300);
+});
+
+// Performance optimization: Pause animations when page is not visible
+document.addEventListener('visibilitychange', function() {
+    const cards = document.querySelectorAll('.experience-card');
     
-    navLinks.forEach(link => {
-        if (link.getAttribute('data-section') === 'about') {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                navLinks.forEach(l => l.classList.remove('active'));
-                // Add active class to clicked link
-                this.classList.add('active');
-                
-                // Scroll to experience section
-                const experienceSection = document.querySelector('.experience-section');
-                if (experienceSection) {
-                    experienceSection.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    cards.forEach(card => {
+        if (document.hidden) {
+            card.style.animationPlayState = 'paused';
+        } else {
+            card.style.animationPlayState = 'running';
         }
     });
 });
+
+// Add smooth scroll to experience section when navigating
+function scrollToExperienceSection() {
+    const experienceSection = document.querySelector('.experience-subsection');
+    if (experienceSection) {
+        experienceSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Export functions for potential external use
+window.flipCard = flipCard;
+window.scrollToExperienceSection = scrollToExperienceSection;
 
