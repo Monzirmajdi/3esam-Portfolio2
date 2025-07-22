@@ -241,134 +241,68 @@
         </div>
     </section>
 
-    <!-- Experience Detail Modal -->
-    <div class="modal" id="experienceModal">
-        <div class="modal-content">
-            <span class="close-btn" data-modal="experienceModal">&times;</span>
-            <div class="experience-detail" id="experienceDetail">
-                <!-- Experience details will be populated by JavaScript -->
+        <!-- TESTIMONIALS SUBSECTION -->
+        <div class="testimonials-subsection">
+            <div class="subsection-header">
+                <h3 class="subsection-title">What Clients Say</h3>
+                <p class="subsection-subtitle">Testimonials from my valued clients</p>
             </div>
-        </div>
-    </div>
-
-    <div class="section-separator"></div>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials-section">
-        <div class="section-header">
-            <h2 class="section-title">Testimonials</h2>
-            <p class="section-subtitle">What my clients say about me</p>
-        </div>
-        
-        <div class="experience-grid">
-            <!-- Experience Card 1 -->
-            <div class="experience-card" data-experience="0">
-                <div class="experience-card-header">
-                    <h3 class="experience-card-company">Tech Innovations Inc.</h3>
-                    <span class="experience-card-period">2023 - Present</span>
-                </div>
-                <div class="experience-card-preview">
-                    <div class="experience-preview-title">Senior UI/UX Designer</div>
-                    <div class="experience-preview-tags">
-                        <span class="experience-preview-tag">UI/UX</span>
-                        <span class="experience-preview-tag">Branding</span>
-                        <span class="experience-preview-tag">Design Systems</span>
+            <div class="testimonials-slider">
+                <div class="testimonials-container">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card active">
+                        <div class="testimonial-header">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="Jay Coco Charlotte" class="author-image">
+                            <div class="author-info">
+                                <p class="author-name">JAY COCO CHARLOTTE</p>
+                                <p class="author-title">Founder, Freibührener</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating" data-rating="5">
+                            <!-- Stars will be generated here by JavaScript -->
+                        </div>
+                        <blockquote class="testimonial-quote">
+                            "Working with Esam was a game-changer. His UI/UX design expertise transformed our clunky platform into a smooth, intuitive experience that our users love."
+                        </blockquote>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://i.pravatar.cc/150?img=2" alt="Alex Rivera" class="author-image">
+                            <div class="author-info">
+                                <p class="author-name">Alex Rivera</p>
+                                <p class="author-title">CEO, Tech Innovators</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating" data-rating="4">
+                            <!-- Stars will be generated here by JavaScript -->
+                        </div>
+                        <blockquote class="testimonial-quote">
+                            "Esam is a true professional. He delivered a stunning brand identity that perfectly captured our vision. The results exceeded all our expectations."
+                        </blockquote>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://i.pravatar.cc/150?img=3" alt="Samantha Lee" class="author-image">
+                            <div class="author-info">
+                                <p class="author-name">Samantha Lee</p>
+                                <p class="author-title">Marketing Director, Creative Solutions</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating" data-rating="5">
+                            <!-- Stars will be generated here by JavaScript -->
+                        </div>
+                        <blockquote class="testimonial-quote">
+                            "The motion design Esam created for our website was exceptional. It added a layer of sophistication and engagement that has significantly boosted our traffic."
+                        </blockquote>
                     </div>
                 </div>
-                <div class="experience-card-overlay">
-                    <span class="experience-card-icon">+</span>
-                </div>
-            </div>
-
-            <!-- Experience Card 2 -->
-            <div class="experience-card" data-experience="1">
-                <div class="experience-card-header">
-                    <h3 class="experience-card-company">Creative Studio Pro</h3>
-                    <span class="experience-card-period">2022 - 2023</span>
-                </div>
-                <div class="experience-card-preview">
-                    <div class="experience-preview-title">Art Director</div>
-                    <div class="experience-preview-tags">
-                        <span class="experience-preview-tag">Art Direction</span>
-                        <span class="experience-preview-tag">Visual Identity</span>
-                        <span class="experience-preview-tag">Brand Strategy</span>
-                    </div>
-                </div>
-                <div class="experience-card-overlay">
-                    <span class="experience-card-icon">+</span>
-                </div>
-            </div>
-
-            <!-- Experience Card 3 -->
-            <div class="experience-card" data-experience="2">
-                <div class="experience-card-header">
-                    <h3 class="experience-card-company">Digital Solutions Agency</h3>
-                    <span class="experience-card-period">2020 - 2022</span>
-                </div>
-                <div class="experience-card-preview">
-                    <div class="experience-preview-title">UI/UX Designer</div>
-                    <div class="experience-preview-tags">
-                        <span class="experience-preview-tag">Web Design</span>
-                        <span class="experience-preview-tag">Mobile Apps</span>
-                        <span class="experience-preview-tag">User Research</span>
-                    </div>
-                </div>
-                <div class="experience-card-overlay">
-                    <span class="experience-card-icon">+</span>
-                </div>
-            </div>
-
-            <!-- Experience Card 4 -->
-            <div class="experience-card" data-experience="3">
-                <div class="experience-card-header">
-                    <h3 class="experience-card-company">StartUp Hub</h3>
-                    <span class="experience-card-period">2019 - 2020</span>
-                </div>
-                <div class="experience-card-preview">
-                    <div class="experience-preview-title">Junior Designer</div>
-                    <div class="experience-preview-tags">
-                        <span class="experience-preview-tag">Graphic Design</span>
-                        <span class="experience-preview-tag">Branding</span>
-                    </div>
-                </div>
-                <div class="experience-card-overlay">
-                    <span class="experience-card-icon">+</span>
-                </div>
-            </div>
-
-            <!-- Experience Card 5 -->
-            <div class="experience-card" data-experience="4">
-                <div class="experience-card-header">
-                    <h3 class="experience-card-company">Freelance</h3>
-                    <span class="experience-card-period">2018 - 2019</span>
-                </div>
-                <div class="experience-card-preview">
-                    <div class="experience-preview-title">Freelance Designer</div>
-                    <div class="experience-preview-tags">
-                        <span class="experience-preview-tag">Logo Design</span>
-                        <span class="experience-preview-tag">Web Design</span>
-                    </div>
-                </div>
-                <div class="experience-card-overlay">
-                    <span class="experience-card-icon">+</span>
-                </div>
-            </div>
-
-            <!-- Experience Card 6 -->
-            <div class="experience-card" data-experience="5">
-                <div class="experience-card-header">
-                    <h3 class="experience-card-company">Design Academy</h3>
-                    <span class="experience-card-period">2017 - 2018</span>
-                </div>
-                <div class="experience-card-preview">
-                    <div class="experience-preview-title">Design Intern</div>
-                    <div class="experience-preview-tags">
-                        <span class="experience-preview-tag">Learning</span>
-                        <span class="experience-preview-tag">Practice</span>
-                    </div>
-                </div>
-                <div class="experience-card-overlay">
-                    <span class="experience-card-icon">+</span>
+                <!-- Navigation Dots -->
+                <div class="testimonial-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
                 </div>
             </div>
         </div>

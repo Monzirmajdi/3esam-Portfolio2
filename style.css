@@ -2324,3 +2324,44 @@ img {
     }
 }
 
+
+/* TESTIMONIALS SUBSECTION */
+.testimonials-subsection {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonials-subsection .subsection-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.testimonials-subsection .subsection-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', monospace;
+}
+
+.testimonials-subsection .subsection-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+/* Responsive Design for Testimonials Subsection */
+@media (max-width: 768px) {
+    .testimonials-subsection {
+        padding: 0 20px;
+        margin-top: 60px;
+    }
+    
+    .testimonials-subsection .subsection-title {
+        font-size: 2rem;
+    }
+}
+
