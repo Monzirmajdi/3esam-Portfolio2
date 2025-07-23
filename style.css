@@ -418,7 +418,7 @@ body::before {
 }
 
 .section-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 20px;
     background: linear-gradient(45deg, #fff, #ccc);
@@ -1298,8 +1298,8 @@ body::before {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
-    background: transparent;
-    border-radius: 10px;
+    background: #000000;
+    border-radius: 0px;
     color: #fff;
     font-family: 'Cairo', sans-serif;
     transition: all 0.3s ease;
@@ -1326,8 +1326,8 @@ body::before {
 .contact-form button {
     width: 100%;
     padding: 15px;
-    background: transparent;
-    border-radius: 10px;
+    background: #000000;
+    border-radius: 0px;
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
@@ -1847,6 +1847,7 @@ body::before {
 .logos-section {
     background: #000000;
     padding: 100px 0;
+    margin-top: 100px;
     overflow: hidden;
     position: relative;
 }
@@ -1884,8 +1885,8 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border-radius: 10px;
+    background: #000000;
+    border-radius: 0px;
     position: relative;
 }
 
@@ -1893,7 +1894,7 @@ body::before {
     max-width: 200px;
     max-height: 120px;
     object-fit: contain;
-    filter: brightness(1) contrast(1);
+    filter: brightness(0) invert(1);
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
