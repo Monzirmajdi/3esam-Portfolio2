@@ -657,7 +657,7 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 215, 0, 0.3);
     background-image: linear-gradient(#000, #000), 
                       linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(255, 255, 255, 0.02) 100%);
     background-origin: border-box;
@@ -682,6 +682,7 @@ body::before {
 
 .experience-card:hover .experience-card-front,
 .experience-card:hover .experience-card-back {
+    border-color: rgba(255, 215, 0, 0.6);
     background-image: linear-gradient(#000, #000), 
                       linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%, rgba(255, 255, 255, 0.04) 100%);
 }
@@ -872,7 +873,7 @@ body::before {
     position: relative;
     height: 350px;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 0;
 }
 
 .testimonial-card {
