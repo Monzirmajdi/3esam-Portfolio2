@@ -1862,7 +1862,7 @@ body::before {
     display: flex;
     align-items: center;
     height: 200px;
-    width: 200%;
+    width: 300%; /* Increased from 200% to 300% for smoother loop */
     gap: 20px;
 }
 
@@ -1873,7 +1873,7 @@ body::before {
 
 .logos-row.bottom-row {
     top: 180px; /* Changed from 200px to 180px to match gap */
-    left: -16.66%;
+    left: -33.33%; /* Adjusted for 300% width */
     animation: scrollLeft 20s linear infinite;
 }
 
@@ -1900,21 +1900,21 @@ body::before {
     transition: opacity 0.3s ease;
 }
 
-/* Animation keyframes */
+/* Animation keyframes - Fixed for smooth continuous motion */
 @keyframes scrollRight {
-    0% {
-        transform: translateX(-100%);
+    from {
+        transform: translateX(-50%);
     }
-    100% {
+    to {
         transform: translateX(0%);
     }
 }
 
 @keyframes scrollLeft {
-    0% {
-        transform: translateX(0%);
+    from {
+        transform: translateX(-50%);
     }
-    100% {
+    to {
         transform: translateX(-100%);
     }
 }
