@@ -967,7 +967,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         // Function to replace placeholder with real logo
-        window.replacePlaceholder = function(placeholderIndex, logoSrc, logoAlt, rowType = 'top') {
+        window.replacePlaceholder = function(1, images/logos/Untitled179_20250605211556.png, logoAlt, rowType = 'top') {
             const targetRow = rowType === 'top' ? topRow : bottomRow;
             const placeholders = targetRow.querySelectorAll('.logo-item');
             
