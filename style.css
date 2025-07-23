@@ -1757,8 +1757,14 @@ body::before {
 }
 
 .app-icon {
-    font-size: 24px;
+    width: 32px;
+    height: 32px;
     margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+
+.app-item:hover .app-icon {
+    transform: scale(1.1);
 }
 
 .app-name {
