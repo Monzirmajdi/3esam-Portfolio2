@@ -1874,30 +1874,35 @@ body::before {
 }
 
 .logos-row.bottom-row {
-    top: 180px;
+    top: 200px;
     animation: scrollLeftInfinite 40s linear infinite;
 }
 
 .logo-item {
     flex-shrink: 0;
-    width: 280px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border-radius: 15px;
+    background: #000000;
+    border-radius: 0;
     position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+    border: none;
+    box-shadow: none;
     transition: all 0.3s ease;
     overflow: hidden;
 }
 
 .logo-item:hover {
-    border-color: rgba(255, 215, 0, 0.6);
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+}
+
+.logo-item img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    object-position: center;
 }
 
 /* Infinite scroll animations */
@@ -1958,7 +1963,7 @@ body::before {
     }
     
     .logos-row {
-        height: 150px;
+        height: 140px;
         gap: 20px;
     }
     
@@ -1967,13 +1972,13 @@ body::before {
     }
     
     .logos-row.bottom-row {
-        top: 130px;
+        top: 140px;
         animation: scrollLeftInfinite 35s linear infinite;
     }
     
     .logo-item {
-        width: 200px;
-        height: 100px;
+        width: 140px;
+        height: 140px;
     }
     
     .placeholder-text {
@@ -1996,7 +2001,7 @@ body::before {
     }
     
     .logos-row {
-        height: 100px;
+        height: 90px;
         gap: 15px;
     }
     
@@ -2005,13 +2010,13 @@ body::before {
     }
     
     .logos-row.bottom-row {
-        top: 80px;
+        top: 90px;
         animation: scrollLeftInfinite 30s linear infinite;
     }
     
     .logo-item {
-        width: 150px;
-        height: 80px;
+        width: 90px;
+        height: 90px;
     }
     
     .placeholder-text {
