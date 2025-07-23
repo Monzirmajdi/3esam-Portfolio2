@@ -1854,14 +1854,14 @@ body::before {
 .logos-container {
     position: relative;
     width: 100%;
-    height: 1100px;
+    height: 380px;
 }
 
 .logos-row {
     position: absolute;
     display: flex;
     align-items: center;
-    height: 500px;
+    height: 200px;
     width: max-content;
     white-space: nowrap;
     gap: 30px;
@@ -1874,14 +1874,14 @@ body::before {
 }
 
 .logos-row.bottom-row {
-    top: 550px;
+    top: 180px;
     animation: scrollLeftInfinite 40s linear infinite;
 }
 
 .logo-item {
     flex-shrink: 0;
-    width: 500px;
-    height: 500px;
+    width: 280px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1898,14 +1898,6 @@ body::before {
     border-color: rgba(255, 215, 0, 0.6);
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
-}
-
-.logo-item img {
-    width: 500px;
-    height: 500px;
-    object-fit: contain;
-    border-radius: 10px;
-    transition: all 0.3s ease;
 }
 
 /* Infinite scroll animations */
@@ -1962,11 +1954,11 @@ body::before {
     }
     
     .logos-container {
-        height: 800px;
+        height: 280px;
     }
     
     .logos-row {
-        height: 350px;
+        height: 150px;
         gap: 20px;
     }
     
@@ -1975,18 +1967,13 @@ body::before {
     }
     
     .logos-row.bottom-row {
-        top: 400px;
+        top: 130px;
         animation: scrollLeftInfinite 35s linear infinite;
     }
     
     .logo-item {
-        width: 350px;
-        height: 350px;
-    }
-    
-    .logo-item img {
-        width: 350px;
-        height: 350px;
+        width: 200px;
+        height: 100px;
     }
     
     .placeholder-text {
@@ -2005,11 +1992,11 @@ body::before {
     }
     
     .logos-container {
-        height: 600px;
+        height: 180px;
     }
     
     .logos-row {
-        height: 250px;
+        height: 100px;
         gap: 15px;
     }
     
@@ -2018,18 +2005,13 @@ body::before {
     }
     
     .logos-row.bottom-row {
-        top: 300px;
+        top: 80px;
         animation: scrollLeftInfinite 30s linear infinite;
     }
     
     .logo-item {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .logo-item img {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 80px;
     }
     
     .placeholder-text {
