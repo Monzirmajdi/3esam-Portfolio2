@@ -424,20 +424,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // Initialize testimonials slider after DOM is fully loaded
+    setTimeout(() => {
+        initTestimonialsSlider();
+        initRatingStars();
+    }, 100);
+
 });
 
 
 
 // ==================================================
-// Testimonials Slider Functionality
+// Testimonials Slider Functionality - محدث ومحسن
 // ==================================================
 
 // Testimonials slider variables
 let currentTestimonialIndex = 0;
 let testimonialInterval;
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-const testimonialDots = document.querySelectorAll('.dot');
-const testimonialAutoplayDelay = 5000; // 5 seconds
+const testimonialAutoplayDelay = 4000; // 4 seconds
 
 // Initialize testimonials slider
 function initTestimonialsSlider() {
@@ -457,8 +461,15 @@ function initTestimonialsSlider() {
     // Reset all cards first
     testimonialCards.forEach((card, index) => {
         card.classList.remove('active');
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(50px)';
+        card.style.zIndex = '1';
+        
         if (index === 0) {
             card.classList.add('active');
+            card.style.opacity = '1';
+            card.style.transform = 'translateX(0)';
+            card.style.zIndex = '2';
         }
     });
     
@@ -495,9 +506,16 @@ function showTestimonial(index) {
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     const testimonialDots = document.querySelectorAll('.dot');
     
+    if (!testimonialCards.length || index < 0 || index >= testimonialCards.length) {
+        return;
+    }
+    
     // Hide all testimonials
-    testimonialCards.forEach(card => {
+    testimonialCards.forEach((card, i) => {
         card.classList.remove('active');
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(50px)';
+        card.style.zIndex = '1';
     });
     
     // Remove active class from all dots
@@ -505,16 +523,21 @@ function showTestimonial(index) {
         dot.classList.remove('active');
     });
     
-    // Show current testimonial
-    if (testimonialCards[index]) {
-        testimonialCards[index].classList.add('active');
-        console.log('Showing testimonial', index);
-    }
-    
-    // Activate current dot
-    if (testimonialDots[index]) {
-        testimonialDots[index].classList.add('active');
-    }
+    // Show current testimonial with animation
+    setTimeout(() => {
+        if (testimonialCards[index]) {
+            testimonialCards[index].classList.add('active');
+            testimonialCards[index].style.opacity = '1';
+            testimonialCards[index].style.transform = 'translateX(0)';
+            testimonialCards[index].style.zIndex = '2';
+            console.log('Showing testimonial', index);
+        }
+        
+        // Activate current dot
+        if (testimonialDots[index]) {
+            testimonialDots[index].classList.add('active');
+        }
+    }, 100);
     
     currentTestimonialIndex = index;
 }
@@ -548,6 +571,7 @@ function previousTestimonial() {
 function startTestimonialAutoplay() {
     pauseTestimonialAutoplay(); // Clear any existing interval
     testimonialInterval = setInterval(nextTestimonial, testimonialAutoplayDelay);
+    console.log('Testimonial autoplay started');
 }
 
 // Pause autoplay
@@ -555,6 +579,7 @@ function pauseTestimonialAutoplay() {
     if (testimonialInterval) {
         clearInterval(testimonialInterval);
         testimonialInterval = null;
+        console.log('Testimonial autoplay paused');
     }
 }
 
@@ -610,15 +635,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Initialize testimonials slider when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Add a longer delay to ensure all elements are properly loaded
-    setTimeout(() => {
-        initTestimonialsSlider();
-        initRatingStars();
-    }, 500);
-});
-
 // Pause autoplay when page is not visible
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
@@ -628,42 +644,35 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 
-// Add smooth transition effects
-function addTestimonialTransitionEffects() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .testimonial-card {
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .testimonial-card:not(.active) {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        
-        .testimonial-card.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .dot {
-            transition: all 0.3s ease;
-        }
-        
-        .dot:hover {
-            transform: scale(1.2);
-        }
-    `;
-    document.head.appendChild(style);
+// Intersection Observer for testimonials section
+function initTestimonialsObserver() {
+    const testimonialsSection = document.querySelector('.testimonials-section');
+    if (!testimonialsSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startTestimonialAutoplay();
+            } else {
+                pauseTestimonialAutoplay();
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+    
+    observer.observe(testimonialsSection);
 }
 
-// Initialize transition effects
-addTestimonialTransitionEffects();
+// Initialize observer when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initTestimonialsObserver, 200);
+});
 
 
 
 // ==================================================
-// Rating Stars Functionality
+// Rating Stars Functionality - محدث
 // ==================================================
 
 // Initialize rating stars for all testimonials
@@ -672,11 +681,19 @@ function initRatingStars() {
     
     ratingContainers.forEach(container => {
         const rating = parseInt(container.getAttribute('data-rating')) || 5;
-        generateStars(container, rating);
+        // Stars are already in HTML, just ensure they're properly styled
+        const stars = container.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            if (index < rating) {
+                star.classList.add('filled');
+            } else {
+                star.classList.remove('filled');
+            }
+        });
     });
 }
 
-// Generate stars based on rating
+// Generate stars based on rating (if needed dynamically)
 function generateStars(container, rating) {
     container.innerHTML = ''; // Clear existing content
     
@@ -686,6 +703,7 @@ function generateStars(container, rating) {
     for (let i = 1; i <= 5; i++) {
         const star = document.createElement('span');
         star.className = 'star';
+        star.textContent = '★';
         star.setAttribute('data-rating', i);
         
         if (i <= validRating) {
@@ -735,52 +753,6 @@ function highlightStars(container, rating) {
             star.classList.remove('filled');
         }
     });
-}
-
-// Add smooth transition effects for stars
-function addStarTransitionEffects() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .testimonial-rating {
-            transition: transform 0.2s ease;
-        }
-        
-        .star {
-            transition: all 0.3s ease;
-        }
-        
-        .star:hover {
-            transform: scale(1.2);
-        }
-        
-        .star.filled:hover {
-            filter: brightness(1.2);
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// Initialize stars when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Add a small delay to ensure testimonials are properly loaded
-    setTimeout(() => {
-        initRatingStars();
-        addStarTransitionEffects();
-    }, 200);
-});
-
-// Re-initialize stars when testimonials change (for slider functionality)
-function reinitializeStars() {
-    setTimeout(initRatingStars, 100);
-}
-
-// Override the existing showTestimonial function to include star initialization
-const originalShowTestimonial = window.showTestimonial || showTestimonial;
-if (typeof showTestimonial === 'function') {
-    window.showTestimonial = function(index) {
-        originalShowTestimonial(index);
-        reinitializeStars();
-    };
 }
 
 
@@ -919,146 +891,16 @@ document.addEventListener('click', function(e) {
     });
 });
 
-// Keyboard navigation for experience cards
-document.addEventListener('keydown', function(e) {
-    const focusedCard = document.activeElement.closest('.experience-card');
-    
-    if (focusedCard) {
-        const allCards = Array.from(document.querySelectorAll('.experience-card'));
-        const currentIndex = allCards.indexOf(focusedCard);
-        
-        switch(e.key) {
-            case 'ArrowRight':
-            case 'ArrowDown':
-                e.preventDefault();
-                const nextIndex = (currentIndex + 1) % allCards.length;
-                allCards[nextIndex].focus();
-                break;
-                
-            case 'ArrowLeft':
-            case 'ArrowUp':
-                e.preventDefault();
-                const prevIndex = (currentIndex - 1 + allCards.length) % allCards.length;
-                allCards[prevIndex].focus();
-                break;
-                
-            case 'Escape':
-                e.preventDefault();
-                // Close all flipped cards
-                allCards.forEach(card => {
-                    if (card.classList.contains('flipped')) {
-                        flipCard(card, false);
-                    }
-                });
-                break;
-        }
-    }
-});
-
-// Touch support for mobile devices
-let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
-
-document.addEventListener('touchstart', function(e) {
-    const card = e.target.closest('.experience-card');
-    if (card) {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-    }
-});
-
-document.addEventListener('touchend', function(e) {
-    const card = e.target.closest('.experience-card');
-    if (card) {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        
-        const diffX = Math.abs(touchStartX - touchEndX);
-        const diffY = Math.abs(touchStartY - touchEndY);
-        
-        // If it's a tap (not a swipe), handle the flip
-        if (diffX < 10 && diffY < 10) {
-            const isFlipped = card.classList.contains('flipped');
-            const isCloseBtn = e.target.closest('.experience-card-back-overlay');
-            
-            if (isCloseBtn || (isFlipped && !isCloseBtn)) {
-                flipCard(card, false);
-            } else if (!isFlipped) {
-                flipCard(card, true);
-            }
-        }
-    }
-});
-
 // Initialize experience card flip when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Add a small delay to ensure all elements are properly loaded
     setTimeout(initExperienceCardFlip, 200);
 });
 
-// Intersection Observer for smooth animations when cards come into view
-function initExperienceCardAnimations() {
-    const cards = document.querySelectorAll('.experience-card');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Add staggered animation delay
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '50px'
-    });
-    
-    cards.forEach(card => {
-        // Set initial state for animation
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
-        observer.observe(card);
-    });
-}
-
-// Initialize animations
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(initExperienceCardAnimations, 300);
-});
-
-// Performance optimization: Pause animations when page is not visible
-document.addEventListener('visibilitychange', function() {
-    const cards = document.querySelectorAll('.experience-card');
-    
-    cards.forEach(card => {
-        if (document.hidden) {
-            card.style.animationPlayState = 'paused';
-        } else {
-            card.style.animationPlayState = 'running';
-        }
-    });
-});
-
-// Add smooth scroll to experience section when navigating
-function scrollToExperienceSection() {
-    const experienceSection = document.querySelector('.experience-subsection');
-    if (experienceSection) {
-        experienceSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
 // Export functions for potential external use
 window.flipCard = flipCard;
-window.scrollToExperienceSection = scrollToExperienceSection;
+window.initTestimonialsSlider = initTestimonialsSlider;
+window.showTestimonial = showTestimonial;
+window.nextTestimonial = nextTestimonial;
+window.previousTestimonial = previousTestimonial;
 
