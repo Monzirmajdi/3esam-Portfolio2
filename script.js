@@ -913,7 +913,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (topRow && bottomRow) {
         // Clone logos to create seamless infinite scroll
         function duplicateLogos(row) {
-            const logos = row.querySelectorAll('.logo-item');
+            const logos = Array.from(row.children);
             logos.forEach(logo => {
                 const clone = logo.cloneNode(true);
                 row.appendChild(clone);
@@ -921,6 +921,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Duplicate logos for seamless scrolling
+        duplicateLogos(topRow);
+        duplicateLogos(bottomRow);
         duplicateLogos(topRow);
         duplicateLogos(bottomRow);
         

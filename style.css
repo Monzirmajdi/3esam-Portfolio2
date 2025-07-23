@@ -1843,7 +1843,7 @@ body::before {
 }
 
 
-/* LOGOS SECTION */
+/* LOGOS SECTION - Enhanced for continuous motion */
 .logos-section {
     background: #000000;
     padding: 100px 0;
@@ -1854,42 +1854,48 @@ body::before {
 .logos-container {
     position: relative;
     width: 100%;
-    height: 410px; /* Increased from 380px to 410px to accommodate taller cards */
+    height: 380px;
 }
 
 .logos-row {
     position: absolute;
     display: flex;
     align-items: center;
-    height: 230px; /* Increased from 200px to 230px to accommodate taller cards */
-    width: 400%; /* Increased to 400% for better seamless loop */
+    height: 200px;
+    width: max-content;
+    white-space: nowrap;
     gap: 20px;
+    will-change: transform; /* Optimize for animations */
 }
 
 .logos-row.top-row {
     top: 0;
-    left: 0;
     animation: scrollRight 30s linear infinite;
 }
 
 .logos-row.bottom-row {
-    top: 200px; /* Adjusted to maintain 20px gap with new card height */
-    left: 0; /* Start from 0 instead of negative value */
+    top: 180px;
     animation: scrollLeft 30s linear infinite;
 }
 
 .logo-item {
     flex-shrink: 0;
     width: 300px;
-    height: 180px; /* Increased from 150px to 180px */
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
     border-radius: 10px;
     position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.2); /* Increased border width and opacity */
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Added subtle shadow */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.logo-item:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
 }
 
 .logo-item img {
@@ -1901,32 +1907,36 @@ body::before {
     transition: opacity 0.3s ease;
 }
 
-/* Animation keyframes - Fixed for seamless continuous motion */
+.logo-item:hover img {
+    opacity: 1;
+}
+
+/* Enhanced Animation keyframes for seamless continuous motion */
 @keyframes scrollRight {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(0%);
     }
     100% {
-        transform: translateX(0%);
+        transform: translateX(-100%);
     }
 }
 
 @keyframes scrollLeft {
     0% {
-        transform: translateX(0%);
+        transform: translateX(-100%);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(0%);
     }
 }
 
-/* Fade effect at edges */
+/* Fade effect at edges - Enhanced */
 .logos-section::before,
 .logos-section::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 150px;
+    width: 200px;
     height: 100%;
     z-index: 2;
     pointer-events: none;
@@ -1934,42 +1944,57 @@ body::before {
 
 .logos-section::before {
     left: 0;
-    background: linear-gradient(to right, #000000 0%, transparent 100%);
+    background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0.8) 30%, transparent 100%);
 }
 
 .logos-section::after {
     right: 0;
-    background: linear-gradient(to left, #000000 0%, transparent 100%);
+    background: linear-gradient(to left, #000000 0%, rgba(0,0,0,0.8) 30%, transparent 100%);
 }
 
-/* Responsive design */
+/* Performance optimizations */
+.logos-row * {
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Responsive design - Enhanced */
 @media (max-width: 768px) {
     .logos-section {
         padding: 60px 0;
     }
     
     .logos-container {
-        height: 320px; /* Increased to accommodate taller cards */
+        height: 280px;
     }
     
     .logos-row {
-        height: 170px; /* Increased from 150px */
+        height: 150px;
         gap: 15px;
-        width: 400%; /* Maintain 400% width for smooth animation */
+    }
+    
+    .logos-row.top-row {
+        animation: scrollRight 25s linear infinite;
     }
     
     .logos-row.bottom-row {
-        top: 150px; /* Adjusted for new card height */
+        top: 130px;
+        animation: scrollLeft 25s linear infinite;
     }
     
     .logo-item {
         width: 200px;
-        height: 120px; /* Increased from 100px */
+        height: 100px;
     }
     
     .logo-item img {
         max-width: 120px;
         max-height: 80px;
+    }
+    
+    .logos-section::before,
+    .logos-section::after {
+        width: 100px;
     }
 }
 
@@ -1979,61 +2004,48 @@ body::before {
     }
     
     .logos-container {
-        height: 220px; /* Increased to accommodate taller cards */
+        height: 180px;
     }
     
     .logos-row {
-        height: 120px; /* Increased from 100px */
+        height: 100px;
         gap: 10px;
-        width: 400%; /* Maintain 400% width for smooth animation */
+    }
+    
+    .logos-row.top-row {
+        animation: scrollRight 20s linear infinite;
     }
     
     .logos-row.bottom-row {
-        top: 100px; /* Adjusted for new card height */
-        left: 0; /* Maintain consistent positioning */
+        top: 80px;
+        animation: scrollLeft 20s linear infinite;
     }
     
     .logo-item {
         width: 150px;
-        height: 100px; /* Increased from 80px */
+        height: 80px;
     }
     
     .logo-item img {
         max-width: 100px;
         max-height: 60px;
     }
+    
+    .logos-section::before,
+    .logos-section::after {
+        width: 80px;
+    }
 }
 
-/* Extra small screens (320px and below) */
-@media (max-width: 320px) {
-    .logos-section {
-        padding: 30px 0;
-    }
-    
-    .logos-container {
-        height: 170px; /* Increased to accommodate taller cards */
-    }
-    
+/* Pause animation on hover for better UX */
+.logos-section:hover .logos-row {
+    animation-play-state: paused;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
     .logos-row {
-        height: 100px; /* Increased from 80px */
-        gap: 8px;
-        width: 400%;
-    }
-    
-    .logos-row.bottom-row {
-        top: 70px; /* Adjusted for new card height */
-        left: 0;
-    }
-    
-    .logo-item {
-        width: 120px;
-        height: 80px; /* Increased from 60px */
-        border: 1px solid rgba(255, 255, 255, 0.15); /* Thinner border for very small screens */
-    }
-    
-    .logo-item img {
-        max-width: 80px;
-        max-height: 55px; /* Increased from 45px */
+        animation-duration: 60s;
     }
 }
 
