@@ -904,3 +904,69 @@ window.showTestimonial = showTestimonial;
 window.nextTestimonial = nextTestimonial;
 window.previousTestimonial = previousTestimonial;
 
+
+// Logos Animation Enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const topRow = document.querySelector('.logos-row.top-row');
+    const bottomRow = document.querySelector('.logos-row.bottom-row');
+    
+    if (topRow && bottomRow) {
+        // Clone logos to create seamless infinite scroll
+        function duplicateLogos(row) {
+            const logos = row.querySelectorAll('.logo-item');
+            logos.forEach(logo => {
+                const clone = logo.cloneNode(true);
+                row.appendChild(clone);
+            });
+        }
+        
+        // Duplicate logos for seamless scrolling
+        duplicateLogos(topRow);
+        duplicateLogos(bottomRow);
+        
+        // Add more logo variations for better visual effect
+        const logoVariations = [
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMwMDAiPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI4Ii8+Cjwvc3ZnPgo8L3N2Zz4K',
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMwMDAiPgo8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHJ4PSIyIi8+Cjwvc3ZnPgo8L3N2Zz4K',
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMwMDAiPgo8cG9seWdvbiBwb2ludHM9IjEyLDIgMjIsMjAgMiwyMCIvPgo8L3N2Zz4KPC9zdmc+Cg=='
+        ];
+        
+        // Add more logos to both rows
+        function addMoreLogos(row, count) {
+            for (let i = 0; i < count; i++) {
+                const logoItem = document.createElement('div');
+                logoItem.className = 'logo-item';
+                
+                const img = document.createElement('img');
+                img.src = logoVariations[i % logoVariations.length];
+                img.alt = `Logo ${i + 1}`;
+                
+                logoItem.appendChild(img);
+                row.appendChild(logoItem);
+            }
+        }
+        
+        // Add more logos for better coverage
+        addMoreLogos(topRow, 6);
+        addMoreLogos(bottomRow, 6);
+    }
+    
+    // Pause animation on hover (optional enhancement)
+    const logosSection = document.querySelector('.logos-section');
+    if (logosSection) {
+        logosSection.addEventListener('mouseenter', function() {
+            const rows = logosSection.querySelectorAll('.logos-row');
+            rows.forEach(row => {
+                row.style.animationPlayState = 'paused';
+            });
+        });
+        
+        logosSection.addEventListener('mouseleave', function() {
+            const rows = logosSection.querySelectorAll('.logos-row');
+            rows.forEach(row => {
+                row.style.animationPlayState = 'running';
+            });
+        });
+    }
+});
+
