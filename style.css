@@ -1843,7 +1843,7 @@ body::before {
 }
 
 
-/* LOGOS SECTION - Enhanced for continuous motion */
+/* LOGOS SECTION - Enhanced for continuous motion with placeholders */
 .logos-section {
     background: #000000;
     padding: 100px 0;
@@ -1864,79 +1864,117 @@ body::before {
     height: 200px;
     width: max-content;
     white-space: nowrap;
-    gap: 20px;
-    will-change: transform; /* Optimize for animations */
+    gap: 30px;
+    will-change: transform;
 }
 
 .logos-row.top-row {
     top: 0;
-    animation: scrollRight 30s linear infinite;
+    animation: scrollRightInfinite 40s linear infinite;
 }
 
 .logos-row.bottom-row {
     top: 180px;
-    animation: scrollLeft 30s linear infinite;
+    animation: scrollLeftInfinite 40s linear infinite;
 }
 
 .logo-item {
     flex-shrink: 0;
-    width: 300px;
+    width: 280px;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
-    border-radius: 10px;
+    border-radius: 15px;
     position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .logo-item:hover {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 215, 0, 0.6);
     transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
 }
 
-.logo-item img {
-    max-width: 200px;
-    max-height: 120px;
-    object-fit: contain;
-    filter: brightness(1) contrast(1);
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+/* Logo placeholder styling */
+.logo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
-.logo-item:hover img {
-    opacity: 1;
+.logo-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
 }
 
-/* Enhanced Animation keyframes for seamless continuous motion */
-@keyframes scrollRight {
+.placeholder-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+.logo-item:hover .placeholder-text {
+    color: rgba(255, 215, 0, 0.9);
+}
+
+/* Shimmer animation for placeholders */
+@keyframes shimmer {
     0% {
-        transform: translateX(0%);
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Infinite scroll animations */
+@keyframes scrollRightInfinite {
+    0% {
+        transform: translateX(0);
     }
     100% {
         transform: translateX(-100%);
     }
 }
 
-@keyframes scrollLeft {
+@keyframes scrollLeftInfinite {
     0% {
         transform: translateX(-100%);
     }
     100% {
-        transform: translateX(0%);
+        transform: translateX(0);
     }
 }
 
-/* Fade effect at edges - Enhanced */
+/* Enhanced fade effect at edges */
 .logos-section::before,
 .logos-section::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 200px;
+    width: 250px;
     height: 100%;
     z-index: 2;
     pointer-events: none;
@@ -1944,12 +1982,12 @@ body::before {
 
 .logos-section::before {
     left: 0;
-    background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0.8) 30%, transparent 100%);
+    background: linear-gradient(to right, #000000 0%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.5) 60%, transparent 100%);
 }
 
 .logos-section::after {
     right: 0;
-    background: linear-gradient(to left, #000000 0%, rgba(0,0,0,0.8) 30%, transparent 100%);
+    background: linear-gradient(to left, #000000 0%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.5) 60%, transparent 100%);
 }
 
 /* Performance optimizations */
@@ -1970,16 +2008,16 @@ body::before {
     
     .logos-row {
         height: 150px;
-        gap: 15px;
+        gap: 20px;
     }
     
     .logos-row.top-row {
-        animation: scrollRight 25s linear infinite;
+        animation: scrollRightInfinite 35s linear infinite;
     }
     
     .logos-row.bottom-row {
         top: 130px;
-        animation: scrollLeft 25s linear infinite;
+        animation: scrollLeftInfinite 35s linear infinite;
     }
     
     .logo-item {
@@ -1987,14 +2025,13 @@ body::before {
         height: 100px;
     }
     
-    .logo-item img {
-        max-width: 120px;
-        max-height: 80px;
+    .placeholder-text {
+        font-size: 12px;
     }
     
     .logos-section::before,
     .logos-section::after {
-        width: 100px;
+        width: 150px;
     }
 }
 
@@ -2009,16 +2046,16 @@ body::before {
     
     .logos-row {
         height: 100px;
-        gap: 10px;
+        gap: 15px;
     }
     
     .logos-row.top-row {
-        animation: scrollRight 20s linear infinite;
+        animation: scrollRightInfinite 30s linear infinite;
     }
     
     .logos-row.bottom-row {
         top: 80px;
-        animation: scrollLeft 20s linear infinite;
+        animation: scrollLeftInfinite 30s linear infinite;
     }
     
     .logo-item {
@@ -2026,14 +2063,13 @@ body::before {
         height: 80px;
     }
     
-    .logo-item img {
-        max-width: 100px;
-        max-height: 60px;
+    .placeholder-text {
+        font-size: 10px;
     }
     
     .logos-section::before,
     .logos-section::after {
-        width: 80px;
+        width: 100px;
     }
 }
 
@@ -2045,7 +2081,11 @@ body::before {
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
     .logos-row {
-        animation-duration: 60s;
+        animation-duration: 80s;
+    }
+    
+    .logo-placeholder::before {
+        animation: none;
     }
 }
 

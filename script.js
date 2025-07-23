@@ -905,62 +905,110 @@ window.nextTestimonial = nextTestimonial;
 window.previousTestimonial = previousTestimonial;
 
 
-// Logos Animation Enhancement
+// Logos Animation Enhancement with Placeholders
 document.addEventListener('DOMContentLoaded', function() {
     const topRow = document.querySelector('.logos-row.top-row');
     const bottomRow = document.querySelector('.logos-row.bottom-row');
     
     if (topRow && bottomRow) {
-        // Clone logos to create seamless infinite scroll
-        function duplicateLogos(row) {
-            const logos = Array.from(row.children);
-            logos.forEach(logo => {
-                const clone = logo.cloneNode(true);
-                row.appendChild(clone);
-            });
-        }
-        
-        // Duplicate logos for seamless scrolling
-        duplicateLogos(topRow);
-        duplicateLogos(bottomRow);
-        duplicateLogos(topRow);
-        duplicateLogos(bottomRow);
-        
-        // Add more logo variations for better visual effect
-        const logoVariations = [
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMwMDAiPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI4Ii8+Cjwvc3ZnPgo8L3N2Zz4K',
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMwMDAiPgo8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHJ4PSIyIi8+Cjwvc3ZnPgo8L3N2Zz4K',
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9IiNmZmZmZmYiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMwMDAiPgo8cG9seWdvbiBwb2ludHM9IjEyLDIgMjIsMjAgMiwyMCIvPgo8L3N2Zz4KPC9zdmc+Cg=='
-        ];
-        
-        // Add more logos to both rows
-        function addMoreLogos(row, count) {
-            for (let i = 0; i < count; i++) {
-                const logoItem = document.createElement('div');
-                logoItem.className = 'logo-item';
-                
-                const img = document.createElement('img');
-                img.src = logoVariations[i % logoVariations.length];
-                img.alt = `Logo ${i + 1}`;
-                
-                logoItem.appendChild(img);
-                row.appendChild(logoItem);
+        // Function to duplicate placeholders for seamless infinite scroll
+        function duplicatePlaceholders(row) {
+            const originalItems = Array.from(row.children);
+            
+            // Duplicate items multiple times to ensure seamless scrolling
+            for (let i = 0; i < 3; i++) {
+                originalItems.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    row.appendChild(clone);
+                });
             }
         }
         
-        // Add more logos for better coverage
-        addMoreLogos(topRow, 6);
-        addMoreLogos(bottomRow, 6);
+        // Duplicate placeholders for both rows
+        duplicatePlaceholders(topRow);
+        duplicatePlaceholders(bottomRow);
+        
+        // Add hover effects for placeholders
+        const allLogoItems = document.querySelectorAll('.logo-item');
+        allLogoItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.animationPlayState = 'paused';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.animationPlayState = 'running';
+            });
+        });
+        
+        // Function to add real logos (for future use)
+        window.addRealLogo = function(rowType, logoSrc, logoAlt, position = 'append') {
+            const targetRow = rowType === 'top' ? topRow : bottomRow;
+            const logoItem = document.createElement('div');
+            logoItem.className = 'logo-item';
+            
+            const img = document.createElement('img');
+            img.src = logoSrc;
+            img.alt = logoAlt;
+            img.style.maxWidth = '200px';
+            img.style.maxHeight = '120px';
+            img.style.objectFit = 'contain';
+            img.style.opacity = '0.8';
+            img.style.transition = 'opacity 0.3s ease';
+            
+            logoItem.appendChild(img);
+            
+            if (position === 'prepend') {
+                targetRow.insertBefore(logoItem, targetRow.firstChild);
+            } else {
+                targetRow.appendChild(logoItem);
+            }
+            
+            return logoItem;
+        };
+        
+        // Function to replace placeholder with real logo
+        window.replacePlaceholder = function(placeholderIndex, logoSrc, logoAlt, rowType = 'top') {
+            const targetRow = rowType === 'top' ? topRow : bottomRow;
+            const placeholders = targetRow.querySelectorAll('.logo-item');
+            
+            if (placeholders[placeholderIndex]) {
+                const placeholder = placeholders[placeholderIndex];
+                placeholder.innerHTML = '';
+                
+                const img = document.createElement('img');
+                img.src = logoSrc;
+                img.alt = logoAlt;
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '120px';
+                img.style.objectFit = 'contain';
+                img.style.opacity = '0.8';
+                img.style.transition = 'opacity 0.3s ease';
+                
+                placeholder.appendChild(img);
+                
+                // Add hover effect for real logo
+                placeholder.addEventListener('mouseenter', function() {
+                    img.style.opacity = '1';
+                });
+                
+                placeholder.addEventListener('mouseleave', function() {
+                    img.style.opacity = '0.8';
+                });
+            }
+        };
     }
     
-    // Pause animation on hover (optional enhancement)
+    // Enhanced pause/resume functionality
     const logosSection = document.querySelector('.logos-section');
     if (logosSection) {
+        let isPaused = false;
+        
         logosSection.addEventListener('mouseenter', function() {
             const rows = logosSection.querySelectorAll('.logos-row');
             rows.forEach(row => {
                 row.style.animationPlayState = 'paused';
             });
+            isPaused = true;
         });
         
         logosSection.addEventListener('mouseleave', function() {
@@ -968,7 +1016,50 @@ document.addEventListener('DOMContentLoaded', function() {
             rows.forEach(row => {
                 row.style.animationPlayState = 'running';
             });
+            isPaused = false;
         });
+        
+        // Keyboard control for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ' && e.target === document.body) {
+                e.preventDefault();
+                const rows = logosSection.querySelectorAll('.logos-row');
+                
+                if (isPaused) {
+                    rows.forEach(row => {
+                        row.style.animationPlayState = 'running';
+                    });
+                    isPaused = false;
+                } else {
+                    rows.forEach(row => {
+                        row.style.animationPlayState = 'paused';
+                    });
+                    isPaused = true;
+                }
+            }
+        });
+    }
+    
+    // Performance optimization: Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const rows = entry.target.querySelectorAll('.logos-row');
+            if (entry.isIntersecting) {
+                rows.forEach(row => {
+                    row.style.animationPlayState = 'running';
+                });
+            } else {
+                rows.forEach(row => {
+                    row.style.animationPlayState = 'paused';
+                });
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    if (logosSection) {
+        observer.observe(logosSection);
     }
 });
 
