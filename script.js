@@ -424,10 +424,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Initialize testimonials slider after DOM is fully loaded
+    // Initialize experience card flip functionality after DOM is fully loaded
     setTimeout(() => {
-        initTestimonialsSlider();
-        initRatingStars();
+        initExperienceCardFlip();
     }, 100);
 
 });
@@ -929,73 +928,16 @@ document.addEventListener('DOMContentLoaded', function() {
         duplicatePlaceholders(bottomRow);
         
         // Add hover effects for placeholders
-        const allLogoItems = document.querySelectorAll('.logo-item');
+        const allLogoItems = document.querySelectorAll(".logo-item");
         allLogoItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'paused';
+            item.addEventListener("mouseenter", function() {
+                this.style.animationPlayState = "paused";
             });
             
-            item.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'running';
+            item.addEventListener("mouseleave", function() {
+                this.style.animationPlayState = "running";
             });
         });
-        
-        // Function to add real logos (for future use)
-        window.addRealLogo = function(rowType, logoSrc, logoAlt, position = 'append') {
-            const targetRow = rowType === 'top' ? topRow : bottomRow;
-            const logoItem = document.createElement('div');
-            logoItem.className = 'logo-item';
-            
-            const img = document.createElement('img');
-            img.src = logoSrc;
-            img.alt = logoAlt;
-            img.style.maxWidth = '200px';
-            img.style.maxHeight = '120px';
-            img.style.objectFit = 'contain';
-            img.style.opacity = '0.8';
-            img.style.transition = 'opacity 0.3s ease';
-            
-            logoItem.appendChild(img);
-            
-            if (position === 'prepend') {
-                targetRow.insertBefore(logoItem, targetRow.firstChild);
-            } else {
-                targetRow.appendChild(logoItem);
-            }
-            
-            return logoItem;
-        };
-        
-        // Function to replace placeholder with real logo
-        window.replacePlaceholder = function(1, images/logos/Untitled179_20250605211556.png, logoAlt, rowType = 'top') {
-            const targetRow = rowType === 'top' ? topRow : bottomRow;
-            const placeholders = targetRow.querySelectorAll('.logo-item');
-            
-            if (placeholders[placeholderIndex]) {
-                const placeholder = placeholders[placeholderIndex];
-                placeholder.innerHTML = '';
-                
-                const img = document.createElement('img');
-                img.src = logoSrc;
-                img.alt = logoAlt;
-                img.style.maxWidth = '200px';
-                img.style.maxHeight = '120px';
-                img.style.objectFit = 'contain';
-                img.style.opacity = '0.8';
-                img.style.transition = 'opacity 0.3s ease';
-                
-                placeholder.appendChild(img);
-                
-                // Add hover effect for real logo
-                placeholder.addEventListener('mouseenter', function() {
-                    img.style.opacity = '1';
-                });
-                
-                placeholder.addEventListener('mouseleave', function() {
-                    img.style.opacity = '0.8';
-                });
-            }
-        };
     }
     
     // Enhanced pause/resume functionality
