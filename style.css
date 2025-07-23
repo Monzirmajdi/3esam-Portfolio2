@@ -68,9 +68,7 @@ body::before {
     gap: 30px;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: auto;
@@ -299,17 +297,7 @@ body::before {
     align-items: flex-start;
 }
 
-.action-btn {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 15px 25px;
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     white-space: nowrap;
@@ -955,12 +943,12 @@ body::before {
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+
 }
 
 .star.filled {
     color: #FFD700;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+
 }
 
 .star:hover {
