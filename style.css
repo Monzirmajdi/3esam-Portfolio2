@@ -233,7 +233,8 @@ body::before {
 .hero-image-container {
     position: relative;
     width: 100vw;
-    margin: 0 calc(-50vw + 50%) 60px;
+    height: 100vh; /* Added to make it fit one page */
+    margin: 0 calc(-50vw + 50%);
     overflow: hidden;
     transition: transform 0.5s ease;
 }
@@ -245,7 +246,8 @@ body::before {
 
 .hero-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
 }
