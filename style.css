@@ -1857,3 +1857,137 @@ body::before {
     }
 }
 
+
+/* Projects Modal Styles */
+.projects-modal-content {
+    max-width: 1200px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+.projects-modal-content h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #FFD700;
+    font-family: 'Cairo', sans-serif;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.project-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    height: 250px;
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.project-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-item:hover img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 30px 20px 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-item:hover .project-overlay {
+    transform: translateY(0);
+}
+
+.project-overlay h3 {
+    color: #FFD700;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.project-overlay p {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* Modal Responsive Design */
+@media (max-width: 768px) {
+    .projects-modal-content {
+        padding: 20px;
+        width: 98%;
+        max-height: 95vh;
+    }
+    
+    .projects-modal-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-item {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-modal-content {
+        padding: 15px;
+    }
+    
+    .projects-modal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .project-item {
+        height: 180px;
+    }
+    
+    .project-overlay {
+        padding: 20px 15px 15px;
+    }
+    
+    .project-overlay h3 {
+        font-size: 1rem;
+    }
+    
+    .project-overlay p {
+        font-size: 0.8rem;
+    }
+}
+

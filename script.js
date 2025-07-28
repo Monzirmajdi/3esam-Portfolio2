@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const modals = document.querySelectorAll(".modal");
     const closeBtns = document.querySelectorAll(".close-btn");
     const portfolioItems = document.querySelectorAll(".portfolio-item");
+    const projectCategories = document.querySelectorAll(".project-category");
     
     let currentProjectImages = [];
     let currentImageIndex = 0;
@@ -54,6 +55,30 @@ document.addEventListener("DOMContentLoaded", function() {
             ]
         }
     };
+
+    // Handle project category clicks
+    projectCategories.forEach(category => {
+        category.addEventListener("click", function() {
+            const categoryType = this.getAttribute("data-category");
+            let modalId = "";
+            
+            switch(categoryType) {
+                case "branding":
+                    modalId = "brandingModal";
+                    break;
+                case "social-media":
+                    modalId = "socialMediaModal";
+                    break;
+                case "illustrations":
+                    modalId = "illustrationsModal";
+                    break;
+            }
+            
+            if (modalId) {
+                openModal(modalId.replace("Modal", ""));
+            }
+        });
+    });
 
     // Handle navigation link clicks
     navLinks.forEach(link => {
