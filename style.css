@@ -584,8 +584,6 @@ body::before {
     background-clip: padding-box, border-box;
 }
 
-
-
 /* Experience Subsection - بطاقات شفافة مع فواصل متلاشية */
 .experience-subsection {
     margin-top: 80px;
@@ -850,7 +848,6 @@ body::before {
     left: 0;
 }
 
-
 .modal {
     display: none;
     position: fixed;
@@ -892,11 +889,6 @@ body::before {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
-.project-detail-content {
-    max-width: 1000px;
-    max-height: 90vh;
-}
-
 .close-btn {
     position: absolute;
     top: 30px;
@@ -924,146 +916,7 @@ body::before {
     font-family: 'Cairo', sans-serif;
 }
 
-/* Portfolio Grid - بطاقات شفافة مع فواصل متلاشية */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.portfolio-item {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.portfolio-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.portfolio-tags {
-    padding: 20px 20px 10px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.tag {
-    background: transparent;
-    color: #ccc;
-    padding: 6px 15px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 500;
-    font-family: 'Cairo', sans-serif;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    background-image: linear-gradient(#000, #000), 
-                      linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-}
-
-.tag:hover {
-    color: #fff;
-    background-image: linear-gradient(#000, #000), 
-                      linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
-}
-
-.portfolio-item h3 {
-    padding: 0 20px 20px;
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    font-family: 'Cairo', sans-serif;
-}
-
-/* Project Detail Carousel Buttons */
-.project-carousel {
-    position: relative;
-    margin: 30px 0;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    font-family: 'Cairo', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-    left: -25px;
-}
-
-.carousel-btn.next {
-    right: -25px;
-}
-
-.carousel-btn.prev::before {
-    content: '‹';
-}
-
-.carousel-btn.next::before {
-    content: '›';
-}
-
 /* Project Gallery */
-.project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.project-gallery img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.project-gallery img:hover {
-    transform: scale(1.02);
-}
 
 /* Contact Content - بطاقات شفافة مع فواصل متلاشية */
 .contact-content {
@@ -1319,12 +1172,7 @@ body::before {
         margin: 10px;
         padding: 40px 20px;
     }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
+
     .section-title {
         font-size: 2.5rem;
     }
@@ -1364,20 +1212,7 @@ body::before {
     .experience-card-back {
         padding: 20px;
     }
-    
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .carousel-btn.prev {
-        left: -20px;
-    }
-    
-    .carousel-btn.next {
-        right: -20px;
-    }
+
 }
 
 /* تأثيرات الحركة المحسنة */
@@ -1411,8 +1246,6 @@ body::before {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
     border-radius: 3px;
 }
-
-
 
 .experience-card {
     position: relative;
@@ -1503,42 +1336,6 @@ body::before {
 .experience-card-back-overlay:hover {
     background: rgba(255, 215, 0, 1);
 }
-
-
-
-.portfolio-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease-in-out;
-}
-
-.portfolio-item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    background: linear-gradient(to right, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0) 50%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-}
-
-.portfolio-item:hover::before {
-    opacity: 1;
-}
-
-
 
 /* Apps Grid Styles */
 .apps-grid {
@@ -1654,7 +1451,6 @@ body::before {
         font-size: 11px;
     }
 }
-
 
 /* LOGOS SECTION - Enhanced for continuous motion with placeholders */
 .logos-section {
