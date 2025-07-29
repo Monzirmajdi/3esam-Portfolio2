@@ -1477,15 +1477,15 @@ body::before {
     will-change: transform;
 }
 
-/*.logos-row.top-row {
+.logos-row.top-row {
     top: 0;
-    animation: scrollRightInfinite 100s linear infinite;
+   /* animation: scrollRightInfinite 100s linear infinite;*/
 }
 
 .logos-row.bottom-row {
     top: 200px;
-    animation: scrollLeftInfinite 100s linear infinite;
-}*/
+    /*animation: scrollLeftInfinite 100s linear infinite; */
+}
 
 .logo-item {
     flex-shrink: 0;
