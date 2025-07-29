@@ -584,7 +584,7 @@ body::before {
     background-clip: padding-box, border-box;
 }
 
-/* Experience Subsection - بطاقات شفافة مع فواصل متلاشية 
+ Experience Subsection - بطاقات شفافة مع فواصل متلاشية 
 .experience-subsection {
     margin-top: 80px;
     background: transparent;
@@ -621,7 +621,7 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-}*/
+}
 
 /* Experience Cards - بطاقات شفافة مع تأثير الانقلاب وفواصل متلاشية */
 .experience-card {
@@ -1615,12 +1615,12 @@ body::before {
     }
     
     .logos-row.top-row {
-        animation: scrollRightInfinite 30s linear infinite;
+        animation: scrollRightInfinite 45s linear infinite;
     }
     
     .logos-row.bottom-row {
         top: 90px;
-        animation: scrollLeftInfinite 30s linear infinite;
+        animation: scrollLeftInfinite 45s linear infinite;
     }
     
     .logo-item {
@@ -1638,16 +1638,16 @@ body::before {
     }
 }
 
-/* Pause animation on hover for better UX */
+/* Pause animation on hover for better UX 
 .logos-section:hover .logos-row {
     animation-play-state: paused;
 }
 
-/* Reduce motion for users who prefer it */
+/* Reduce motion for users who prefer it 
 @media (prefers-reduced-motion: reduce) {
     .logos-row {
         animation-duration: 80s;
-    }
+    }*/
     
     .logo-placeholder::before {
         animation: none;
@@ -1884,7 +1884,7 @@ body::before {
 
 .project-item {
     position: relative;
-    border-radius: 15px;
+    border-radius: 0px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
