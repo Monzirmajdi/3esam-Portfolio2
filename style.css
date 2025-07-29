@@ -538,7 +538,7 @@ body::before {
     text-align: center;
     padding: 20px;
     background: transparent;
-    border-radius: 15px;
+    border-radius: 0px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
     background-image: linear-gradient(#000, #000), 
@@ -584,7 +584,7 @@ body::before {
     background-clip: padding-box, border-box;
 }
 
-/* Experience Subsection - بطاقات شفافة مع فواصل متلاشية */
+/* Experience Subsection - بطاقات شفافة مع فواصل متلاشية 
 .experience-subsection {
     margin-top: 80px;
     background: transparent;
@@ -621,7 +621,7 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-}
+}*/
 
 /* Experience Cards - بطاقات شفافة مع تأثير الانقلاب وفواصل متلاشية */
 .experience-card {
@@ -1479,12 +1479,12 @@ body::before {
 
 .logos-row.top-row {
     top: 0;
-    animation: scrollRightInfinite 40s linear infinite;
+    animation: scrollRightInfinite 30s linear infinite;
 }
 
 .logos-row.bottom-row {
     top: 200px;
-    animation: scrollLeftInfinite 40s linear infinite;
+    animation: scrollLeftInfinite 30s linear infinite;
 }
 
 .logo-item {
