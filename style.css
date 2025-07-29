@@ -1452,7 +1452,7 @@ body::before {
     }
 }
 
-/* LOGOS SECTION - Enhanced for continuous motion with placeholders */
+/* LOGOS SECTION - Enhanced for continuous motion with placeholders 
 .logos-section {
     background: #000000;
     padding: 100px 0;
@@ -1479,12 +1479,12 @@ body::before {
 
 .logos-row.top-row {
     top: 0;
-   /* animation: scrollRightInfinite 100s linear infinite;*/
+   /* animation: scrollRightInfinite 100s linear infinite;
 }
 
 .logos-row.bottom-row {
     top: 200px;
-    /*animation: scrollLeftInfinite 100s linear infinite; */
+    /*animation: scrollLeftInfinite 100s linear infinite; 
 }
 
 .logo-item {
@@ -1982,4 +1982,111 @@ body::before {
         font-size: 0.8rem;
     }
 }
+/* Dual Scroller Container */
+.dual-scroller-container {
+    position: relative;
+    width: 100%;
+    margin: 60px 0;
+}
 
+/* Scroller Styles */
+.scroller {
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.scroller[data-animated="true"] {
+    -webkit-mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] .scroller__inner {
+    --_animation-direction: reverse;
+}
+
+.scroller[data-speed="fast"] .scroller__inner {
+    --_animation-duration: 30s;
+}
+
+.scroller[data-speed="slow"] .scroller__inner {
+    --_animation-duration: 60s;
+}
+
+.scroller .scroller__inner img {
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.scroller .scroller__inner img:hover {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* الصف العلوي */
+.scroller.top-row {
+    margin-bottom: 30px;
+}
+
+/* الصف السفلي */
+.scroller.bottom-row {
+    margin-top: 30px;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-50% - 1rem));
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .scroller .scroller__inner img {
+        width: 150px;
+        height: 80px;
+    }
+    
+    .scroller[data-animated="true"] {
+        -webkit-mask: none;
+        mask: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroller .scroller__inner img {
+        width: 120px;
+        height: 60px;
+    }
+    
+    .scroller[data-speed="fast"] .scroller__inner {
+        --_animation-duration: 40s;
+    }
+    
+    .scroller.top-row {
+        margin-bottom: 20px;
+    }
+    
+    .scroller.bottom-row {
+        margin-top: 20px;
+    }
+                          }
