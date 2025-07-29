@@ -1452,90 +1452,67 @@ body::before {
 }
 
 /* LOGOS SECTION - Enhanced for continuous motion with placeholders */
+/* ===== Infinite Logo Scroll (No Duplicates) ===== */
 .logos-section {
-    background: #000000;
+    background: #000;
     padding: 100px 0;
-    overflow: hidden;
+    overflow: hidden; /* Hide overflow to enable seamless looping */
     position: relative;
 }
 
 .logos-container {
-    position: relative;
     width: 100%;
-    height: 380px;
+    position: relative;
+    height: 380px; /* Adjust based on your design */
 }
 
+/* Logo Rows */
 .logos-row {
     position: absolute;
     display: flex;
-    align-items: center;
-    height: 200px;
-    width: max-content;
-    white-space: nowrap;
-    gap: 30px;
-    will-change: transform;
+    gap: 30px; /* Space between logos */
+    height: 200px; /* Logo row height */
+    width: max-content; /* Allow row to expand beyond viewport */
+    will-change: transform; /* Optimize animation performance */
 }
 
+/* Top Row (Scrolls Right to Left) */
 .logos-row.top-row {
     top: 0;
-    animation: scrollRightInfinite 40s linear infinite;
+    animation: scrollRightInfinite 20s linear infinite;
 }
 
+/* Bottom Row (Scrolls Left to Right) */
 .logos-row.bottom-row {
-    top: 200px;
-    animation: scrollLeftInfinite 40s linear infinite;
+    top: 200px; /* Position below top row */
+    animation: scrollLeftInfinite 20s linear infinite;
 }
 
+/* Animation Keyframes */
+@keyframes scrollRightInfinite {
+    0% { transform: translateX(0); } /* Start from initial position */
+    100% { transform: translateX(-100%); } /* Move left by 100% of row width */
+}
+
+@keyframes scrollLeftInfinite {
+    0% { transform: translateX(-100%); } /* Start from left (hidden) */
+    100% { transform: translateX(0); } /* Move right to original position */
+}
+
+/* Logo Item Styling (Keep your existing styles) */
 .logo-item {
-    flex-shrink: 0;
+    flex-shrink: 0; /* Prevent logos from shrinking */
     width: 200px;
     height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #000000;
-    border-radius: 0;
-    position: relative;
-    border: none;
-    box-shadow: none;
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.logo-item:hover {
-    transform: scale(1.05);
 }
 
 .logo-item img {
     max-width: 80%;
     max-height: 80%;
     object-fit: contain;
-    object-position: center;
-}
-
-/* Infinite scroll animations */
-@keyframes scrollRightInfinite {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-50);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-@keyframes scrollLeftInfinite {
-    0% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(-50);
-    }
-    100% {
-        transform: translateX(0);
-    }
 }
 
 /* Enhanced fade effect at edges */
