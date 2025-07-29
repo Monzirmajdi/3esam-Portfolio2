@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const portfolioItems = document.querySelectorAll(".portfolio-item");
     const projectCategories = document.querySelectorAll(".project-category");
     
-    /*let currentProjectImages = [];
-    let currentImageIndex = 0;*/
+    let currentProjectImages = [];
+    let currentImageIndex = 0;
     
 // Project Data (replace with your actual project details)
    const projectData = {
