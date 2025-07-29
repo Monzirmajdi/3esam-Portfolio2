@@ -1479,12 +1479,12 @@ body::before {
 
 .logos-row.top-row {
     top: 0;
-    animation: scrollRightInfinite 30s linear infinite;
+    animation: scrollRightInfinite 40s linear infinite;
 }
 
 .logos-row.bottom-row {
     top: 200px;
-    animation: scrollLeftInfinite 30s linear infinite;
+    animation: scrollLeftInfinite 40s linear infinite;
 }
 
 .logo-item {
@@ -1519,6 +1519,9 @@ body::before {
     0% {
         transform: translateX(0);
     }
+    50% {
+        transform: translateX(-50);
+    }
     100% {
         transform: translateX(-100%);
     }
@@ -1527,6 +1530,9 @@ body::before {
 @keyframes scrollLeftInfinite {
     0% {
         transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(-50);
     }
     100% {
         transform: translateX(0);
