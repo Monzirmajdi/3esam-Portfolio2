@@ -1,39 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-// ===== Dynamic Logo Cloning =====
-function cloneLogoItems() {
-    const rows = document.querySelectorAll('.logos-row');
-    
-    rows.forEach(row => {
-        // احذف النسخ القديمة أولاً لتجنب التكرار
-        const existingClones = row.querySelectorAll('.logo-item[data-cloned="true"]');
-        existingClones.forEach(clone => clone.remove());
-        
-        // احسب العرض الكلي للعناصر الأصلية + المسافات
-        const logoItems = row.querySelectorAll('.logo-item:not([data-cloned="true"])');
-        const totalWidth = Array.from(logoItems).reduce((total, item) => {
-            return total + item.offsetWidth + 30; // 30px = المسافة بين العناصر (gap)
-        }, 0);
-        
-        // استنسخ فقط إذا كان العرض أقل من عرض الشاشة
-        if (totalWidth < window.innerWidth) {
-            const clones = [];
-            logoItems.forEach(item => {
-                const clone = item.cloneNode(true);
-                clone.setAttribute('data-cloned', 'true'); // وضع علامة على النسخ
-                clones.push(clone);
-            });
-            
-            // أضف النسخ إلى الصف
-            clones.forEach(clone => {
-                row.appendChild(clone);
-            });
-        }
-    });
-}
-
-// تهيئة عند تحميل الصفحة وتغيير الحجم
-cloneLogoItems();
-window.addEventListener('resize', cloneLogoItems);
     // Get elements
     const navLinks = document.querySelectorAll(".nav-link");
     const actionBtns = document.querySelectorAll(".action-btn");
@@ -703,3 +668,4 @@ document.querySelectorAll('.modal').forEach(modal => {
             });
         }
     });
+
