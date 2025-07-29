@@ -1479,12 +1479,12 @@ body::before {
 
 .logos-row.top-row {
     top: 0;
-    animation: scrollRightInfinite 20s linear infinite;
+    animation: scrollRightInfinite 100s linear infinite;
 }
 
 .logos-row.bottom-row {
     top: 200px;
-    animation: scrollLeftInfinite 20s linear infinite;
+    animation: scrollLeftInfinite 100s linear infinite;
 }
 
 .logo-item {
