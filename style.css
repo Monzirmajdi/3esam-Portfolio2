@@ -1452,86 +1452,79 @@ body::before {
     }
 }
 
-/* LOGOS SECTION - Enhanced for continuous motion with placeholders */
+/* LOGOS SECTION - Infinite Scroll without Duplication */
 .logos-section {
-    background: #000000;
+    background: #000;
     padding: 100px 0;
     overflow: hidden;
-    position: relative;
 }
 
 .logos-container {
-    position: relative;
     width: 100%;
+    position: relative;
     height: 380px;
 }
 
 .logos-row {
     position: absolute;
     display: flex;
-    align-items: center;
+    gap: 30px;
     height: 200px;
     width: max-content;
-    white-space: nowrap;
-    gap: 30px;
     will-change: transform;
 }
 
 .logos-row.top-row {
     top: 0;
-    animation: scrollRightInfinite 40s linear infinite;
+    animation: scrollRightInfinite 20s linear infinite;
 }
 
 .logos-row.bottom-row {
     top: 200px;
-    animation: scrollLeftInfinite 40s linear infinite;
+    animation: scrollLeftInfinite 20s linear infinite;
 }
 
 .logo-item {
     flex-shrink: 0;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #000000;
-    border-radius: 0;
-    position: relative;
-    border: none;
-    box-shadow: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    overflow: hidden;
 }
 
 .logo-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 215, 0, 0.3);
 }
 
 .logo-item img {
     max-width: 80%;
     max-height: 80%;
     object-fit: contain;
-    object-position: center;
+    filter: grayscale(100%) brightness(150%);
+    transition: filter 0.3s ease;
 }
 
-/* Infinite scroll animations */
+.logo-item:hover img {
+    filter: grayscale(0%) brightness(100%);
+}
+
 @keyframes scrollRightInfinite {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-50);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
 @keyframes scrollLeftInfinite {
-    0% {
-        transform: translateX(-100%);
-    }
-    50% {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}    50% {
         transform: translateX(-50);
     }
     100% {

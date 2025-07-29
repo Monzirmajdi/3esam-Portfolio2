@@ -669,3 +669,37 @@ document.querySelectorAll('.modal').forEach(modal => {
         }
     });
 
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // استنساخ العناصر ديناميكياً
+    function cloneLogoItems() {
+        const rows = document.querySelectorAll(".logos-row");
+        
+        rows.forEach(row => {
+            const logoItems = row.querySelectorAll(".logo-item");
+            const totalWidth = Array.from(logoItems).reduce((total, item) => {
+                return total + item.offsetWidth + 30; // 30 هو قيمة الـ gap
+            }, 0);
+            
+            // استنساخ العناصر إذا كان عرضها أقل من عرض الشاشة
+            if (totalWidth < window.innerWidth) {
+                const clones = [];
+                logoItems.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    clones.push(clone);
+                });
+                
+                clones.forEach(clone => {
+                    row.appendChild(clone);
+                });
+            }
+        });
+    }
+
+    // تنفيذ الوظيفة عند تحميل الصفحة وعند تغيير حجم الشاشة
+    cloneLogoItems();
+    window.addEventListener("resize", cloneLogoItems);
+});
+
