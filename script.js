@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    /* Carousel functions (global scope for onclick handlers)
+   Carousel functions (global scope for onclick handlers)
     window.previousImage = function() {
         currentImageIndex = (currentImageIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
         updateCarouselImage();
@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 dot.classList.toggle("active", index === currentImageIndex);
             });
         }
-    } */
+    } 
 
     // Handle contact form submission
     const contactForm = document.querySelector(".contact-form");
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
         
-        /* Carousel navigation with arrow keys (only in project detail modal)
+         Carousel navigation with arrow keys (only in project detail modal)
         if (document.getElementById("projectDetailModal").classList.contains("active")) {
             if (e.key === "ArrowLeft") {
                 previousImage();
@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("touchend", function(e) {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-    }); */
+    }); 
 
     function handleSwipe() {
         const swipeThreshold = 50;
