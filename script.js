@@ -7,55 +7,169 @@ document.addEventListener("DOMContentLoaded", function() {
     const portfolioItems = document.querySelectorAll(".portfolio-item");
     const projectCategories = document.querySelectorAll(".project-category");
     
-    let currentProjectImages = [];
-    let currentImageIndex = 0;
-
-    /* Project data with carousel images
-    const projectData = {
-        0: {
-            title: "Runes Studio Web Design",
-            client: "Runes Studio",
-            duration: "3 months",
-            role: "Lead UI/UX Designer",
-            tools: "Figma, Adobe Creative Suite",
-            description: "A comprehensive web design project for Runes Studio, featuring modern UI/UX principles and stunning visual identity. The project involved creating a complete brand experience from wireframes to final implementation.",
-            images: [
-                "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-            ]
+    /*let currentProjectImages = [];
+    let currentImageIndex = 0;*/
+    
+// Project Data (replace with your actual project details)
+   const projectData = {
+    branding: [
+        {
+            id: 'branding-1',
+            title: 'Brand Identity for Tech Startup',
+            client: 'Innovate Inc.',
+            duration: '2 months',
+            role: 'Lead Designer',
+            tools: 'Illustrator, Photoshop',
+            description: 'Developed a complete brand identity, including logo, color palette, and typography.',
+            images: ['images/branding1.jpg', 'images/branding2.jpg', 'images/branding3.jpg']
         },
-        1: {
-            title: "Swiss App Design",
-            client: "Swiss Tech Inc.",
-            duration: "2 months",
-            role: "Mobile UI Designer",
-            tools: "Sketch, Principle, InVision",
-            description: "Mobile application design with Swiss design principles, focusing on minimalism and functionality. The app features clean interfaces and intuitive user flows.",
-            images: [
-                "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=800&h=600&fit=crop"
-            ]
-        },
-        2: {
-            title: "Bruno Portfolio Website",
-            client: "Bruno Martinez",
-            duration: "1 month",
-            role: "Web Designer & Developer",
-            tools: "Figma, React, GSAP",
-            description: "Personal portfolio website with advanced animations and interactive elements. Features smooth transitions and engaging micro-interactions.",
-            images: [
-                "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=800&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
-            ]
+        {
+            id: 'branding-2',
+            title: 'Rebranding for a Coffee Shop',
+            client: 'The Daily Grind',
+            duration: '1 month',
+            role: 'Graphic Designer',
+            tools: 'Illustrator, InDesign',
+            description: 'A fresh new look for a local coffee shop, including a new logo and menu design.',
+            images: ['images/coffee1.jpg', 'images/coffee2.jpg']
         }
-    };*/
+    ],
+    social_media: [
+        {
+            id: 'social-1',
+            title: 'Social Media Campaign for a Fashion Brand',
+            client: 'Chic Boutique',
+            duration: '3 weeks',
+            role: 'Content Creator',
+            tools: 'Photoshop, Canva',
+            description: 'Designed a series of engaging posts for Instagram and Facebook.',
+            images: ['images/social1.jpg', 'images/social2.jpg', 'images/social3.jpg']
+        }
+    ],
+    illustrations: [
+        {
+            id: 'illustration-1',
+            title: 'Character Design for a Children\'s Book',
+            client: 'Little Readers Publishing',
+            duration: '1.5 months',
+            role: 'Illustrator',
+            tools: 'Procreate, Photoshop',
+            description: 'Created a set of lovable characters for an upcoming children\'s book.',
+            images: ['images/char1.jpg', 'images/char2.jpg']
+        }
+    ]
+};
+// Handle Category Card Clicks
+document.querySelectorAll('.category-card').forEach(card => {
+    card.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        openProjectListModal(category);
+    });
+});
 
+function openProjectListModal(category) {
+    const modalId = category + 'Modal';
+    const modal = document.getElementById(modalId);
+    const projectListContainer = document.getElementById(category + 'ProjectList');
+
+    if (modal && projectListContainer) {
+        // Clear previous projects
+        projectListContainer.innerHTML = '';
+
+        // Populate with new projects
+        const projects = projectData[category];
+        if (projects) {
+            projects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.className = 'project-item';
+                projectItem.setAttribute('data-project-id', project.id);
+                projectItem.setAttribute('data-category', category);
+                projectItem.innerHTML = `
+                    <img src="${project.images[0]}" alt="${project.title}">
+                    <h4>${project.title}</h4>
+                `;
+                projectListContainer.appendChild(projectItem);
+
+                // Add click listener to the new project item
+                projectItem.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project-id');
+                    const projectCategory = this.getAttribute('data-category');
+                    openProjectDetailModal(projectCategory, projectId);
+                });
+            });
+        }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function openProjectDetailModal(category, projectId) {
+    const project = projectData[category].find(p => p.id === projectId);
+    const projectDetailModal = document.getElementById('projectDetailModal');
+    const projectDetailContainer = document.getElementById('projectDetail');
+
+    if (project && projectDetailModal && projectDetailContainer) {
+        currentProjectImages = project.images;
+        currentImageIndex = 0;
+
+        projectDetailContainer.innerHTML = `
+            <h2>${project.title}</h2>
+            <div class="project-meta">
+                <div class="project-meta-item"><h4>Client</h4><p>${project.client}</p></div>
+                <div class="project-meta-item"><h4>Duration</h4><p>${project.duration}</p></div>
+                <div class="project-meta-item"><h4>Role</h4><p>${project.role}</p></div>
+                <div class="project-meta-item"><h4>Tools</h4><p>${project.tools}</p></div>
+            </div>
+            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">${project.description}</p>
+            <div class="project-carousel">
+                <button class="carousel-btn prev" onclick="previousImage()">‹</button>
+                <div class="carousel-container">
+                    <img id="carouselImage" src="${project.images[0]}" alt="${project.title}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                </div>
+                <button class="carousel-btn next" onclick="nextImage()">›</button>
+            </div>
+            <div class="carousel-indicators" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                ${project.images.map((_, index) => 
+                    `<span class="carousel-dot ${index === 0 ? 'active' : ''}" onclick="goToImage(${index})" style="width: 12px; height: 12px; border-radius: 50%; background: ${index === 0 ? '#FFD700' : 'rgba(255, 215, 0, 0.3)'}; cursor: pointer; transition: all 0.3s ease;"></span>`
+                ).join('')}
+            </div>
+            <div class="project-gallery" style="margin-top: 40px;">
+                <h3 style="color: #FFD700; margin-bottom: 20px; grid-column: 1 / -1;">Project Gallery</h3>
+                ${project.images.map(img => `<img src="${img}" alt="${project.title}" style="cursor: pointer;" onclick="openImageInCarousel('${img}')">`).join('')}
+            </div>
+        `;
+
+        // Close the list modal
+        const listModal = document.getElementById(category + 'Modal');
+        if(listModal) listModal.classList.remove('active');
+
+        // Open the detail modal
+        projectDetailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Close Modals
+document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+
+document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
     // Handle project category clicks
     projectCategories.forEach(category => {
         category.addEventListener("click", function() {
@@ -472,167 +586,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Project Data (replace with your actual project details)
-const projectData = {
-    branding: [
-        {
-            id: 'branding-1',
-            title: 'Brand Identity for Tech Startup',
-            client: 'Innovate Inc.',
-            duration: '2 months',
-            role: 'Lead Designer',
-            tools: 'Illustrator, Photoshop',
-            description: 'Developed a complete brand identity, including logo, color palette, and typography.',
-            images: ['images/branding1.jpg', 'images/branding2.jpg', 'images/branding3.jpg']
-        },
-        {
-            id: 'branding-2',
-            title: 'Rebranding for a Coffee Shop',
-            client: 'The Daily Grind',
-            duration: '1 month',
-            role: 'Graphic Designer',
-            tools: 'Illustrator, InDesign',
-            description: 'A fresh new look for a local coffee shop, including a new logo and menu design.',
-            images: ['images/coffee1.jpg', 'images/coffee2.jpg']
-        }
-    ],
-    social_media: [
-        {
-            id: 'social-1',
-            title: 'Social Media Campaign for a Fashion Brand',
-            client: 'Chic Boutique',
-            duration: '3 weeks',
-            role: 'Content Creator',
-            tools: 'Photoshop, Canva',
-            description: 'Designed a series of engaging posts for Instagram and Facebook.',
-            images: ['images/social1.jpg', 'images/social2.jpg', 'images/social3.jpg']
-        }
-    ],
-    illustrations: [
-        {
-            id: 'illustration-1',
-            title: 'Character Design for a Children\'s Book',
-            client: 'Little Readers Publishing',
-            duration: '1.5 months',
-            role: 'Illustrator',
-            tools: 'Procreate, Photoshop',
-            description: 'Created a set of lovable characters for an upcoming children\'s book.',
-            images: ['images/char1.jpg', 'images/char2.jpg']
-        }
-    ]
-};
 
-// Handle Category Card Clicks
-document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const category = this.getAttribute('data-category');
-        openProjectListModal(category);
-    });
-});
 
-function openProjectListModal(category) {
-    const modalId = category + 'Modal';
-    const modal = document.getElementById(modalId);
-    const projectListContainer = document.getElementById(category + 'ProjectList');
-
-    if (modal && projectListContainer) {
-        // Clear previous projects
-        projectListContainer.innerHTML = '';
-
-        // Populate with new projects
-        const projects = projectData[category];
-        if (projects) {
-            projects.forEach(project => {
-                const projectItem = document.createElement('div');
-                projectItem.className = 'project-item';
-                projectItem.setAttribute('data-project-id', project.id);
-                projectItem.setAttribute('data-category', category);
-                projectItem.innerHTML = `
-                    <img src="${project.images[0]}" alt="${project.title}">
-                    <h4>${project.title}</h4>
-                `;
-                projectListContainer.appendChild(projectItem);
-
-                // Add click listener to the new project item
-                projectItem.addEventListener('click', function() {
-                    const projectId = this.getAttribute('data-project-id');
-                    const projectCategory = this.getAttribute('data-category');
-                    openProjectDetailModal(projectCategory, projectId);
-                });
-            });
-        }
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function openProjectDetailModal(category, projectId) {
-    const project = projectData[category].find(p => p.id === projectId);
-    const projectDetailModal = document.getElementById('projectDetailModal');
-    const projectDetailContainer = document.getElementById('projectDetail');
-
-    if (project && projectDetailModal && projectDetailContainer) {
-        currentProjectImages = project.images;
-        currentImageIndex = 0;
-
-        projectDetailContainer.innerHTML = `
-            <h2>${project.title}</h2>
-            <div class="project-meta">
-                <div class="project-meta-item"><h4>Client</h4><p>${project.client}</p></div>
-                <div class="project-meta-item"><h4>Duration</h4><p>${project.duration}</p></div>
-                <div class="project-meta-item"><h4>Role</h4><p>${project.role}</p></div>
-                <div class="project-meta-item"><h4>Tools</h4><p>${project.tools}</p></div>
-            </div>
-            <p style="color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">${project.description}</p>
-            <div class="project-carousel">
-                <button class="carousel-btn prev" onclick="previousImage()">‹</button>
-                <div class="carousel-container">
-                    <img id="carouselImage" src="${project.images[0]}" alt="${project.title}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                </div>
-                <button class="carousel-btn next" onclick="nextImage()">›</button>
-            </div>
-            <div class="carousel-indicators" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-                ${project.images.map((_, index) => 
-                    `<span class="carousel-dot ${index === 0 ? 'active' : ''}" onclick="goToImage(${index})" style="width: 12px; height: 12px; border-radius: 50%; background: ${index === 0 ? '#FFD700' : 'rgba(255, 215, 0, 0.3)'}; cursor: pointer; transition: all 0.3s ease;"></span>`
-                ).join('')}
-            </div>
-            <div class="project-gallery" style="margin-top: 40px;">
-                <h3 style="color: #FFD700; margin-bottom: 20px; grid-column: 1 / -1;">Project Gallery</h3>
-                ${project.images.map(img => `<img src="${img}" alt="${project.title}" style="cursor: pointer;" onclick="openImageInCarousel('${img}')">`).join('')}
-            </div>
-        `;
-
-        // Close the list modal
-        const listModal = document.getElementById(category + 'Modal');
-        if(listModal) listModal.classList.remove('active');
-
-        // Open the detail modal
-        projectDetailModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// Close Modals
-document.querySelectorAll('.close-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const modalId = this.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-});
-
-document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', function(e) {
-        if (e.target === this) {
-            this.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-});
 
 
 
