@@ -1987,13 +1987,13 @@ body::before {
     position: relative;
     width: 100%;
     margin: 60px 0;
+    overflow: hidden; /* إضافة هذه الخاصية */
 }
 
 /* Scroller Styles */
 .scroller {
     max-width: 100%;
     position: relative;
-    overflow: hidden;
 }
 
 .scroller__inner {
@@ -2003,14 +2003,28 @@ body::before {
 }
 
 .scroller[data-animated="true"] {
-    -webkit-mask: linear-gradient(
-        90deg,
-        transparent,
-        white 20%,
-        white 80%,
-        transparent
-    );
-    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    position: relative;
+}
+
+.scroller[data-animated="true"]::before,
+.scroller[data-animated="true"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.scroller[data-animated="true"]::before {
+    left: 0;
+    background: linear-gradient(to right, #000 0%, rgba(0,0,0,0.9) 50%, transparent 100%);
+}
+
+.scroller[data-animated="true"]::after {
+    right: 0;
+    background: linear-gradient(to left, #000 0%, rgba(0,0,0,0.9) 50%, transparent 100%);
 }
 
 .scroller[data-animated="true"] .scroller__inner {
@@ -2066,9 +2080,9 @@ body::before {
         height: 80px;
     }
     
-    .scroller[data-animated="true"] {
-        -webkit-mask: none;
-        mask: none;
+    .scroller[data-animated="true"]::before,
+    .scroller[data-animated="true"]::after {
+        width: 50px;
     }
 }
 
@@ -2089,4 +2103,9 @@ body::before {
     .scroller.bottom-row {
         margin-top: 20px;
     }
-                          }
+    
+    .scroller[data-animated="true"]::before,
+    .scroller[data-animated="true"]::after {
+        width: 30px;
+    }
+}
