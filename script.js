@@ -676,7 +676,7 @@ function infiniteScroll(rowClass, direction) {
 
   function animate() {
     position += (direction === 'left') ? -speed : speed;
-    if (Math.abs(position) >= row.scrollWidth / 2) {
+    if (Math.abs(position) >= row.scrollWidth / 1) {
       position = 0;
     }
     row.style.transform = `translateX(${position}px)`;
