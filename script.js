@@ -667,5 +667,27 @@ document.querySelectorAll('.modal').forEach(modal => {
                 card.classList.remove('flipped');
             });
         }
+        // ========== كود الحركة الجديد (بدون CSS Animation) ========== //
+function infiniteScroll(rowClass, direction) {
+  const row = document.querySelector(`.${rowClass}`);
+  let position = 0;
+  const speed = 1; // السرعة (عدلها كما تريد: 0.5 أبطأ، 2 أسرع)
+
+  function animate() {
+    position += (direction === 'left') ? -speed : speed;
+    if (Math.abs(position) >= row.scrollWidth / 2) {
+      position = 0;
+    }
+    row.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+// تشغيل الحركة بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  infiniteScroll('top-row', 'left');   // الصف العلوي → يتحرك لليسار
+  infiniteScroll('bottom-row', 'right'); // الصف السفلي → يتحرك لليمين
+
     });
 
