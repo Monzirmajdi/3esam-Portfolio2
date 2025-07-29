@@ -668,26 +668,28 @@ document.querySelectorAll('.modal').forEach(modal => {
             });
         }
     });
-// ========== كود الحركة الجديد (بدون CSS Animation) ========== //
-function infiniteScroll(rowClass, direction) {
-  const row = document.querySelector(`.${rowClass}`);
-  let position = 0;
-  const speed = 1; // السرعة (عدلها كما تريد: 0.5 أبطأ، 2 أسرع)
+// Scroller functionality
+const scrollers = document.querySelectorAll(".scroller");
 
-  function animate() {
-    position += (direction === 'left') ? -speed : speed;
-    if (Math.abs(position) >= row.scrollWidth / 1) {
-      position = 0;
-    }
-    row.style.transform = `translateX(${position}px)`;
-    requestAnimationFrame(animate);
-  }
-  animate();
+// If a user hasn't opted in for reduced motion, then we add the animation
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addAnimation();
 }
 
-// تشغيل الحركة بعد تحميل الصفحة
-document.addEventListener('DOMContentLoaded', () => {
-  infiniteScroll('top-row', 'left');   // الصف العلوي → يتحرك لليسار
-  infiniteScroll('bottom-row', 'right'); // الصف السفلي → يتحرك لليمين
-});
+function addAnimation() {
+    scrollers.forEach((scroller) => {
+        // add data-animated="true" to every `.scroller` on the page
+        scroller.setAttribute("data-animated", true);
 
+        // Make an array from the elements within `.scroller-inner`
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+
+        // For each item in the array, clone it
+        scrollerContent.forEach((item) => {
+            const duplicatedItem = item.cloneNode(true);
+            duplicatedItem.setAttribute("aria-hidden", true);
+            scrollerInner.appendChild(duplicatedItem);
+        });
+    });
+}
