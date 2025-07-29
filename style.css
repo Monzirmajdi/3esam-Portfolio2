@@ -1477,16 +1477,6 @@ body::before {
     will-change: transform;
 }
 
-.logos-row.top-row {
-    top: 0;
-    animation: scrollRightInfinite 40s linear infinite;
-}
-
-.logos-row.bottom-row {
-    top: 200px;
-    animation: scrollLeftInfinite 40s linear infinite;
-}
-
 .logo-item {
     flex-shrink: 0;
     width: 200px;
@@ -1516,29 +1506,33 @@ body::before {
 
 /* Infinite scroll animations */
 @keyframes scrollRightInfinite {
+/* استبدل هذا الكود في ملف style.css */
+
+@keyframes scrollRightInfinite {
     0% {
         transform: translateX(0);
     }
-    50% {
-        transform: translateX(-50);
-    }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }
 
 @keyframes scrollLeftInfinite {
     0% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(-50);
+        transform: translateX(-50%);
     }
     100% {
         transform: translateX(0);
     }
 }
 
+.logos-row.top-row {
+    animation: scrollRightInfinite 20s linear infinite;
+}
+
+.logos-row.bottom-row {
+    animation: scrollLeftInfinite 20s linear infinite;
+}
 /* Enhanced fade effect at edges */
 .logos-section::before,
 .logos-section::after {
