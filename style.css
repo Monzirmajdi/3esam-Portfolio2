@@ -1644,16 +1644,7 @@ body::before {
     }
 }
 
-/* Pause animation on hover for better UX 
-.logos-section:hover .logos-row {
-    animation-play-state: paused;
-}
 
-/* Reduce motion for users who prefer it 
-@media (prefers-reduced-motion: reduce) {
-    .logos-row {
-        animation-duration: 80s;
-    }*/
     
     .logo-placeholder::before {
         animation: none;
