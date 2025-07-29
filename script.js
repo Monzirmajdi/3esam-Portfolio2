@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentProjectImages = [];
     let currentImageIndex = 0;
 
-    // Project data with carousel images
+    /* Project data with carousel images
     const projectData = {
         0: {
             title: "Runes Studio Web Design",
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
             ]
         }
-    };
+    };*/
 
     // Handle project category clicks
     projectCategories.forEach(category => {
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Carousel functions (global scope for onclick handlers)
+    /* Carousel functions (global scope for onclick handlers)
     window.previousImage = function() {
         currentImageIndex = (currentImageIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
         updateCarouselImage();
@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 dot.classList.toggle("active", index === currentImageIndex);
             });
         }
-    }
+    } */
 
     // Handle contact form submission
     const contactForm = document.querySelector(".contact-form");
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
         
-        // Carousel navigation with arrow keys (only in project detail modal)
+        /* Carousel navigation with arrow keys (only in project detail modal)
         if (document.getElementById("projectDetailModal").classList.contains("active")) {
             if (e.key === "ArrowLeft") {
                 previousImage();
@@ -338,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 nextImage();
             }
         }
-    });
+    }); 
 
 
 
@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("touchend", function(e) {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-    });
+    }); */
 
     function handleSwipe() {
         const swipeThreshold = 50;
