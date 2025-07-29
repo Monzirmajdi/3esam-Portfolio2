@@ -1477,7 +1477,7 @@ body::before {
     will-change: transform;
 }
 
-.logos-row.top-row {
+/*.logos-row.top-row {
     top: 0;
     animation: scrollRightInfinite 100s linear infinite;
 }
@@ -1485,7 +1485,7 @@ body::before {
 .logos-row.bottom-row {
     top: 200px;
     animation: scrollLeftInfinite 100s linear infinite;
-}
+}*/
 
 .logo-item {
     flex-shrink: 0;
@@ -1514,7 +1514,7 @@ body::before {
     object-position: center;
 }
 
-/* Infinite scroll animations */
+/* Infinite scroll animations 
 @keyframes scrollRightInfinite {
     0% {
         transform: translateX(0);
@@ -1531,7 +1531,7 @@ body::before {
     100% {
         transform: translateX(0);
     }
-}
+}*/
 
 
 /* Enhanced fade effect at edges */
