@@ -1,4 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // ===== Dynamic Logo Cloning =====
+function cloneLogoItems() {
+    const rows = document.querySelectorAll('.logos-row');
+    
+    rows.forEach(row => {
+        // Calculate total width of logos + gaps
+        const logoItems = row.querySelectorAll('.logo-item');
+        const totalWidth = Array.from(logoItems).reduce((total, item) => {
+            return total + item.offsetWidth + 30; // 30px = gap between items
+        }, 0);
+        
+        // Clone logos if total width < viewport width
+        if (totalWidth < window.innerWidth) {
+            const clones = [];
+            logoItems.forEach(item => {
+                const clone = item.cloneNode(true); // Deep clone
+                clones.push(clone);
+            });
+            
+            // Append clones to the row
+            clones.forEach(clone => {
+                row.appendChild(clone);
+            });
+        }
+    });
+}
+
+// Initialize on load and resize
+document.addEventListener("DOMContentLoaded", cloneLogoItems);
+window.addEventListener('resize', cloneLogoItems);
     // Get elements
     const navLinks = document.querySelectorAll(".nav-link");
     const actionBtns = document.querySelectorAll(".action-btn");
@@ -668,33 +698,3 @@ document.querySelectorAll('.modal').forEach(modal => {
             });
         }
     });
-// ===== Dynamic Logo Cloning =====
-function cloneLogoItems() {
-    const rows = document.querySelectorAll('.logos-row');
-    
-    rows.forEach(row => {
-        // Calculate total width of logos + gaps
-        const logoItems = row.querySelectorAll('.logo-item');
-        const totalWidth = Array.from(logoItems).reduce((total, item) => {
-            return total + item.offsetWidth + 30; // 30px = gap between items
-        }, 0);
-        
-        // Clone logos if total width < viewport width
-        if (totalWidth < window.innerWidth) {
-            const clones = [];
-            logoItems.forEach(item => {
-                const clone = item.cloneNode(true); // Deep clone
-                clones.push(clone);
-            });
-            
-            // Append clones to the row
-            clones.forEach(clone => {
-                row.appendChild(clone);
-            });
-        }
-    });
-}
-
-// Initialize on load and resize
-document.addEventListener("DOMContentLoaded", cloneLogoItems);
-window.addEventListener('resize', cloneLogoItems);
