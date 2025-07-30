@@ -1267,6 +1267,7 @@ body::before {
     background-origin: border-box;
     background-clip: padding-box, border-box;
     transition: all 0.3s ease-in-out;
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
 .experience-card:hover {
@@ -1316,6 +1317,7 @@ body::before {
     color: #000;
     cursor: pointer;
     transition: background 0.3s ease;
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
 .experience-card-overlay:hover {
@@ -1337,6 +1339,7 @@ body::before {
     color: #000;
     cursor: pointer;
     transition: background 0.3s ease;
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
 .experience-card-back-overlay:hover {
