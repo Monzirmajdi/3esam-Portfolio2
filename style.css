@@ -1188,38 +1188,7 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .hero-image-container {
-        margin-bottom: 40px;
-    }
-    
-    .main-name {
-        font-size: 2.5rem;
-    }
-    
-    .action-btn {
-        font-size: 12px;
-        padding: 12px 20px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .about-stats {
-        flex-direction: column;
-    }
-    
-    .experience-card {
-        height: 250px;
-    }
-    
-    .experience-card-front,
-    .experience-card-back {
-        padding: 20px;
-    }
-
-}
+/* removed media query for max-width: 480px */
 
 /* تأثيرات الحركة المحسنة */
 @keyframes fadeInUp {
@@ -1633,34 +1602,7 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .projects-section {
-        padding: 40px 0px;
-    }
-    
-    .project-category {
-        height: 250px;
-    }
-    
-    .project-category-overlay {
-        padding: 20px;
-    }
-    
-    .project-category-title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-    }
-    
-    .project-category-description {
-        font-size: 0.8rem;
-        margin-bottom: 20px;
-    }
-    
-    .project-category-button {
-        padding: 10px 20px;
-        font-size: 12px;
-    }
-}
+/* removed media query for max-width: 480px */
 
 
 /* Projects Modal Styles */
@@ -1770,31 +1712,7 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .projects-modal-content {
-        padding: 10px;
-    }
-    
-    .projects-modal-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    .project-item {
-        height: 180px;
-    }
-    
-    .project-overlay {
-        padding: 20px 15px 15px;
-    }
-    
-    .project-overlay h3 {
-        font-size: 1rem;
-    }
-    
-    .project-overlay p {
-        font-size: 0.8rem;
-    }
-}
+/* removed media query for max-width: 480px */
 /* Dual Scroller Container */
 .dual-scroller-container {
     position: relative;
@@ -1899,26 +1817,13 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .scroller .scroller__inner img {
-        width: 120px;
-        height: 60px;
-    }
-    
-    .scroller[data-speed="fast"] .scroller__inner {
-        --_animation-duration: 40s;
-    }
-    
-    .scroller.top-row {
-        margin-bottom: 20px;
-    }
-    
-    .scroller.bottom-row {
-        margin-top: 20px;
-    }
-    
-    .scroller[data-animated="true"]::before,
-    .scroller[data-animated="true"]::after {
-        width: 30px;
+/* removed media query for max-width: 480px */
+
+
+@media (max-width: 767px) {
+    body {
+        max-width: 768px;
+        margin: 0 auto;
+        overflow-x: auto;
     }
 }
