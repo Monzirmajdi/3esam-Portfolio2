@@ -1188,38 +1188,7 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .hero-image-container {
-        margin-bottom: 40px;
-    }
-    
-    .main-name {
-        font-size: 2.5rem;
-    }
-    
-    .action-btn {
-        font-size: 12px;
-        padding: 12px 20px;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .about-stats {
-        flex-direction: column;
-    }
-    
-    .experience-card {
-        height: 250px;
-    }
-    
-    .experience-card-front,
-    .experience-card-back {
-        padding: 20px;
-    }
-
-}
+/* removed media query for max-width: 480px */
 
 /* تأثيرات الحركة المحسنة */
 @keyframes fadeInUp {
@@ -1599,7 +1568,7 @@ body::before {
 }
 
 /* Responsive Design for Projects */
-/*@media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .projects-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -1608,42 +1577,9 @@ body::before {
     .project-category {
         height: 350px;
     }
-}*/
-@media (max-width: 1024px) {
-    /* تعديلات للشاشات المتوسطة (لاب توب) */
-    .header {
-        padding: 12px 25px;
-        gap: 20px;
-    }
-
-    .nav-link {
-        font-size: 12px;
-        padding: 8px 14px;
-    }
-
-    .hero-name-overlay {
-        left: 25px;
-        bottom: 60px;
-    }
-
-    .main-name {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-    }
-
-    .about-content {
-        gap: 40px;
-    }
-
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .project-category {
-        height: 350px;
-    }
 }
 
-/*@media (max-width: 768px) {
+@media (max-width: 768px) {
     .projects-section {
         padding: 60px 0px;
     }
@@ -1664,143 +1600,11 @@ body::before {
     .project-category-description {
         font-size: 0.9rem;
     }
-}*/
-@media (max-width: 768px) {
-    /* تعديلات للشاشات الصغيرة (أجهزة لوحية) */
-    .main-content {
-        padding: 100px 20px 20px;
-    }
-
-    .header {
-        top: 20px;
-        padding: 10px 20px;
-        gap: 12px;
-    }
-
-    .nav-link {
-        font-size: 11px;
-        padding: 6px 12px;
-    }
-
-    .hero-name-overlay {
-        bottom: 50px;
-        left: 15px;
-    }
-
-    .hero-buttons-overlay {
-        bottom: 15px;
-        left: 15px;
-    }
-
-    .main-name {
-        font-size: 2.5rem;
-    }
-
-    .action-btn {
-        font-size: 12px;
-        padding: 12px 20px;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-
-    .about-stats {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .stat-item {
-        flex: 1 1 120px;
-    }
-
-    .projects-container {
-        grid-template-columns: 1fr;
-    }
-
-    .project-category {
-        height: 300px;
-    }
 }
-/*
-@media (max-width: 480px) {
-    .projects-section {
-        padding: 40px 0px;
-    }
-    
-    .project-category {
-        height: 250px;
-    }
-    
-    .project-category-overlay {
-        padding: 20px;
-    }
-    
-    .project-category-title {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-    }
-    
-    .project-category-description {
-        font-size: 0.8rem;
-        margin-bottom: 20px;
-    }
-    
-    .project-category-button {
-        padding: 10px 20px;
-        font-size: 12px;
-    }
-}*/
-@media (max-width: 480px) {
-    /* تعديلات للهواتف الصغيرة */
-    .header {
-        padding: 8px 15px;
-        gap: 8px;
-    }
 
-    .nav-link {
-        font-size: 10px;
-        padding: 5px 10px;
-    }
+/* removed media query for max-width: 480px */
 
-    .hero-name-overlay {
-        bottom: 40px;
-        left: 10px;
-    }
 
-    .hero-buttons-overlay {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .main-name {
-        font-size: 2rem;
-    }
-
-    .action-btn {
-        padding: 10px 18px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .about-stats {
-        flex-direction: column;
-    }
-
-    .project-category {
-        height: 250px;
-    }
-
-    .project-category-title {
-        font-size: 1.3rem;
-    }
-
-    .project-category-description {
-        font-size: 0.8rem;
-    }
-}
 /* Projects Modal Styles */
 .projects-modal-content {
     max-width: 1200px;
@@ -1908,31 +1712,7 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .projects-modal-content {
-        padding: 10px;
-    }
-    
-    .projects-modal-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    .project-item {
-        height: 180px;
-    }
-    
-    .project-overlay {
-        padding: 20px 15px 15px;
-    }
-    
-    .project-overlay h3 {
-        font-size: 1rem;
-    }
-    
-    .project-overlay p {
-        font-size: 0.8rem;
-    }
-}
+/* removed media query for max-width: 480px */
 /* Dual Scroller Container */
 .dual-scroller-container {
     position: relative;
@@ -2037,26 +1817,12 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
-    .scroller .scroller__inner img {
-        width: 120px;
-        height: 60px;
-    }
-    
-    .scroller[data-speed="fast"] .scroller__inner {
-        --_animation-duration: 40s;
-    }
-    
-    .scroller.top-row {
-        margin-bottom: 20px;
-    }
-    
-    .scroller.bottom-row {
-        margin-top: 20px;
-    }
-    
-    .scroller[data-animated="true"]::before,
-    .scroller[data-animated="true"]::after {
-        width: 30px;
+/* removed media query for max-width: 480px */
+
+
+@media (max-width: 767px) {
+    html, body {
+        max-width: 100%;
+        overflow-x: auto;
     }
 }
