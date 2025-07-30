@@ -1821,8 +1821,9 @@ body::before {
 
 
 @media (max-width: 767px) {
-    html, body {
-        max-width: 100%;
+    body {
+        max-width: 768px;
+        margin: 0 auto;
         overflow-x: auto;
     }
 }
