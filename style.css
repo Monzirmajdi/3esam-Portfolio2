@@ -1685,12 +1685,12 @@ body::before {
 
     .hero-name-overlay {
         left: 40px !important;
-        bottom: 80px !important;
+        bottom: 100px !important;
     }
 
     .hero-buttons-overlay {
         left: 40px !important;
-        bottom: 30px !important;
+        bottom: 50px !important;
         flex-direction: row !important;
         gap: 20px !important;
     }
