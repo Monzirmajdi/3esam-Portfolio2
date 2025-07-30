@@ -1675,11 +1675,11 @@ body::before {
     }
 
     .hero {
-        height: 550px !important;
+        height: 400px !important;
     }
 
     .hero img {
-        height: 100% !important;
+        height: 200px !important;
         object-fit: cover !important;
     }
 
