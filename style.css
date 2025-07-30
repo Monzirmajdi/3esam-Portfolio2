@@ -582,6 +582,7 @@ body::before {
                       linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 50%, rgba(255, 255, 255, 0.01) 100%);
     background-origin: border-box;
     background-clip: padding-box, border-box;
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
  Experience Subsection - بطاقات شفافة مع فواصل متلاشية 
@@ -596,6 +597,7 @@ body::before {
                       linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 50%, rgba(255, 255, 255, 0.01) 100%);
     background-origin: border-box;
     background-clip: padding-box, border-box;
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
 .subsection-header {
@@ -649,6 +651,7 @@ body::before {
                       linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(255, 255, 255, 0.02) 100%);
     background-origin: border-box;
     background-clip: padding-box, border-box;
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
 .experience-card-back {
@@ -881,7 +884,7 @@ body::before {
     -webkit-backdrop-filter: blur(25px);
     margin: 20px;
     padding: 60px 40px;
-    border-radius: 25px;
+    border-radius: 0px;
     max-width: 900px;
     width: 100%;
     max-height: 85vh;
@@ -889,6 +892,7 @@ body::before {
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border-radius: 0 !important; /* إزالة الزوايا المدورة */
 }
 
 .close-btn {
