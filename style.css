@@ -1110,85 +1110,9 @@ body::before {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .main-content {
-        padding: 100px 20px 20px;
-    }
-    
-    .header {
-        top: 20px;
-        padding: 12px 20px;
-        gap: 15px;
-    }
-    
-    .main-nav {
-        gap: 10px;
-    }
-    
-    .nav-link {
-        font-size: 11px;
-        padding: 6px 12px;
-    }
-    
-    .hero-name-overlay {
-        bottom: 60px;
-        left: 20px;
-    }
-    
-    .hero-buttons-overlay {
-        bottom: 20px;
-        left: 20px;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .about-stats {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    
-    .stat-item {
-        flex: 1;
-        min-width: 120px;
-    }
-    
-    .experience-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-    
-    .modal-content {
-        margin: 10px;
-        padding: 40px 20px;
-    }
+/* removed old media query */
 
-    .section-title {
-        font-size: 2.5rem;
-    }
-    
-    .subsection-title {
-        font-size: 2rem;
-    }
-}
-
-/* removed media query for max-width: 480px */
+/* removed old media query */
 
 /* تأثيرات الحركة المحسنة */
 @keyframes fadeInUp {
@@ -1411,24 +1335,7 @@ body::before {
 }
 
 /* Responsive adjustments for new elements */
-@media (max-width: 768px) {
-    .apps-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 10px;
-    }
-    
-    .app-item {
-        padding: 12px;
-    }
-    
-    .app-icon {
-        font-size: 20px;
-    }
-    
-    .app-name {
-        font-size: 11px;
-    }
-}
+/* removed old media query */
 
 /* Projects Section */
 .projects-section {
@@ -1568,41 +1475,11 @@ body::before {
 }
 
 /* Responsive Design for Projects */
-@media (max-width: 1024px) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    
-    .project-category {
-        height: 350px;
-    }
-}
+/* removed old media query */
 
-@media (max-width: 768px) {
-    .projects-section {
-        padding: 60px 0px;
-    }
-    
-    .projects-container {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .project-category {
-        height: 300px;
-    }
-    
-    .project-category-title {
-        font-size: 1.5rem;
-    }
-    
-    .project-category-description {
-        font-size: 0.9rem;
-    }
-}
+/* removed old media query */
 
-/* removed media query for max-width: 480px */
+/* removed old media query */
 
 
 /* Projects Modal Styles */
@@ -1690,29 +1567,9 @@ body::before {
 }
 
 /* Modal Responsive Design */
-@media (max-width: 768px) {
-    .projects-modal-content {
-        padding: 10px;
-        width: 98%;
-        max-height: 95vh;
-    }
-    
-    .projects-modal-content h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .project-item {
-        height: 200px;
-    }
-}
+/* removed old media query */
 
-/* removed media query for max-width: 480px */
+/* removed old media query */
 /* Dual Scroller Container */
 .dual-scroller-container {
     position: relative;
@@ -1805,25 +1662,47 @@ body::before {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .scroller .scroller__inner img {
-        width: 150px;
-        height: 80px;
-    }
-    
-    .scroller[data-animated="true"]::before,
-    .scroller[data-animated="true"]::after {
-        width: 50px;
-    }
-}
+/* removed old media query */
 
-/* removed media query for max-width: 480px */
+/* removed old media query */
 
 
-@media (max-width: 767px) {
-    body {
-        max-width: 768px;
+@media (max-width: 1023px) {
+    html, body {
+        max-width: 1024px;
         margin: 0 auto;
         overflow-x: auto;
+    }
+
+    .hero {
+        height: 550px !important;
+    }
+
+    .hero img {
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .hero-name-overlay {
+        left: 40px !important;
+        bottom: 80px !important;
+    }
+
+    .hero-buttons-overlay {
+        left: 40px !important;
+        bottom: 30px !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+    }
+
+    .project-category-image {
+        width: 280px !important;
+        height: 280px !important;
+        object-fit: cover !important;
+    }
+
+    .project-card {
+        width: 400px !important;
+        height: auto !important;
     }
 }
