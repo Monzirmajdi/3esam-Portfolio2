@@ -575,7 +575,7 @@ body::before {
     margin: 0 auto;
     padding: 80px 50px;
     background: transparent;
-    border-radius: 25px;
+    border-radius: 0px;
     position: relative;
     border: 1px solid transparent;
     background-image: linear-gradient(#000, #000), 
@@ -731,7 +731,7 @@ body::before {
     width: 40px;
     height: 40px;
     background: transparent;
-    border-radius: 50%;
+    border-radius: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -763,7 +763,7 @@ body::before {
     width: 30px;
     height: 30px;
     background: transparent;
-    border-radius: 50%;
+    border-radius: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
