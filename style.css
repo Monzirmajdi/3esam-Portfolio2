@@ -1821,41 +1821,9 @@ body::before {
 
 
 @media (max-width: 767px) {
-    html, body {
+    body {
         max-width: 768px;
         margin: 0 auto;
         overflow-x: auto;
-    }
-
-    .hero {
-        height: 500px !important;
-    }
-
-    .hero img {
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-
-    .hero-name-overlay {
-        left: 30px !important;
-        bottom: 70px !important;
-    }
-
-    .hero-buttons-overlay {
-        left: 30px !important;
-        bottom: 25px !important;
-        flex-direction: row !important;
-        gap: 15px !important;
-    }
-
-    .project-category-image {
-        width: 250px !important;
-        height: 250px !important;
-        object-fit: cover !important;
-    }
-
-    .project-card {
-        width: 350px !important;
-        height: auto !important;
     }
 }
