@@ -1676,7 +1676,7 @@ body::before {
     }
 
     .hero {
-        height: 400px !important;
+        height: 210px !important;
     }
 
     .hero img {
@@ -1687,7 +1687,7 @@ body::before {
     /* تخصيص موضع الاسم للشاشات الأصغر */
     .hero-name-overlay {
         left: 40px !important;
-        bottom: 100px !important;
+        bottom: 50px !important;
     }
 
     /* تخصيص موضع الأزرار للشاشات الأصغر */
