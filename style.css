@@ -1667,6 +1667,7 @@ body::before {
 /* removed old media query */
 
 
+/* تخصيص مواضع الاسم والأزرار للشاشات الأصغر مع الحفاظ على 1024px */
 @media (max-width: 1023px) {
     html, body {
         max-width: 1024px;
@@ -1683,11 +1684,13 @@ body::before {
         object-fit: cover !important;
     }
 
+    /* تخصيص موضع الاسم للشاشات الأصغر */
     .hero-name-overlay {
         left: 40px !important;
         bottom: 100px !important;
     }
 
+    /* تخصيص موضع الأزرار للشاشات الأصغر */
     .hero-buttons-overlay {
         left: 40px !important;
         bottom: 50px !important;
@@ -1706,3 +1709,59 @@ body::before {
         height: auto !important;
     }
 }
+
+/* تخصيص إضافي للشاشات الصغيرة جداً مع الحفاظ على 1024px */
+@media (max-width: 768px) {
+    html, body {
+        max-width: 1024px;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+    /* تخصيص أكثر دقة لمواضع الاسم والأزرار في الشاشات الصغيرة */
+    .hero-name-overlay {
+        left: 30px !important;
+        bottom: 120px !important;
+        transform: scale(0.9);
+    }
+
+    .hero-buttons-overlay {
+        left: 30px !important;
+        bottom: 40px !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+    }
+
+    .action-btn {
+        font-size: 12px !important;
+        padding: 12px 20px !important;
+    }
+}
+
+/* تخصيص للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    html, body {
+        max-width: 1024px;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+    .hero-name-overlay {
+        left: 20px !important;
+        bottom: 140px !important;
+        transform: scale(0.8);
+    }
+
+    .hero-buttons-overlay {
+        left: 20px !important;
+        bottom: 30px !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+    }
+
+    .action-btn {
+        font-size: 11px !important;
+        padding: 10px 16px !important;
+    }
+}
+
