@@ -40,17 +40,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 role: "Content Creator",
                 tools: "Photoshop, Canva",
                 description: "Designed a series of engaging posts for Instagram and Facebook.",
-                images: ["images/social/social1.jpg"]
+                images: ["images/Social-media/Untitled74_20250803153857.webp"]
             },
             {
                 id: 'social-2',
+                title: "Social Media Campaign",
+                client: "Fashion Brand",
+                duration: "3 weeks",
+                role: "Content Creator",
+                tools: "Photoshop, Canva",
+                description: "Designed a series of engaging posts for Instagram and Facebook.",
+                images: ["images/Social-media/Untitled74_20250803153857.webp"]
+            },
+            {
+                id: 'social-3',
                 title: "Facebook Ads Series",
                 client: "Tech Company",
                 duration: "2 weeks",
                 role: "Digital Designer",
                 tools: "Photoshop, Illustrator",
                 description: "Created eye-catching Facebook ad campaigns for product launches.",
-                images: ["images/social/social2.jpg"]
+                images: ["images/Social-media/Untitled74_20250803153857.webp"]
             }
         ],
         illustrations: [
