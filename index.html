@@ -340,58 +340,103 @@
 
     <div class="section-separator"></div>
 
-    <!-- PROJECTS SECTION -->
-    <section id="portfolio" class="projects-section">
-        <div class="section-header">
-            <h2 class="section-title">PORTFOLIO</h2>
-            <p class="section-subtitle">EXPLORE MY CREATIVE WORK</p>
+<!-- PROJECTS SECTION -->
+<section id="portfolio" class="projects-section">
+    <div class="section-header">
+        <h2 class="section-title">PORTFOLIO</h2>
+        <p class="section-subtitle">EXPLORE MY CREATIVE WORK</p>
+    </div>
+    
+    <div class="projects-container">
+        <div class="project-category" data-category="branding">
+            <div class="project-category-image">
+                <img src="images/branding_preview_3.png" alt="Branding Projects">
+                <div class="project-category-overlay">
+                    <h3 class="project-category-title">Branding</h3>
+                    <p class="project-category-description">Logo design, brand identity, and visual branding solutions</p>
+                    <div class="project-category-button">
+                        <span>View Projects</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="projects-container">
-            <div class="project-category" data-category="branding">
-                <div class="project-category-image">
-                    <img src="images/branding_preview_3.png" alt="Branding Projects">
-                    <div class="project-category-overlay">
-                        <h3 class="project-category-title">Branding</h3>
-                        <p class="project-category-description">Logo design, brand identity, and visual branding solutions</p>
-                        <div class="project-category-button">
-                            <span>View Projects</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-category" data-category="social-media">
-                <div class="project-category-image">
-                    <img src="images/social_media_preview_3.png" alt="Social Media Projects">
-                    <div class="project-category-overlay">
-                        <h3 class="project-category-title">Social Media Designs</h3>
-                        <p class="project-category-description">Social media posts, campaigns, and digital marketing content</p>
-                        <div class="project-category-button">
-                            <span>View Projects</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-category" data-category="illustrations">
-                <div class="project-category-image">
-                    <img src="images/illustrations_preview_3.png" alt="Illustrations Projects">
-                    <div class="project-category-overlay">
-                        <h3 class="project-category-title">Illustrations</h3>
-                        <p class="project-category-description">Digital illustrations, character design, and artistic creations</p>
-                        <div class="project-category-button">
-                            <span>View Projects</span>
-                        </div>
+        <div class="project-category" data-category="socialMedia">
+            <div class="project-category-image">
+                <img src="images/social_media_preview_3.png" alt="Social Media Projects">
+                <div class="project-category-overlay">
+                    <h3 class="project-category-title">Social Media Designs</h3>
+                    <p class="project-category-description">Social media posts, campaigns, and digital marketing content</p>
+                    <div class="project-category-button">
+                        <span>View Projects</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <div class="project-category" data-category="illustrations">
+            <div class="project-category-image">
+                <img src="images/illustrations_preview_3.png" alt="Illustrations Projects">
+                <div class="project-category-overlay">
+                    <h3 class="project-category-title">Illustrations</h3>
+                    <p class="project-category-description">Digital illustrations, character design, and artistic creations</p>
+                    <div class="project-category-button">
+                        <span>View Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- MODALS SECTION -->
+<!-- Branding Projects Modal -->
+<div class="modal" id="brandingModal">
+    <div class="modal-content projects-modal-content">
+        <span class="close-btn" data-modal="brandingModal">&times;</span>
+        <h2>Branding Projects</h2>
+        <div class="projects-grid" id="brandingProjectList">
+            <!-- Projects will be added by JavaScript -->
+        </div>
+    </div>
+</div>
+
+<!-- Social Media Projects Modal -->
+<div class="modal" id="socialMediaModal">
+    <div class="modal-content projects-modal-content">
+        <span class="close-btn" data-modal="socialMediaModal">&times;</span>
+        <h2>Social Media Designs</h2>
+        <div class="projects-grid" id="socialMediaProjectList">
+            <!-- Projects will be added by JavaScript -->
+        </div>
+    </div>
+</div>
+
+<!-- Illustrations Projects Modal -->
+<div class="modal" id="illustrationsModal">
+    <div class="modal-content projects-modal-content">
+        <span class="close-btn" data-modal="illustrationsModal">&times;</span>
+        <h2>Illustrations</h2>
+        <div class="projects-grid" id="illustrationsProjectList">
+            <!-- Projects will be added by JavaScript -->
+        </div>
+    </div>
+</div>
+
+<!-- Project Detail Modal -->
+<div class="modal" id="projectDetailModal">
+    <div class="modal-content projects-modal-content">
+        <span class="close-btn" data-modal="projectDetailModal">&times;</span>
+        <div id="projectDetail">
+            <!-- Content will be filled by JavaScript -->
+        </div>
+        <div class="back-to-projects">
+            <button class="back-btn" id="backToProjectsBtn">← Back to Projects</button>
+        </div>
+    </div>
+</div>
     <div class="section-separator"></div>
-
-    <!-- MODALS SECTION -->
+    
     <!-- Contact Modal -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
@@ -439,176 +484,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Branding Projects Modal -->
-    <div class="modal" id="brandingModal">
-        <div class="modal-content projects-modal-content">
-            <span class="close-btn" data-modal="brandingModal">&times;</span>
-            <h2>Branding Projects</h2>
-            <div class="projects-grid">
-                <div class="project-item" data-project-id="branding-1">
-                    <img src="images/branding/brand1.jpg" alt="Brand Project 1">
-                    <div class="project-overlay">
-                        <h3>Brand Identity Design</h3>
-                        <p>Complete brand identity package</p>
-                    </div>
-                </div>
-                <div class="project-item" data-project-id="branding-2">
-                    <img src="images/branding/brand2.jpg" alt="Brand Project 2">
-                    <div class="project-overlay">
-                        <h3>Logo Design</h3>
-                        <p>Modern logo design for tech startup</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/branding/brand3.jpg" alt="Brand Project 3">
-                    <div class="project-overlay">
-                        <h3>Corporate Branding</h3>
-                        <p>Professional corporate identity</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/branding/brand4.jpg" alt="Brand Project 4">
-                    <div class="project-overlay">
-                        <h3>Restaurant Branding</h3>
-                        <p>Complete restaurant brand package</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/branding/brand5.jpg" alt="Brand Project 5">
-                    <div class="project-overlay">
-                        <h3>Fashion Brand</h3>
-                        <p>Luxury fashion brand identity</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/branding/brand6.jpg" alt="Brand Project 6">
-                    <div class="project-overlay">
-                        <h3>Sports Brand</h3>
-                        <p>Dynamic sports brand design</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Social Media Projects Modal -->
-    <div class="modal" id="socialMediaModal">
-        <div class="modal-content projects-modal-content">
-            <span class="close-btn" data-modal="socialMediaModal">&times;</span>
-            <h2>Social Media Designs</h2>
-            <div class="projects-grid">
-                <div class="project-item" data-project-id="social-1">
-                    <img src="images/social/social1.jpg" alt="Social Media Project 1">
-                    <div class="project-overlay">
-                        <h3>Instagram Campaign</h3>
-                        <p>Social media campaign design</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/social/social2.jpg" alt="Social Media Project 2">
-                    <div class="project-overlay">
-                        <h3>Facebook Ads</h3>
-                        <p>Engaging Facebook ad designs</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/social/social3.jpg" alt="Social Media Project 3">
-                    <div class="project-overlay">
-                        <h3>LinkedIn Posts</h3>
-                        <p>Professional LinkedIn content</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/social/social4.jpg" alt="Social Media Project 4">
-                    <div class="project-overlay">
-                        <h3>Twitter Graphics</h3>
-                        <p>Eye-catching Twitter visuals</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/social/social5.jpg" alt="Social Media Project 5">
-                    <div class="project-overlay">
-                        <h3>Story Templates</h3>
-                        <p>Instagram story templates</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/social/social6.jpg" alt="Social Media Project 6">
-                    <div class="project-overlay">
-                        <h3>Social Media Kit</h3>
-                        <p>Complete social media package</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Illustrations Projects Modal -->
-    <div class="modal" id="illustrationsModal">
-        <div class="modal-content projects-modal-content">
-            <span class="close-btn" data-modal="illustrationsModal">&times;</span>
-            <h2>Illustrations</h2>
-            <div class="projects-grid">
-                <div class="project-item" data-project-id="illustration-1">
-                    <img src="images/illustrations/illus1.jpg" alt="Illustration Project 1">
-                    <div class="project-overlay">
-                        <h3>Character Design</h3>
-                        <p>Original character illustrations</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/illustrations/illus2.jpg" alt="Illustration Project 2">
-                    <div class="project-overlay">
-                        <h3>Digital Art</h3>
-                        <p>Digital artwork and paintings</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/illustrations/illus3.jpg" alt="Illustration Project 3">
-                    <div class="project-overlay">
-                        <h3>Book Illustrations</h3>
-                        <p>Children's book illustrations</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/illustrations/illus4.jpg" alt="Illustration Project 4">
-                    <div class="project-overlay">
-                        <h3>Editorial Illustrations</h3>
-                        <p>Magazine and editorial artwork</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/illustrations/illus5.jpg" alt="Illustration Project 5">
-                    <div class="project-overlay">
-                        <h3>Concept Art</h3>
-                        <p>Game and movie concept art</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/illustrations/illus6.jpg" alt="Illustration Project 6">
-                    <div class="project-overlay">
-                        <h3>Portrait Art</h3>
-                        <p>Custom portrait illustrations</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Project Detail Modal -->
-    <div class="modal" id="projectDetailModal">
-        <div class="modal-content projects-modal-content">
-            <span class="close-btn" data-modal="projectDetailModal">&times;</span>
-            <div id="projectDetail">
-                <!-- Content will be filled by JavaScript -->
-            </div>
-            <div class="back-to-projects">
-                <button class="back-btn" id="backToProjectsBtn">← Back to Projects</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
