@@ -162,11 +162,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function populateProjectList(category) {
+        const containerId = `${category}ProjectList`;
+        const container = document.getElementById(containerId);
+        
+        if (container && projectData[category]) {
+            container.innerHTML = projectData[category].map(project => `
+                <div class="project-item" onclick="openProjectDetailModal('${category}', '${project.id}')">
+                    <img src="${project.images[0]}" alt="${project.title}">
+                    <div class="project-overlay">
+                        <h3>${project.title}</h3>
+                        <p>${project.client}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
     function openProjectListModal(category) {
         const modalId = category + "Modal";
         const modal = document.getElementById(modalId);
         
         if (modal) {
+            populateProjectList(category);
             modals.forEach(m => m.classList.remove("active"));
             modal.classList.add("active");
             document.body.style.overflow = "hidden";
@@ -333,4 +351,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     }
+
+    // Make openProjectDetailModal available globally
+    window.openProjectDetailModal = openProjectDetailModal;
 });
