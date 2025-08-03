@@ -16,7 +16,6 @@
             </div>
         </div>
         
-        <!-- Navigation Bar -->
         <nav class="main-nav">
             <a href="#" class="nav-link active" data-section="home">HOME</a>
             <a href="#" class="nav-link" data-section="about">ABOUT</a>
@@ -29,11 +28,9 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="hero-section">
-            <!-- الصورة الأفقية مع الاسم والأزرار -->
             <div class="hero-image-container">
                 <img src="images/profile-pic.png" alt="Esam Ismael" class="hero-image">
                 
-                <!-- الاسم في أسفل يسار الصورة -->
                 <div class="hero-name-overlay">
                     <h1 class="main-name">
                         <span class="first-name">Esam</span>
@@ -41,14 +38,12 @@
                     </h1>
                 </div>
                 
-                <!-- الأزرار في أسفل يمين الصورة -->
                 <div class="hero-buttons-overlay">
                     <a href="#" class="action-btn" data-section="contact">Contact Me</a>
                     <a href="#portfolio" class="action-btn">VIEW MY WORKS</a>
                 </div>
             </div>
             
-            <!-- كلمة Scroll Down في سطر منفصل أسفل الصورة -->
             <div class="scroll-section">
                 <div class="scroll-text">Scroll down ▼</div>
             </div>
@@ -104,27 +99,27 @@
                         <h4>Software & Tools</h4>
                         <div class="apps-grid">
                             <div class="app-item">
-                                <img class="app-icon" src="images/icons/indesign.svg" alt="InDesign Logo Placeholder">
+                                <img class="app-icon" src="images/icons/indesign.svg" alt="InDesign">
                                 <span class="app-name">InDesign</span>
                             </div>
                             <div class="app-item">
-                                <img class="app-icon" src="images/icons/illustrator.svg" alt="Illustrator Logo Placeholder">
+                                <img class="app-icon" src="images/icons/illustrator.svg" alt="Illustrator">
                                 <span class="app-name">Illustrator</span>
                             </div>
                             <div class="app-item">
-                                <img class="app-icon" src="images/icons/photoshop.svg" alt="Photoshop Logo Placeholder">
+                                <img class="app-icon" src="images/icons/photoshop.svg" alt="Photoshop">
                                 <span class="app-name">Photoshop</span>
                             </div>
                             <div class="app-item">
-                                <img class="app-icon" src="images/icons/3ds-max-seeklogo.png" alt="3ds MAX Logo Placeholder">
+                                <img class="app-icon" src="images/icons/3ds-max-seeklogo.png" alt="3ds MAX">
                                 <span class="app-name">3ds MAX</span>
                             </div>
                             <div class="app-item">
-                                <img class="app-icon" src="images/icons/icon.svg" alt="Procreate Logo Placeholder">
+                                <img class="app-icon" src="images/icons/icon.svg" alt="Procreate">
                                 <span class="app-name">Procreate</span>
                             </div>
                             <div class="app-item">
-                                <img class="app-icon" src="images/icons/Linearity_Linearity_Curve_0.svg" alt="Curve Logo Placeholder">
+                                <img class="app-icon" src="images/icons/Linearity_Linearity_Curve_0.svg" alt="Curve">
                                 <span class="app-name">Curve</span>
                             </div>
                         </div>
@@ -163,7 +158,6 @@
         </div>
         
         <div class="experience-grid">
-            <!-- Experience Card 1 -->
             <div class="experience-card" data-experience="0">
                 <div class="experience-card-front">
                     <div class="experience-card-header">
@@ -198,7 +192,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Experience Card 2 -->
+            
             <div class="experience-card" data-experience="1">
                 <div class="experience-card-front">
                     <div class="experience-card-header">
@@ -233,7 +227,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Experience Card 3 -->
+            
             <div class="experience-card" data-experience="2">
                 <div class="experience-card-front">
                     <div class="experience-card-header">
@@ -268,7 +262,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Experience Card 4 -->
+            
             <div class="experience-card" data-experience="3">
                 <div class="experience-card-front">
                     <div class="experience-card-header">
@@ -316,7 +310,6 @@
         </div>
         
         <div class="dual-scroller-container">
-            <!-- الصف العلوي - يتحرك لليمين -->
             <div class="scroller top-row" data-speed="fast" data-direction="left">
                 <div class="scroller__inner">
                     <img src="images/logo/logo01.png" alt="Logo 1">
@@ -330,7 +323,6 @@
                 </div>
             </div>
             
-            <!-- الصف السفلي - يتحرك لليسار -->
             <div class="scroller bottom-row" data-speed="fast" data-direction="right">
                 <div class="scroller__inner">
                     <img src="images/logo/logo09.png" alt="Logo 9">
@@ -399,6 +391,7 @@
 
     <div class="section-separator"></div>
 
+    <!-- MODALS SECTION -->
     <!-- Contact Modal -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
@@ -610,6 +603,9 @@
             <div id="projectDetail">
                 <!-- Content will be filled by JavaScript -->
             </div>
+            <div class="back-to-projects">
+                <button class="back-btn" id="backToProjectsBtn">← Back to Projects</button>
+            </div>
         </div>
     </div>
 
@@ -656,4 +652,4 @@
 
     <script src="script.js"></script>
 </body>
-                                    </html>
+</html>
