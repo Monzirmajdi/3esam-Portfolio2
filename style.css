@@ -1732,3 +1732,57 @@ body::before {
         padding: 12px 20px !important;
     }
 }
+/* Project Detail Modal Styles */
+#projectDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.project-detail-header {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-detail-title {
+    font-size: 2rem;
+    color: #FFD700;
+    margin-bottom: 15px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.project-detail-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.project-detail-meta-item h4 {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.project-detail-meta-item p {
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+}
+
+.project-detail-description {
+    color: #ccc;
+    line-height: 1.6;
+    font-family: 'Cairo', sans-serif;
+}
+
+.project-detail-image {
+    width: 100%;
+    height: 60vh;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
