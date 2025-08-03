@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Get elements
+    // Elements
     const navLinks = document.querySelectorAll(".nav-link");
     const actionBtns = document.querySelectorAll(".action-btn");
     const modals = document.querySelectorAll(".modal");
     const closeBtns = document.querySelectorAll(".close-btn");
-    const portfolioItems = document.querySelectorAll(".portfolio-item");
     const projectCategories = document.querySelectorAll(".project-category");
-    
+    const backToProjectsBtn = document.getElementById("backToProjectsBtn");
+
     // Project Data
     const projectData = {
         "branding-1": {
@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
             role: "Lead Designer",
             tools: "Illustrator, Photoshop",
             description: "Developed a complete brand identity, including logo, color palette, and typography.",
-            images: ["images/branding/brand1.jpg"]
+            images: ["images/branding/brand1.jpg"],
+            type: "branding"
         },
         "branding-2": {
             title: "Rebranding for a Coffee Shop",
@@ -25,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
             role: "Graphic Designer",
             tools: "Illustrator, InDesign",
             description: "A fresh new look for a local coffee shop, including a new logo and menu design.",
-            images: ["images/branding/brand2.jpg"]
+            images: ["images/branding/brand2.jpg"],
+            type: "branding"
         },
         "social-1": {
             title: "Social Media Campaign",
@@ -34,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
             role: "Content Creator",
             tools: "Photoshop, Canva",
             description: "Designed a series of engaging posts for Instagram and Facebook.",
-            images: ["images/social/social1.jpg"]
+            images: ["images/social/social1.jpg"],
+            type: "social-media"
         },
         "illustration-1": {
             title: "Character Design",
@@ -43,46 +46,117 @@ document.addEventListener("DOMContentLoaded", function() {
             role: "Illustrator",
             tools: "Procreate, Photoshop",
             description: "Created lovable characters for an upcoming children's book.",
-            images: ["images/illustrations/illus1.jpg"]
+            images: ["images/illustrations/illus1.jpg"],
+            type: "illustrations"
         }
     };
 
-    // Handle project category clicks
-    projectCategories.forEach(category => {
-        category.addEventListener("click", function() {
-            const categoryType = this.getAttribute("data-category");
-            let modalId = "";
-            
-            switch(categoryType) {
-                case "branding":
-                    modalId = "brandingModal";
-                    break;
-                case "social-media":
-                    modalId = "socialMediaModal";
-                    break;
-                case "illustrations":
-                    modalId = "illustrationsModal";
-                    break;
-            }
-            
-            if (modalId) {
-                openModal(modalId.replace("Modal", ""));
-            }
-        });
-    });
+    // Event Listeners
+    navLinks.forEach(link => link.addEventListener("click", handleNavClick));
+    actionBtns.forEach(btn => btn.addEventListener("click", handleActionBtnClick));
+    closeBtns.forEach(btn => btn.addEventListener("click", handleCloseBtnClick));
+    modals.forEach(modal => modal.addEventListener("click", handleModalOutsideClick));
+    document.addEventListener("click", handleProjectItemClick);
+    projectCategories.forEach(category => category.addEventListener("click", handleCategoryClick));
+    
+    if (backToProjectsBtn) {
+        backToProjectsBtn.addEventListener("click", handleBackToProjects);
+    }
 
-    // Handle project item clicks in modals
-    document.addEventListener("click", function(e) {
+    // Initialize components
+    initExperienceCardFlip();
+    createFloatingElements();
+    setupLazyLoading();
+    setupPageLoader();
+    setupHoverEffects();
+    setupScrollers();
+
+    // Functions
+    function handleNavClick(e) {
+        e.preventDefault();
+        const section = this.getAttribute("data-section");
+        
+        navLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+        
+        if (section === "experience") {
+            document.querySelector(".experience-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        } 
+        else if (section === "contact") {
+            openModal(section);
+        }
+        else if (section === "projects") {
+            document.querySelector(".projects-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        else if (section === "portfolio") {
+            openModal(section);
+        }
+        else if (section === "about") {
+            document.querySelector(".about-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        else if (section === "home") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }
+
+    function handleActionBtnClick() {
+        const section = this.getAttribute("data-section");
+        openModal(section);
+    }
+
+    function handleCloseBtnClick() {
+        const modalId = this.getAttribute("data-modal");
+        const modal = document.getElementById(modalId);
+        
+        if (modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+    }
+
+    function handleModalOutsideClick(e) {
+        if (e.target === this) {
+            this.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+    }
+
+    function handleProjectItemClick(e) {
         const projectItem = e.target.closest(".project-item");
         if (projectItem) {
             const projectId = projectItem.getAttribute("data-project-id");
-            if (projectId) {
-                showProjectDetail(projectId);
+            if (projectId) showProjectDetail(projectId);
+        }
+    }
+
+    function handleCategoryClick() {
+        const categoryType = this.getAttribute("data-category");
+        let modalId = "";
+        
+        switch(categoryType) {
+            case "branding": modalId = "brandingModal"; break;
+            case "social-media": modalId = "socialMediaModal"; break;
+            case "illustrations": modalId = "illustrationsModal"; break;
+        }
+        
+        if (modalId) openModal(modalId.replace("Modal", ""));
+    }
+
+    function handleBackToProjects() {
+        const projectDetailModal = document.getElementById("projectDetailModal");
+        const activeProject = document.querySelector(".project-item[data-project-id]");
+        
+        if (projectDetailModal) {
+            projectDetailModal.classList.remove("active");
+            
+            if (activeProject) {
+                const projectId = activeProject.getAttribute("data-project-id");
+                const project = projectData[projectId];
+                if (project) openModal(project.type);
             }
         }
-    });
+    }
 
-    // Show project detail
     function showProjectDetail(projectId) {
         const project = projectData[projectId];
         const projectDetailModal = document.getElementById("projectDetailModal");
@@ -115,126 +189,41 @@ document.addEventListener("DOMContentLoaded", function() {
                 <img src="${project.images[0]}" alt="${project.title}" class="project-detail-image">
             `;
             
-            // Close current modal first
-            const activeModal = document.querySelector(".modal.active");
-            if (activeModal) activeModal.classList.remove("active");
-            
-            // Open project detail modal
+            document.querySelector(".modal.active")?.classList.remove("active");
             projectDetailModal.classList.add("active");
         }
     }
 
-    // Handle navigation link clicks
-    navLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const section = this.getAttribute("data-section");
-            
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove("active"));
-            // Add active class to clicked link
-            this.classList.add("active");
-            
-            // Handle experience section scroll
-            if (section === "experience") {
-                const experienceSection = document.querySelector(".experience-section");
-                if (experienceSection) {
-                    experienceSection.scrollIntoView({ 
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }
-            }
-            // Open modal if it exists
-            else if (section === "contact") {
-                openModal(section);
-            }
-            // Handle projects section
-            else if (section === "projects") {
-                const projectsSection = document.querySelector(".projects-section");
-                if (projectsSection) {
-                    projectsSection.scrollIntoView({ 
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }
-            }
-            // Handle portfolio section
-            else if (section === "portfolio") {
-                openModal(section);
-            }
-            // Handle about section
-            else if (section === "about") {
-                const aboutSection = document.querySelector(".about-section");
-                if (aboutSection) {
-                    aboutSection.scrollIntoView({ 
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }
-            }
-            // Handle home section (scroll to top)
-            else if (section === "home") {
-                window.scrollTo({ 
-                    top: 0, 
-                    behavior: "smooth" 
-                });
-            }
-        });
-    });
-
-    // Handle action button clicks
-    actionBtns.forEach(btn => {
-        btn.addEventListener("click", function() {
-            const section = this.getAttribute("data-section");
-            openModal(section);
-        });
-    });
-
-    // Function to open modal
     function openModal(section) {
         const modal = document.getElementById(section + "Modal");
         if (modal) {
-            // Close any currently active modals before opening a new one
-            modals.forEach(m => {
-                if (m.classList.contains("active")) {
-                    m.classList.remove("active");
-                }
-            });
+            modals.forEach(m => m.classList.remove("active"));
             modal.classList.add("active");
             document.body.style.overflow = "hidden";
         }
     }
 
-    // Handle close button clicks
-    closeBtns.forEach(btn => {
-        btn.addEventListener("click", function() {
-            const modalId = this.getAttribute("data-modal");
-            const modal = document.getElementById(modalId);
+    function initExperienceCardFlip() {
+        const experienceCards = document.querySelectorAll('.experience-card');
+        
+        experienceCards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
             
-            if (modal) {
-                modal.classList.remove("active");
-                document.body.style.overflow = "auto";
-            }
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.classList.toggle('flipped');
+                }
+            });
+            
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Click to flip card and view details');
         });
-    });
+    }
 
-    // Close modal when clicking outside content
-    modals.forEach(modal => {
-        modal.addEventListener("click", function(e) {
-            if (e.target === this) {
-                this.classList.remove("active");
-                document.body.style.overflow = "auto";
-            }
-        });
-    });
-
-    // Initialize experience card flip functionality
-    setTimeout(() => {
-        initExperienceCardFlip();
-    }, 100);
-
-    // Add dynamic background effect
     function createFloatingElements() {
         const container = document.body;
         
@@ -254,112 +243,78 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             container.appendChild(element);
         }
+
+        const style = document.createElement("style");
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+                50% { opacity: 1; }
+                100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     }
 
-    // Add CSS for floating animation
-    const style = document.createElement("style");
-    style.textContent = `
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+    function setupLazyLoading() {
+        const lazyImages = document.querySelectorAll("img[data-src]");
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute("data-src");
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: "200px" });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
+
+    function setupPageLoader() {
+        window.addEventListener("load", function() {
+            const loader = document.createElement("div");
+            loader.className = "page-loader";
+            loader.innerHTML = `
+                <div class="loader-content">
+                    <div class="loader-spinner"></div>
+                    <div class="loader-logo">✦ Esam</div>
+                </div>
+            `;
+            document.body.appendChild(loader);
+            
+            setTimeout(() => {
+                loader.style.opacity = "0";
+                setTimeout(() => loader.remove(), 500);
+            }, 1000);
+        });
+    }
+
+    function setupHoverEffects() {
+        document.querySelectorAll(".portfolio-item, .action-btn, .social-link").forEach(el => {
+            el.addEventListener("mousemove", function(e) {
+                const rect = this.getBoundingClientRect();
+                this.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+                this.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+            });
+        });
+    }
+
+    function setupScrollers() {
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            const scrollers = document.querySelectorAll(".scroller");
+            
+            scrollers.forEach((scroller) => {
+                scroller.setAttribute("data-animated", true);
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                const scrollerContent = Array.from(scrollerInner.children);
+                
+                scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
         }
-    `;
-    document.head.appendChild(style);
-
-    // Initialize floating elements
-    createFloatingElements();
-
-    // تحسينات الأداء (Lazy Loading + Loader)
-    const lazyImages = document.querySelectorAll("img[data-src]");
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute("data-src");
-                imageObserver.unobserve(img);
-            }
-        });
-    }, { rootMargin: "200px" });
-
-    lazyImages.forEach(img => imageObserver.observe(img));
-
-    // مؤشر التحميل
-    window.addEventListener("load", function() {
-        const loader = document.createElement("div");
-        loader.className = "page-loader";
-        loader.innerHTML = `
-            <div class="loader-content">
-                <div class="loader-spinner"></div>
-                <div class="loader-logo">✦ Esam</div>
-            </div>
-        `;
-        document.body.appendChild(loader);
-        
-        setTimeout(() => {
-            loader.style.opacity = "0";
-            setTimeout(() => loader.remove(), 500);
-        }, 1000);
-    });
-
-    // تأثيرات Hover المتقدمة
-    document.querySelectorAll(".portfolio-item, .action-btn, .social-link").forEach(el => {
-        el.addEventListener("mousemove", function(e) {
-            const rect = this.getBoundingClientRect();
-            this.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-            this.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-        });
-    });
-});
-
-// Initialize experience card flip functionality
-function initExperienceCardFlip() {
-    const experienceCards = document.querySelectorAll('.experience-card');
-    
-    experienceCards.forEach(card => {
-        card.addEventListener('click', function() {
-            this.classList.toggle('flipped');
-        });
-        
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.classList.toggle('flipped');
-            }
-        });
-        
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', 'Click to flip card and view details');
-    });
-}
-
-// Scroller functionality
-const scrollers = document.querySelectorAll(".scroller");
-
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    addAnimation();
-}
-
-function addAnimation() {
-    scrollers.forEach((scroller) => {
-        scroller.setAttribute("data-animated", true);
-        const scrollerInner = scroller.querySelector(".scroller__inner");
-        const scrollerContent = Array.from(scrollerInner.children);
-        
-        scrollerContent.forEach((item) => {
-            const duplicatedItem = item.cloneNode(true);
-            duplicatedItem.setAttribute("aria-hidden", true);
-            scrollerInner.appendChild(duplicatedItem);
-        });
-    });
-}
+    }
+}); 
