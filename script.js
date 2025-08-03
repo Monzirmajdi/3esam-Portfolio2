@@ -85,11 +85,10 @@ document.addEventListener("DOMContentLoaded", function() {
     actionBtns.forEach(btn => btn.addEventListener("click", handleActionBtnClick));
     closeBtns.forEach(btn => btn.addEventListener("click", handleCloseBtnClick));
     modals.forEach(modal => modal.addEventListener("click", handleModalOutsideClick));
-    document.addEventListener("click", handleProjectItemClick);
     projectCategories.forEach(category => {
         category.addEventListener("click", function() {
             currentCategory = this.getAttribute('data-category');
-            handleCategoryClick.call(this);
+            openProjectListModal(currentCategory);
         });
     });
     
@@ -163,43 +162,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function handleProjectItemClick(e) {
-        const projectItem = e.target.closest(".project-item");
-        if (projectItem) {
-            const projectId = projectItem.getAttribute("data-project-id");
-            const category = projectItem.getAttribute("data-category");
-            if (projectId && category) openProjectDetailModal(category, projectId);
-        }
-    }
-
-    function handleCategoryClick() {
-        const categoryType = this.getAttribute("data-category");
-        openProjectListModal(categoryType);
-    }
-
     function openProjectListModal(category) {
         const modalId = category + "Modal";
         const modal = document.getElementById(modalId);
-        const projectListContainer = document.getElementById(category + "ProjectList");
-
-        if (modal && projectListContainer) {
-            projectListContainer.innerHTML = "";
-
-            const projects = projectData[category];
-            if (projects) {
-                projects.forEach(project => {
-                    const projectItem = document.createElement("div");
-                    projectItem.className = "project-item";
-                    projectItem.setAttribute("data-project-id", project.id);
-                    projectItem.setAttribute("data-category", category);
-                    projectItem.innerHTML = `
-                        <img src="${project.images[0]}" alt="${project.title}">
-                        <h4>${project.title}</h4>
-                    `;
-                    projectListContainer.appendChild(projectItem);
-                });
-            }
-
+        
+        if (modal) {
             modals.forEach(m => m.classList.remove("active"));
             modal.classList.add("active");
             document.body.style.overflow = "hidden";
