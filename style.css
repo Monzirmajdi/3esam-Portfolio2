@@ -1732,3 +1732,131 @@ body::before {
         padding: 12px 20px !important;
     }
 }
+
+
+/* Project Image Modal - نافذة عرض صور المشاريع */
+.project-image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-image-modal.active {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image-modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-image-modal-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-image-close-btn,
+.project-image-back-btn {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Cairo', sans-serif;
+}
+
+.project-image-close-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    padding: 0;
+}
+
+.project-image-close-btn:hover,
+.project-image-back-btn:hover {
+    background: rgba(255, 215, 0, 0.9);
+    color: #000;
+    border-color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.project-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.project-image-display {
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+.project-image-display:hover {
+    transform: none;
+}
+
+/* Responsive Design للنافذة المنبثقة */
+@media (max-width: 768px) {
+    .project-image-modal-header {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+    }
+    
+    .project-image-back-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    
+    .project-image-close-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .project-image-container {
+        padding: 5px;
+    }
+    
+    .project-image-display {
+        max-width: calc(100% - 10px);
+        max-height: calc(100% - 10px);
+    }
+}
+
