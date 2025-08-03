@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             role: "Lead Designer",
             tools: "Illustrator, Photoshop",
             description: "Developed a complete brand identity, including logo, color palette, and typography.",
-            images: ["images/branding/brand1.jpg"],
+            images: ["images/Social-media/Untitled74_20250803153857.webp"],
             type: "branding"
         },
         "branding-2": {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
             role: "Content Creator",
             tools: "Photoshop, Canva",
             description: "Designed a series of engaging posts for Instagram and Facebook.",
-            images: ["images/social/social1.jpg"],
+            images: ["images/Social-media/Untitled74_20250803153857.webp"],
             type: "social-media"
         },
         "illustration-1": {
