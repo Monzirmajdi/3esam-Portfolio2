@@ -309,47 +309,47 @@
     <div class="section-separator"></div>
 
     <!-- LOGOS SECTION -->
-<section class="logos-section">
-    <div class="section-header">
-        <h2 class="section-title">LOGOFOLIO</h2>
-        <p class="section-subtitle">BRANDS I'VE WORKED WITH</p>
-    </div>
-    
-    <div class="dual-scroller-container">
-        <!-- الصف العلوي - يتحرك لليمين -->
-        <div class="scroller top-row" data-speed="fast" data-direction="left">
-            <div class="scroller__inner">
-                <img src="images/logo/logo01.png" alt="Logo 1">
-                <img src="images/logo/logo02.png" alt="Logo 2">
-                <img src="images/logo/logo03.png" alt="Logo 3">
-                <img src="images/logo/logo04.png" alt="Logo 4">
-                <img src="images/logo/logo05.png" alt="Logo 5">
-                <img src="images/logo/logo06.png" alt="Logo 6">
-                <img src="images/logo/logo07.png" alt="Logo 7">
-                <img src="images/logo/logo08.png" alt="Logo 8">
-            </div>
+    <section class="logos-section">
+        <div class="section-header">
+            <h2 class="section-title">LOGOFOLIO</h2>
+            <p class="section-subtitle">BRANDS I'VE WORKED WITH</p>
         </div>
         
-        <!-- الصف السفلي - يتحرك لليسار -->
-        <div class="scroller bottom-row" data-speed="fast" data-direction="right">
-            <div class="scroller__inner">
-                <img src="images/logo/logo09.png" alt="Logo 9">
-                <img src="images/logo/logo10.png" alt="Logo 10">
-                <img src="images/logo/logo11.png" alt="Logo 11">
-                <img src="images/logo/logo12.png" alt="Logo 12">
-                <img src="images/logo/logo13.png" alt="Logo 13">
-                <img src="images/logo/logo14.png" alt="Logo 14">
-                <img src="images/logo/logo15.png" alt="Logo 15">
-                <img src="images/logo/logo16.png" alt="Logo 16">
+        <div class="dual-scroller-container">
+            <!-- الصف العلوي - يتحرك لليمين -->
+            <div class="scroller top-row" data-speed="fast" data-direction="left">
+                <div class="scroller__inner">
+                    <img src="images/logo/logo01.png" alt="Logo 1">
+                    <img src="images/logo/logo02.png" alt="Logo 2">
+                    <img src="images/logo/logo03.png" alt="Logo 3">
+                    <img src="images/logo/logo04.png" alt="Logo 4">
+                    <img src="images/logo/logo05.png" alt="Logo 5">
+                    <img src="images/logo/logo06.png" alt="Logo 6">
+                    <img src="images/logo/logo07.png" alt="Logo 7">
+                    <img src="images/logo/logo08.png" alt="Logo 8">
+                </div>
+            </div>
+            
+            <!-- الصف السفلي - يتحرك لليسار -->
+            <div class="scroller bottom-row" data-speed="fast" data-direction="right">
+                <div class="scroller__inner">
+                    <img src="images/logo/logo09.png" alt="Logo 9">
+                    <img src="images/logo/logo10.png" alt="Logo 10">
+                    <img src="images/logo/logo11.png" alt="Logo 11">
+                    <img src="images/logo/logo12.png" alt="Logo 12">
+                    <img src="images/logo/logo13.png" alt="Logo 13">
+                    <img src="images/logo/logo14.png" alt="Logo 14">
+                    <img src="images/logo/logo15.png" alt="Logo 15">
+                    <img src="images/logo/logo16.png" alt="Logo 16">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <div class="section-separator"></div>
 
     <!-- PROJECTS SECTION -->
     <section id="portfolio" class="projects-section">
-    <section class="projects-section">
         <div class="section-header">
             <h2 class="section-title">PORTFOLIO</h2>
             <p class="section-subtitle">EXPLORE MY CREATIVE WORK</p>
@@ -453,14 +453,14 @@
             <span class="close-btn" data-modal="brandingModal">&times;</span>
             <h2>Branding Projects</h2>
             <div class="projects-grid">
-                <div class="project-item">
+                <div class="project-item" data-project-id="branding-1">
                     <img src="images/branding/brand1.jpg" alt="Brand Project 1">
                     <div class="project-overlay">
                         <h3>Brand Identity Design</h3>
                         <p>Complete brand identity package</p>
                     </div>
                 </div>
-                <div class="project-item">
+                <div class="project-item" data-project-id="branding-2">
                     <img src="images/branding/brand2.jpg" alt="Brand Project 2">
                     <div class="project-overlay">
                         <h3>Logo Design</h3>
@@ -505,7 +505,7 @@
             <span class="close-btn" data-modal="socialMediaModal">&times;</span>
             <h2>Social Media Designs</h2>
             <div class="projects-grid">
-                <div class="project-item">
+                <div class="project-item" data-project-id="social-1">
                     <img src="images/social/social1.jpg" alt="Social Media Project 1">
                     <div class="project-overlay">
                         <h3>Instagram Campaign</h3>
@@ -557,7 +557,7 @@
             <span class="close-btn" data-modal="illustrationsModal">&times;</span>
             <h2>Illustrations</h2>
             <div class="projects-grid">
-                <div class="project-item">
+                <div class="project-item" data-project-id="illustration-1">
                     <img src="images/illustrations/illus1.jpg" alt="Illustration Project 1">
                     <div class="project-overlay">
                         <h3>Character Design</h3>
@@ -599,6 +599,16 @@
                         <p>Custom portrait illustrations</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div class="modal" id="projectDetailModal">
+        <div class="modal-content projects-modal-content">
+            <span class="close-btn" data-modal="projectDetailModal">&times;</span>
+            <div id="projectDetail">
+                <!-- Content will be filled by JavaScript -->
             </div>
         </div>
     </div>
@@ -646,4 +656,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+                                    </html>
