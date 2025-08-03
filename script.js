@@ -9,47 +9,76 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Project Data
     const projectData = {
-        "branding-1": {
-            title: "Brand Identity for Tech Startup",
-            client: "Innovate Inc.",
-            duration: "2 months",
-            role: "Lead Designer",
-            tools: "Illustrator, Photoshop",
-            description: "Developed a complete brand identity, including logo, color palette, and typography.",
-            images: ["images/Social-media/Untitled74_20250803153857.webp"],
-            type: "branding"
-        },
-        "branding-2": {
-            title: "Rebranding for a Coffee Shop",
-            client: "The Daily Grind",
-            duration: "1 month",
-            role: "Graphic Designer",
-            tools: "Illustrator, InDesign",
-            description: "A fresh new look for a local coffee shop, including a new logo and menu design.",
-            images: ["images/branding/brand2.jpg"],
-            type: "branding"
-        },
-        "social-1": {
-            title: "Social Media Campaign",
-            client: "Fashion Brand",
-            duration: "3 weeks",
-            role: "Content Creator",
-            tools: "Photoshop, Canva",
-            description: "Designed a series of engaging posts for Instagram and Facebook.",
-            images: ["images/Social-media/Untitled74_20250803153857.webp"],
-            type: "social-media"
-        },
-        "illustration-1": {
-            title: "Character Design",
-            client: "Children's Book",
-            duration: "1.5 months",
-            role: "Illustrator",
-            tools: "Procreate, Photoshop",
-            description: "Created lovable characters for an upcoming children's book.",
-            images: ["images/illustrations/illus1.jpg"],
-            type: "illustrations"
-        }
+        branding: [
+            {
+                id: 'branding-1',
+                title: "Brand Identity for Tech Startup",
+                client: "Innovate Inc.",
+                duration: "2 months",
+                role: "Lead Designer",
+                tools: "Illustrator, Photoshop",
+                description: "Developed a complete brand identity, including logo, color palette, and typography.",
+                images: ["images/branding/brand1.jpg"]
+            },
+            {
+                id: 'branding-2',
+                title: "Rebranding for a Coffee Shop",
+                client: "The Daily Grind",
+                duration: "1 month",
+                role: "Graphic Designer",
+                tools: "Illustrator, InDesign",
+                description: "A fresh new look for a local coffee shop, including a new logo and menu design.",
+                images: ["images/branding/brand2.jpg"]
+            }
+        ],
+        socialMedia: [
+            {
+                id: 'social-1',
+                title: "Social Media Campaign",
+                client: "Fashion Brand",
+                duration: "3 weeks",
+                role: "Content Creator",
+                tools: "Photoshop, Canva",
+                description: "Designed a series of engaging posts for Instagram and Facebook.",
+                images: ["images/social/social1.jpg"]
+            },
+            {
+                id: 'social-2',
+                title: "Facebook Ads Series",
+                client: "Tech Company",
+                duration: "2 weeks",
+                role: "Digital Designer",
+                tools: "Photoshop, Illustrator",
+                description: "Created eye-catching Facebook ad campaigns for product launches.",
+                images: ["images/social/social2.jpg"]
+            }
+        ],
+        illustrations: [
+            {
+                id: 'illustration-1',
+                title: "Character Design",
+                client: "Children's Book",
+                duration: "1.5 months",
+                role: "Illustrator",
+                tools: "Procreate, Photoshop",
+                description: "Created lovable characters for an upcoming children's book.",
+                images: ["images/illustrations/illus1.jpg"]
+            },
+            {
+                id: 'illustration-2',
+                title: "Digital Painting",
+                client: "Art Gallery",
+                duration: "3 weeks",
+                role: "Digital Artist",
+                tools: "Procreate, Photoshop",
+                description: "Produced a series of digital paintings for exhibition.",
+                images: ["images/illustrations/illus2.jpg"]
+            }
+        ]
     };
+
+    // Track current category
+    let currentCategory = '';
 
     // Event Listeners
     navLinks.forEach(link => link.addEventListener("click", handleNavClick));
@@ -57,10 +86,23 @@ document.addEventListener("DOMContentLoaded", function() {
     closeBtns.forEach(btn => btn.addEventListener("click", handleCloseBtnClick));
     modals.forEach(modal => modal.addEventListener("click", handleModalOutsideClick));
     document.addEventListener("click", handleProjectItemClick);
-    projectCategories.forEach(category => category.addEventListener("click", handleCategoryClick));
+    projectCategories.forEach(category => {
+        category.addEventListener("click", function() {
+            currentCategory = this.getAttribute('data-category');
+            handleCategoryClick.call(this);
+        });
+    });
     
     if (backToProjectsBtn) {
-        backToProjectsBtn.addEventListener("click", handleBackToProjects);
+        backToProjectsBtn.addEventListener("click", function() {
+            if (currentCategory) {
+                const projectDetailModal = document.getElementById('projectDetailModal');
+                if (projectDetailModal) {
+                    projectDetailModal.classList.remove("active");
+                    openProjectListModal(currentCategory);
+                }
+            }
+        });
     }
 
     // Initialize components
@@ -125,40 +167,47 @@ document.addEventListener("DOMContentLoaded", function() {
         const projectItem = e.target.closest(".project-item");
         if (projectItem) {
             const projectId = projectItem.getAttribute("data-project-id");
-            if (projectId) showProjectDetail(projectId);
+            const category = projectItem.getAttribute("data-category");
+            if (projectId && category) openProjectDetailModal(category, projectId);
         }
     }
 
     function handleCategoryClick() {
         const categoryType = this.getAttribute("data-category");
-        let modalId = "";
-        
-        switch(categoryType) {
-            case "branding": modalId = "brandingModal"; break;
-            case "social-media": modalId = "socialMediaModal"; break;
-            case "illustrations": modalId = "illustrationsModal"; break;
-        }
-        
-        if (modalId) openModal(modalId.replace("Modal", ""));
+        openProjectListModal(categoryType);
     }
 
-    function handleBackToProjects() {
-        const projectDetailModal = document.getElementById("projectDetailModal");
-        const activeProject = document.querySelector(".project-item[data-project-id]");
-        
-        if (projectDetailModal) {
-            projectDetailModal.classList.remove("active");
-            
-            if (activeProject) {
-                const projectId = activeProject.getAttribute("data-project-id");
-                const project = projectData[projectId];
-                if (project) openModal(project.type);
+    function openProjectListModal(category) {
+        const modalId = category + "Modal";
+        const modal = document.getElementById(modalId);
+        const projectListContainer = document.getElementById(category + "ProjectList");
+
+        if (modal && projectListContainer) {
+            projectListContainer.innerHTML = "";
+
+            const projects = projectData[category];
+            if (projects) {
+                projects.forEach(project => {
+                    const projectItem = document.createElement("div");
+                    projectItem.className = "project-item";
+                    projectItem.setAttribute("data-project-id", project.id);
+                    projectItem.setAttribute("data-category", category);
+                    projectItem.innerHTML = `
+                        <img src="${project.images[0]}" alt="${project.title}">
+                        <h4>${project.title}</h4>
+                    `;
+                    projectListContainer.appendChild(projectItem);
+                });
             }
+
+            modals.forEach(m => m.classList.remove("active"));
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
         }
     }
 
-    function showProjectDetail(projectId) {
-        const project = projectData[projectId];
+    function openProjectDetailModal(category, projectId) {
+        const project = projectData[category].find(p => p.id === projectId);
         const projectDetailModal = document.getElementById("projectDetailModal");
         const projectDetail = document.getElementById("projectDetail");
         
@@ -204,23 +253,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function initExperienceCardFlip() {
-        const experienceCards = document.querySelectorAll('.experience-card');
+        const experienceCards = document.querySelectorAll(".experience-card");
         
         experienceCards.forEach(card => {
-            card.addEventListener('click', function() {
-                this.classList.toggle('flipped');
+            card.addEventListener("click", function() {
+                this.classList.toggle("flipped");
             });
             
-            card.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
+            card.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    this.classList.toggle('flipped');
+                    this.classList.toggle("flipped");
                 }
             });
             
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', 'Click to flip card and view details');
+            card.setAttribute("tabindex", "0");
+            card.setAttribute("role", "button");
+            card.setAttribute("aria-label", "Click to flip card and view details");
         });
     }
 
@@ -317,4 +366,4 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     }
-}); 
+});
