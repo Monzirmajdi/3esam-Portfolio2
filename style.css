@@ -1657,3 +1657,41 @@ body::before {
         padding: 12px 20px !important;
     }
 }
+.experience-card {
+    position: relative;
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid transparent;
+    background: linear-gradient(#000, #000) padding-box,
+                linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.3) 50%, transparent 100%) border-box;
+    border-radius: 0;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.experience-card:hover::before {
+    background: linear-gradient(#000, #000) padding-box,
+                linear-gradient(135deg, rgba(255, 215, 0, 1) 0%, rgba(255, 215, 0, 0.5) 50%, transparent 100%) border-box;
+}
+
+.experience-card-front,
+.experience-card-back {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    }
