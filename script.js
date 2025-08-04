@@ -18,17 +18,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 role: "Lead Designer",
                 tools: "Illustrator, Photoshop",
                 description: "Developed a complete brand identity, including logo, color palette, and typography.",
-                images: ["images/branding/brand1.jpg"]
+                previewImage: "images/branding/brand1_preview.jpg",
+                detailImage: "images/branding/brand1_detail.jpg"
             },
             {
                 id: 'branding-2',
+                title: "Brand Identity for Tech Startup",
+                client: "Innovate Inc.",
+                duration: "2 months",
+                role: "Lead Designer",
+                tools: "Illustrator, Photoshop",
+                description: "Developed a complete brand identity, including logo, color palette, and typography.",
+                previewImage: "images/branding/brand1_preview.jpg",
+                detailImage: "images/branding/brand1_detail.jpg"
+            },
+            {
+                id: 'branding-3',
                 title: "Rebranding for a Coffee Shop",
                 client: "The Daily Grind",
                 duration: "1 month",
                 role: "Graphic Designer",
                 tools: "Illustrator, InDesign",
                 description: "A fresh new look for a local coffee shop, including a new logo and menu design.",
-                images: ["images/branding/brand2.jpg"]
+                previewImage: "images/branding/brand2_preview.jpg",
+                detailImage: "images/branding/brand2_detail.jpg"
             }
         ],
         socialMedia: [
@@ -40,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 role: "Content Creator",
                 tools: "Photoshop, Canva",
                 description: "Designed a series of engaging posts for Instagram and Facebook.",
-                images: ["images/Social-media/Untitled80_20250804071524.webp"]
+                previewImage: "images/Social-media/sedra1_001.png",
+                detailImage: "images/Social-media/Untitled80_20250804071524.webp"
             },
             {
                 id: 'social-2',
@@ -50,17 +64,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 role: "Content Creator",
                 tools: "Photoshop, Canva",
                 description: "Designed a series of engaging posts for Instagram and Facebook.",
-                images: ["images/Social-media/Untitled75_20250804002700.jpg"]
+                previewImage: "images/Social-media/social1_preview.webp",
+                detailImage: "images/Social-media/social1_detail.webp"
             },
             {
                 id: 'social-3',
-                title: "Facebook Ads Series",
-                client: "Tech Company",
-                duration: "2 weeks",
-                role: "Digital Designer",
-                tools: "Photoshop, Illustrator",
-                description: "Created eye-catching Facebook ad campaigns for product launches.",
-                images: ["images/Social-media/Untitled74_20250803153857.webp"]
+                title: "Social Media Campaign",
+                client: "Fashion Brand",
+                duration: "3 weeks",
+                role: "Content Creator",
+                tools: "Photoshop, Canva",
+                description: "Designed a series of engaging posts for Instagram and Facebook.",
+                previewImage: "images/Social-media/social2_preview.jpg",
+                detailImage: "images/Social-media/social2_detail.jpg"
             }
         ],
         illustrations: [
@@ -72,17 +88,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 role: "Illustrator",
                 tools: "Procreate, Photoshop",
                 description: "Created lovable characters for an upcoming children's book.",
-                images: ["images/illustrations/illus1.jpg"]
+                previewImage: "images/illustrations/illus1_preview.jpg",
+                detailImage: "images/illustrations/illus1_detail.jpg"
             },
             {
                 id: 'illustration-2',
-                title: "Digital Painting",
-                client: "Art Gallery",
-                duration: "3 weeks",
-                role: "Digital Artist",
+                title: "Character Design",
+                client: "Children's Book",
+                duration: "1.5 months",
+                role: "Illustrator",
                 tools: "Procreate, Photoshop",
-                description: "Produced a series of digital paintings for exhibition.",
-                images: ["images/illustrations/illus2.jpg"]
+                description: "Created lovable characters for an upcoming children's book.",
+                previewImage: "images/illustrations/illus1_preview.jpg",
+                detailImage: "images/illustrations/illus1_detail.jpg"
+            },
+            {
+                id: 'illustration-3',
+                title: "Character Design",
+                client: "Children's Book",
+                duration: "1.5 months",
+                role: "Illustrator",
+                tools: "Procreate, Photoshop",
+                description: "Created lovable characters for an upcoming children's book.",
+                previewImage: "images/illustrations/illus1_preview.jpg",
+                detailImage: "images/illustrations/illus1_detail.jpg"
             }
         ]
     };
@@ -179,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (container && projectData[category]) {
             container.innerHTML = projectData[category].map(project => `
                 <div class="project-item" onclick="openProjectDetailModal('${category}', '${project.id}')">
-                    <img src="${project.images[0]}" alt="${project.title}">
+                    <img src="${project.previewImage}" alt="${project.title}">
                     <div class="project-overlay">
                         <h3>${project.title}</h3>
                         <p>${project.client}</p>
@@ -230,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     <p class="project-detail-description">${project.description}</p>
                 </div>
-                <img src="${project.images[0]}" alt="${project.title}" class="project-detail-image">
+                <img src="${project.detailImage}" alt="${project.title}" class="project-detail-image">
             `;
             
             document.querySelector(".modal.active")?.classList.remove("active");
