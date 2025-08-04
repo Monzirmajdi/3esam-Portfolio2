@@ -364,11 +364,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function setupHoverEffects() {
-        document.querySelectorAll(".portfolio-item, .action-btn, .social-link").forEach(el => {
+        const hoverElements = document.querySelectorAll(".portfolio-item, .action-btn, .social-link, .nav-link, .project-category, .experience-card, .footer-social-link, .logo-icon");
+        
+        hoverElements.forEach(el => {
+            el.style.transition = "all 0.3s ease";
+            el.style.willChange = "transform, box-shadow, background";
+            
             el.addEventListener("mousemove", function(e) {
                 const rect = this.getBoundingClientRect();
                 this.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
                 this.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+            });
+            
+            el.addEventListener("mouseenter", function() {
+                this.style.zIndex = "10";
+            });
+            
+            el.addEventListener("mouseleave", function() {
+                this.style.zIndex = "";
+            });
+            
+            el.addEventListener("touchstart", function() {
+                this.classList.add("hover");
+            });
+            
+            el.addEventListener("touchend", function() {
+                setTimeout(() => {
+                    this.classList.remove("hover");
+                }, 200);
             });
         });
     }
