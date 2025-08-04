@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 role: "Content Creator",
                 tools: "Photoshop, Canva",
                 description: "Designed a series of engaging posts for Instagram and Facebook.",
-                images: ["images/Social-media/Untitled74_20250803153857.webp"]
+                images: ["images/Social-media/Untitled79_20250804060734.webp"]
             },
             {
                 id: 'social-2',
