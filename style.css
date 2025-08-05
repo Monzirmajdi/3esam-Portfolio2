@@ -1690,6 +1690,42 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
 }
 /*pattern background*/
+/* أنماط الباترن المتحرك */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05)),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05));
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    z-index: -2;
+    opacity: 0.3;
+    animation: movePattern 20s linear infinite;
+}
+
+@keyframes movePattern {
+    0% {
+        background-position: 0 0, 30px 30px;
+    }
+    100% {
+        background-position: 60px 60px, 90px 90px;
+    }
+    }
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* طبقة داكنة لتحسين قراءة المحتوى */
+    z-index: -1;
+}
 body::after {
     content: '';
     position: fixed;
