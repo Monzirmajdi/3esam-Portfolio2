@@ -417,25 +417,20 @@
                     </div>
                 </div>
                 
-                <form class="contact-form">
-                    <h3>Send Message</h3>
-                    <input type="text" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone" required>
-                    <select required>
-                        <option value="">I'm interested in...</option>
-                        <option value="ui-ux">UI/UX Design</option>
-                        <option value="branding">Branding</option>
-                        <option value="web-design">Web Design</option>
-                    </select>
-                    <select required>
-                        <option value="">Your Budget</option>
-                        <option value="5k-10k">$5k - $10k</option>
-                        <option value="10k-25k">$10k - $25k</option>
-                        <option value="25k+">$25k+</option>
-                    </select>
-                    <textarea placeholder="More About The Project" rows="4" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+                <form class="contact-form" id="contactForm">
+    <h3>Send Message</h3>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="tel" name="phone" placeholder="Your Phone">
+    <select name="interest" required>
+        <option value="">I'm interested in...</option>
+        <option value="ui-ux">UI/UX Design</option>
+        <option value="branding">Branding</option>
+        <option value="web-design">Web Design</option>
+    </select>
+    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
             </div>
         </div>
     </div>
