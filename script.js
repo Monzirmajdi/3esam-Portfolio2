@@ -417,3 +417,27 @@ document.addEventListener("DOMContentLoaded", function() {
     // Make openProjectDetailModal available globally
     window.openProjectDetailModal = openProjectDetailModal;
 });
+// أضف هذا الكود في نهاية ملف script.js
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    fetch("https://formsubmit.co/ajax/3i9aam@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(formData))
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Message sent successfully!");
+        form.reset();
+    })
+    .catch(error => {
+        alert("Error sending message. Please try again.");
+        console.error(error);
+    });
+});
