@@ -441,3 +441,26 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         console.error(error);
     });
 });
+function setupTitleScrollers() {
+    const scrollers = document.querySelectorAll('.title-scroller');
+    
+    scrollers.forEach(scroller => {
+        // تكرار العنوان لضمان استمرارية الحركة
+        const text = scroller.querySelector('h2').textContent;
+        scroller.innerHTML = '';
+        
+        // إضافة 5 نسخ من العنوان للتأثير المستمر
+        for (let i = 0; i < 5; i++) {
+            const h2 = document.createElement('h2');
+            h2.textContent = text;
+            scroller.appendChild(h2);
+        }
+        
+        // ضبط السرعة حسب حجم النص
+        const duration = text.length * 2 + 20;
+        scroller.style.animationDuration = `${duration}s`;
+    });
+}
+
+// استدعاء الدالة في نهاية DOMContentLoaded
+setupTitleScrollers();
