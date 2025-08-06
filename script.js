@@ -147,9 +147,9 @@ document.addEventListener("DOMContentLoaded", function() {
     initExperienceCardFlip();
     createFloatingElements();
     setupLazyLoading();
-    setupPageLoader();
     setupHoverEffects();
     setupScrollers();
+    setupPageLoader();
 
     // Functions
     function handleNavClick(e) {
@@ -345,21 +345,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function setupPageLoader() {
+        const loader = document.createElement("div");
+        loader.className = "page-loader";
+        loader.innerHTML = `
+            <div class="loader-content">
+                <div class="loader-spinner"></div>
+                <div class="loader-logo">✦ Esam</div>
+            </div>
+        `;
+        document.body.appendChild(loader);
+        
         window.addEventListener("load", function() {
-            const loader = document.createElement("div");
-            loader.className = "page-loader";
-            loader.innerHTML = `
-                <div class="loader-content">
-                    <div class="loader-spinner"></div>
-                    <div class="loader-logo">✦ Esam</div>
-                </div>
-            `;
-            document.body.appendChild(loader);
-            
             setTimeout(() => {
                 loader.style.opacity = "0";
                 setTimeout(() => loader.remove(), 500);
-            }, 1000);
+            }, 1500);
         });
     }
 
@@ -416,49 +416,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Make openProjectDetailModal available globally
     window.openProjectDetailModal = openProjectDetailModal;
-});
-// أضف هذا الكود في نهاية ملف script.js
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    
-    fetch("https://formsubmit.co/ajax/3i9aam@gmail.com", {
-        method: "POST",
-        headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(Object.fromEntries(formData))
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert("Message sent successfully!");
-        form.reset();
-    })
-    .catch(error => {
-        alert("Error sending message. Please try again.");
-        console.error(error);
-    });
-});
-function setupPageLoader() {
-    window.addEventListener("load", function() {
-        const loader = document.createElement("div");
-        loader.className = "page-loader";
-        loader.innerHTML = `
-            <div class="loader-content">
-                <div class="loader-spinner"></div>
-                <div class="loader-logo">✦ Esam</div>
-            </div>
-        `;
-        document.body.appendChild(loader);
-        
-        setTimeout(() => {
-            loader.style.opacity = "0";
-            setTimeout(() => loader.remove(), 500);
-        }, 1500); // يمكنك تعديل مدة التحميل هنا
-    });
-}
 
-// استدعاء الدالة في DOMContentLoaded
-setupPageLoader();
+    // Contact form submission
+    document.getElementById("contactForm")?.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        
+        fetch("https://formsubmit.co/ajax/3i9aam@gmail.com", {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(Object.fromEntries(formData))
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("Message sent successfully!");
+            form.reset();
+        })
+        .catch(error => {
+            alert("Error sending message. Please try again.");
+            console.error(error);
+        });
+    });
+});
