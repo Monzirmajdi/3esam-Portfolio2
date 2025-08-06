@@ -1624,7 +1624,7 @@ body::before {
     }
 
     .hero-name-overlay {
-        left: 30px !important;
+        left: 50px !important;
         bottom: 120px !important;
         transform: scale(0.9);
     }
