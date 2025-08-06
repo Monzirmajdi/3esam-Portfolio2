@@ -455,7 +455,7 @@ function setupTitleScrollers() {
         }
         
         // تحديد الاتجاه العكسي
-        scroller.style.animation = `scrollTitle ${text.length * 2 + 20}s linear infinite reverse`;
+        scroller.style.animation = `scrollTitle ${text.length * 3 + 30}s linear infinite reverse`;
     });
 }
 
