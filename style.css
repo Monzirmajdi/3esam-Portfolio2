@@ -1673,3 +1673,83 @@ body::before {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
+/* تأثير العناوين مع الظل والتدرج */
+.title-scroller-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 60px 0;
+    height: 120px;
+}
+
+.title-scroller {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scrollTitle 25s linear infinite;
+}
+
+.title-scroller h2 {
+    display: inline-block;
+    font-size: 6rem;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+    margin: 0 40px;
+    font-family: 'Cairo', sans-serif;
+    text-shadow: 4px 4px 0 rgba(255,215,0,0.2);
+    position: relative;
+}
+
+@keyframes scrollTitle {
+    0% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* تأثيرات التدرج على الجوانب */
+.title-scroller-container::before,
+.title-scroller-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.title-scroller-container::before {
+    left: 0;
+    background: linear-gradient(to right, #000 0%, transparent 100%);
+}
+
+.title-scroller-container::after {
+    right: 0;
+    background: linear-gradient(to left, #000 0%, transparent 100%);
+}
+
+/* تعديل العناوين الثابتة */
+.section-title {
+    font-size: 4.5rem !important;
+    font-weight: 900 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    background: none !important;
+    text-shadow: 3px 3px 0 rgba(255,215,0,0.3);
+    position: relative;
+    margin-bottom: 30px !important;
+    padding: 0 20px;
+    display: inline-block;
+        }
