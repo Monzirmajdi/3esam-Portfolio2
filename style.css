@@ -1674,87 +1674,73 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
 }
 /* تنسيقات سكرولر العناوين - إعدادات كاملة */
-.title-scroller-container {
+/* تنسيقات السكرولر من اليسار لليمين */
+.rtl-scroller-container {
     position: relative;
     width: 100%;
-    height: 200px; /* ارتفاع مناسب للخط الكبير */
-    margin: 80px 0;
+    height: 200px;
+    margin: 100px 0;
     overflow: hidden;
-    isolation: isolate;
 }
 
-.title-scroller {
+.rtl-scroller {
+    display: flex;
     position: absolute;
     white-space: nowrap;
-    display: flex;
-    animation: scrollTitle 30s linear infinite;
+    animation: rtlScroll 120s linear infinite; /* مدة أطول لحركة أبطأ */
     will-change: transform;
-    padding-right: 50px;
 }
 
-.title-scroller h2 {
+.rtl-scroller h2 {
     font-size: 12rem;
     font-weight: 900;
     color: #fff;
     font-family: 'Cairo', sans-serif;
     text-transform: uppercase;
     margin: 0;
-    line-height: 0.85;
-    letter-spacing: -4px;
+    line-height: 0.8;
+    letter-spacing: -5px;
     text-shadow: 
-        6px 6px 0 rgba(0,0,0,0.7),
-        -2px -2px 0 rgba(0,0,0,0.5);
+        8px 8px 0 rgba(0,0,0,0.8),
+        -3px -3px 0 rgba(0,0,0,0.6);
+    padding: 0 50px;
     flex-shrink: 0;
-    padding: 0 30px;
-    position: relative;
 }
 
-.title-scroller h2 {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-/* تأثيرات الظلال الجانبية المكثفة */
-.title-scroller-container::before,
-.title-scroller-container::after {
+/* تأثيرات التدرج الجانبي المعدلة */
+.rtl-scroller-container::before,
+.rtl-scroller-container::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 150px; /* مسافة ضيقة بين الظلال */
+    width: 200px;
     height: 100%;
     z-index: 2;
     pointer-events: none;
 }
 
-.title-scroller-container::before {
+.rtl-scroller-container::before {
     left: 0;
     background: linear-gradient(to right, 
         rgba(0,0,0,1) 0%, 
-        rgba(0,0,0,0.9) 30%, 
+        rgba(0,0,0,0.8) 50%, 
         transparent 100%);
 }
 
-.title-scroller-container::after {
+.rtl-scroller-container::after {
     right: 0;
     background: linear-gradient(to left, 
         rgba(0,0,0,1) 0%, 
-        rgba(0,0,0,0.9) 30%, 
+        rgba(0,0,0,0.8) 50%, 
         transparent 100%);
 }
 
-/* تحسينات الحركة */
-@keyframes scrollTitle {
+/* حركة من اليسار لليمين */
+@keyframes rtlScroll {
     0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    2% {
-        opacity: 1;
-    }
-    98% {
-        opacity: 1;
+        transform: translateX(-50%);
     }
     100% {
-        transform: translateX(-100%);
-        opacity: 0;
+        transform: translateX(0%);
     }
 }
