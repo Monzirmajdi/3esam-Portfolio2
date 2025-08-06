@@ -1691,19 +1691,52 @@ body::before {
 
 .title-scroller h2 {
     display: inline-block;
-    font-size: 6rem;
+    font-size: 8rem; /* زيادة حجم الخط من 6rem إلى 8rem */
     font-weight: 900;
-    color: #000;
+    color: #fff;
     text-transform: uppercase;
     margin: 0 40px;
     font-family: 'Cairo', sans-serif;
-    text-shadow: 4px 4px 0 rgba(255,215,0,0.2);
+    text-shadow: 
+        3px 3px 0 rgba(0, 0, 0, 0.5), /* زيادة وضوح الظل */
+        -1px -1px 0 #000, /* تضليل إضافي */
+        1px 1px 0 #000;
     position: relative;
+    line-height: 1.2;
 }
 
+/* تعديل حجم الحاوية لاستيعاب الخط الكبير */
+.title-scroller-container {
+    height: 150px; /* زيادة الارتفاع من 120px */
+    margin: 80px 0; /* زيادة الهامش */
+}
+
+/* تعديل التدرج الجانبي */
+.title-scroller-container::before,
+.title-scroller-container::after {
+    height: 150px; /* يتناسب مع ارتفاع الحاوية الجديد */
+}
+
+/* تعديل التدرج على الجوانب ليتناسب مع الخلفية الداكنة */
+.title-scroller-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+.title-scroller-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+/* إذا كنت تريد إبقاء التأثير الذهبي عند الـ hover */
+.nav-link:hover,
+.action-btn:hover {
+    color: #000; /* النص يصبح أسود عند الـ hover */
+    background: rgba(255, 215, 0, 0.9);
+}
 @keyframes scrollTitle {
     0% {
-        transform: translateX(100vw);
+        transform: translateX(-100%);  /* بداية من اليسار */
         opacity: 0;
     }
     5% {
@@ -1713,41 +1746,19 @@ body::before {
         opacity: 1;
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(100vw);  /* نهاية إلى اليمين */
         opacity: 0;
     }
 }
 
-/* تأثيرات التدرج على الجوانب */
-.title-scroller-container::before,
-.title-scroller-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.title-scroller-container::before {
-    left: 0;
-    background: linear-gradient(to right, #000 0%, transparent 100%);
-}
-
-.title-scroller-container::after {
-    right: 0;
-    background: linear-gradient(to left, #000 0%, transparent 100%);
-}
-
 /* تعديل العناوين الثابتة */
 .section-title {
-    font-size: 6rem !important; /*4.5*/
-    font-weight: 1200 !important;
-    color: #FFFFFF !important;
-    -webkit-text-fill-color: #FFFFFF !important;
+    font-size: 4.5rem !important; /*4.5*/
+    font-weight: 900 !important;
+    color: #FFF !important;
+    -webkit-text-fill-color: #FFF !important;
     background: none !important;
-    /* text-shadow: 3px 3px 0 rgba(255,215,0,0.3);*/
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
     position: relative;
     margin-bottom: 30px !important;
     padding: 0 20px;
