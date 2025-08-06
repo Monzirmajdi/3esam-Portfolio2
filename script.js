@@ -441,23 +441,19 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         console.error(error);
     });
 });
-function setupTitleScrollers() {
-    const scrollers = document.querySelectorAll('.title-scroller');
+// إنشاء نسخ لا نهائية من العنوان للحركة اليمنى-اليسار
+document.querySelectorAll('.rtl-scroller').forEach(scroller => {
+    const text = scroller.dataset.text || 'العنوان';
+    scroller.innerHTML = '';
     
-    scrollers.forEach(scroller => {
-        const text = scroller.querySelector('h2').textContent;
-        scroller.innerHTML = '';
-        
-        for (let i = 0; i < 9; i++) {
-            const h2 = document.createElement('h2');
-            h2.textContent = text;
-            scroller.appendChild(h2);
-        }
-        
-        // تحديد الاتجاه العكسي
-        scroller.style.animation = `scrollTitle ${text.length * 5 + 50}s linear infinite reverse`;
-    });
-}
-
-// استدعاء الدالة في نهاية DOMContentLoaded
-setupTitleScrollers();
+    // إضافة 8 نسخ لضمان التكامل البصري
+    for (let i = 0; i < 8; i++) {
+        const h2 = document.createElement('h2');
+        h2.textContent = text;
+        scroller.appendChild(h2);
+    }
+    
+    // ضبط السرعة حسب طول النص (أبطأ)
+    const duration = Math.max(40, text.length * 4);
+    scroller.style.animationDuration = `${duration}s`;
+});
