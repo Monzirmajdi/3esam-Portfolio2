@@ -1580,7 +1580,7 @@ body::before {
     html, body {
         max-width: 1024px;
         margin: 0 auto;
-        overflow-x: none;
+        overflow-x: auto;
     }
 
     .hero {
