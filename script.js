@@ -448,7 +448,7 @@ function setupTitleScrollers() {
         const text = scroller.querySelector('h2').textContent;
         scroller.innerHTML = '';
         
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 8; i++) {
             const h2 = document.createElement('h2');
             h2.textContent = text;
             scroller.appendChild(h2);
