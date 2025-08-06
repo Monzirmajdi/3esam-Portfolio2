@@ -441,3 +441,24 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         console.error(error);
     });
 });
+function setupPageLoader() {
+    window.addEventListener("load", function() {
+        const loader = document.createElement("div");
+        loader.className = "page-loader";
+        loader.innerHTML = `
+            <div class="loader-content">
+                <div class="loader-spinner"></div>
+                <div class="loader-logo">✦ Esam</div>
+            </div>
+        `;
+        document.body.appendChild(loader);
+        
+        setTimeout(() => {
+            loader.style.opacity = "0";
+            setTimeout(() => loader.remove(), 500);
+        }, 1500); // يمكنك تعديل مدة التحميل هنا
+    });
+}
+
+// استدعاء الدالة في DOMContentLoaded
+setupPageLoader();
