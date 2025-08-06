@@ -82,23 +82,6 @@ body::before {
     z-index: 1001;
 }
 
-.location {
-    display: none;
-}
-
-.location-dot {
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(45deg, #FFD700, #FFA500);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-}
-
 .main-nav {
     display: flex;
     gap: 20px;
@@ -343,7 +326,26 @@ body::before {
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
     z-index: 10;
 }
+/* زر Contact Me - الحالة الطبيعية (ذهبي) */
+.action-btn[data-section="contact"] {
+    color: #000; /* لون النص أسود */
+    background: rgba(255, 215, 0, 0.9); /* خلفية ذهبية */
+    border-color: #FFD700; /* حدود ذهبية */
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); /* ظل ذهبي */
+}
 
+/* تأثير الـ Hover (شفاف) */
+.action-btn[data-section="contact"]:hover {
+    color: #fff; /* لون النص أبيض */
+    background: rgba(0, 0, 0, 0.4); /* خلفية شفافة */
+    border-color: rgba(255, 255, 255, 0.1); /* حدود شفافة */
+    box-shadow: none; /* إزالة الظل */
+}
+
+/* التأثيرات الأخرى تبقى كما هي */
+.action-btn[data-section="contact"]::before {
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent); /* تعديل لون التوهج */
+}
 .scroll-section {
     width: 100%;
     text-align: center;
