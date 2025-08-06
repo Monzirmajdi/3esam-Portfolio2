@@ -1706,11 +1706,22 @@ body::before {
     letter-spacing: -2px; /* تقليل تباعد الحروف */
 }
 
-/* تعديل حجم الحاوية */
-.title-scroller-container {
-    height: 200px; /* زيادة الارتفاع */
-    margin: 100px 0; /* زيادة الهامش العلوي والسفلي */
-    overflow: visible; /* إظهار النص الكامل */
+
+.title-scroller-container::before {
+    left: 0;
+    background: linear-gradient(to right, 
+        rgba(0,0,0,1) 0%, 
+        rgba(0,0,0,0.8) 50%, 
+        transparent 100%);
+}
+
+.title-scroller-container::after {
+    right: 0;
+    background: linear-gradient(to left, 
+        rgba(0,0,0,1) 0%, 
+        rgba(0,0,0,0.8) 50%, 
+        transparent 100%);
+}
 }
 
 /* تعديل التدرج الجانبي */
@@ -1723,17 +1734,17 @@ body::before {
 /* تعديل الحركة لتناسب الحجم الكبير */
 @keyframes scrollTitle {
     0% {
-        transform: translateX(100vw);
+        transform: translateX(-100%);  /* بداية من اليسار */
         opacity: 0;
     }
-    3% {
+    5% {
         opacity: 1;
     }
-    97% {
+    95% {
         opacity: 1;
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(100vw);  /* نهاية إلى اليمين */
         opacity: 0;
     }
 }
