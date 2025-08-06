@@ -298,17 +298,9 @@ body::before {
     align-items: flex-start;
 }
 
-.action-btn {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 15px 25px;
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #000;
+    background: rgba(255, 215, 0, 0.9);
+    border-color: #FFD700;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     white-space: nowrap;
@@ -335,10 +327,9 @@ body::before {
     left: 100%;
 }
 
-.action-btn:hover {
-    color: #000;
-    background: rgba(255, 215, 0, 0.9);
-    border-color: #FFD700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
     z-index: 10;
@@ -1546,11 +1537,9 @@ body::before {
 }
 
 .back-btn {
-    color: #fff;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #000;
+    background: rgba(255, 215, 0, 0.9);
+    border-color: #FFD700;
     padding: 12px 25px;
     border-radius: 20px;
     font-size: 14px;
