@@ -201,6 +201,10 @@ body::before {
     margin: 0 calc(-50vw + 50%);
     overflow: hidden;
     transition: transform 0.5s ease;
+    /* إضافة تدرج لوني للأسفل */
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.2) 0%, 
+        rgba(0,0,0,0.8) 100%);
 }
 
 .hero-image-container:hover {
@@ -214,7 +218,8 @@ body::before {
     object-fit: contain;
     display: block;
     transition: transform 0.5s ease;
-    mix-blend-mode: multiply;
+    opacity:0.9;
+    mix-blend-mode: lighten;
 }
 
 .hero-image-container:hover .hero-image {
