@@ -214,7 +214,7 @@ body::before {
     object-fit: contain;
     display: block;
     transition: transform 0.5s ease;
-    mix-blend-mode: lighten;
+    mix-blend-mode: multiply;
 }
 
 .hero-image-container:hover .hero-image {
