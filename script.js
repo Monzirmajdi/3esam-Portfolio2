@@ -358,8 +358,8 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("load", function() {
             setTimeout(() => {
                 loader.style.opacity = "0";
-                setTimeout(() => loader.remove(), 50);
-            }, 150);
+                setTimeout(() => loader.remove(), 500);
+            }, 500);
         });
     }
 
