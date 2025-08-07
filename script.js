@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function() {
         loader.innerHTML = `
             <div class="loader-content">
                 <div class="loader-spinner"></div>
-                <div class="loader-logo">✦ Esam</div>
+                <div class="loader-logo">✦ loading</div>
             </div>
         `;
         document.body.appendChild(loader);
