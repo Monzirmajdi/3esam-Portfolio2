@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function() {
         lazyImages.forEach(img => imageObserver.observe(img));
     }
     
-/*    function setupPageLoader() {
+    function setupPageLoader() {
         const loader = document.createElement("div");
         loader.className = "page-loader";
         loader.innerHTML = `
@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 setTimeout(() => loader.remove(), 20);
             }, 20);
         });
-    }*/
+    }
 
     function setupHoverEffects() {
         const hoverElements = document.querySelectorAll(".portfolio-item, .action-btn, .social-link, .nav-link, .project-category, .experience-card, .footer-social-link, .logo-icon");
