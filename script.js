@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("load", function() {
             setTimeout(() => {
                 loader.style.opacity = "0";
-                setTimeout(() => loader.remove(), 500);
+                setTimeout(() => loader.remove(), 20);
             }, 20);
         });
     }
