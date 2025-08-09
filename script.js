@@ -442,3 +442,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+// في ملف script.js
+document.addEventListener('DOMContentLoaded', function() {
+    // القائمة المنسدلة للهواتف
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+    });
+    
+    // إغلاق القائمة عند النقر على رابط
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mainNav.classList.remove('active');
+        });
+    });
+    
+    // يمكنك إضافة المزيد من الوظائف هنا
+});
