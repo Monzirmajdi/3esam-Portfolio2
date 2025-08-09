@@ -1772,181 +1772,152 @@ body::before {
     50% { opacity: 1; }
     100% { opacity: 0.6; }
 }
-/* Media Queries for Small Screens */
-@media (max-width: 1024px) {
-    .hero-image-container,
-    .hero-image {
-        height: 70vh;
-    }
-    
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* الأساسيات */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-@media (max-width: 768px) {
-    /* Header adjustments */
-    .header {
-        padding: 10px 15px;
-        gap: 10px;
-        max-width: 95%;
-    }
-    
-    .nav-link {
-        padding: 6px 10px;
-        font-size: 11px;
-    }
-    
-    .logo-icon {
-        width: 30px;
-        height: 30px;
-    }
-    
-    /* Hero section adjustments */
-    .hero-image-container,
-    .hero-image {
-        height: 60vh;
-    }
-    
-    .hero-name-overlay {
-        bottom: 50px;
-        left: 20px;
-    }
-    
-    .main-name {
-        font-size: clamp(2rem, 5vw, 3rem);
-    }
-    
-    .hero-buttons-overlay {
-        bottom: 20px;
-        left: 20px;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .action-btn {
-        padding: 12px 20px;
-        font-size: 12px;
-    }
-    
-    /* About section adjustments */
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .about-text, 
-    .about-stats {
-        padding: 25px;
-    }
-    
-    /* Experience section adjustments */
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    /* Projects section adjustments */
-    .projects-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .project-category {
-        height: 300px;
-    }
-    
-    /* Contact modal adjustments */
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    /* Logo scroller adjustments */
-    .scroller .scroller__inner img {
-        width: 150px;
-        height: 112.5px; /* Maintain 4:3 aspect ratio */
-    }
+html {
+    scroll-behavior: smooth;
 }
 
-@media (max-width: 480px) {
-    /* Hero section adjustments */
-    .hero-image-container,
-    .hero-image {
-        height: 50vh;
-    }
-    
-    .main-name {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
-    }
-    
-    /* About section adjustments */
-    .section-title {
-        font-size: 2.5rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* Projects section adjustments */
-    .project-category {
-        height: 250px;
-    }
-    
-    .project-category-overlay {
-        padding: 15px;
-    }
-    
-    .project-category-title {
-        font-size: 1.5rem;
-    }
-    
-    /* Modal adjustments */
-    .modal-content {
-        padding: 40px 20px;
-    }
-    
-    /* Logo scroller adjustments */
-    .scroller .scroller__inner img {
-        width: 120px;
-        height: 90px; /* Maintain 4:3 aspect ratio */
-    }
+body {
+    font-family: 'Cairo', sans-serif;
+    overflow-x: hidden;
 }
 
-/* Maintain aspect ratio for all images */
-img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
+/* الهيدر */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
 }
 
-/* Specific aspect ratio containers */
-.hero-image-container,
-.hero-image,
-.project-category,
-.project-category-image,
-.project-item,
-.experience-card {
-    aspect-ratio: auto; /* أو استخدم النسبة المحددة مثل 16/9 */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-/* For project categories */
-.project-category {
+/* الصورة الشخصية */
+.hero-image-wrapper {
+    width: 100%;
     position: relative;
-    padding-bottom: 75%; /* 4:3 Aspect Ratio */
-    height: 0;
+    padding-top: 100%; /* نسبة 1:1 */
     overflow: hidden;
 }
 
-.project-category-image {
+.hero-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.project-category-image img {
+/* قسم اللوجوهات */
+.logo-item {
+    width: 150px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 20px;
+    flex-shrink: 0;
+}
+
+/* قسم المشاريع */
+.image-container {
+    width: 100%;
+    padding-top: 75%; /* نسبة 4:3 */
+    background-size: cover;
+    background-position: center;
+}
+
+/* المودالات */
+.project-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* نسبة 16:9 */
+    overflow: hidden;
+}
+
+.project-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* الاستجابة للشاشات المتوسطة */
+@media (max-width: 1024px) {
+    .hero-image-wrapper {
+        padding-top: 120%;
+    }
+    
+    .logo-item {
+        width: 120px;
+        height: 64px;
+    }
+}
+
+/* الاستجابة للهواتف */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #000;
+        flex-direction: column;
+        transition: right 0.3s ease;
+    }
+    
+    .main-nav.active {
+        right: 0;
+    }
+    
+    .hero-image-wrapper {
+        padding-top: 150%;
+    }
+    
+    .logo-item {
+        width: 90px;
+        height: 48px;
+    }
+    
+    .image-container {
+        padding-top: 100%;
+    }
+}
+
+/* الشاشات الصغيرة جدًا */
+@media (max-width: 480px) {
+    .hero-image-wrapper {
+        padding-top: 180%;
+    }
+    
+    .logo-item {
+        width: 70px;
+        height: 37px;
+    }
 }
