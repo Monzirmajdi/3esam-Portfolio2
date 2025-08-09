@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         lazyImages.forEach(img => imageObserver.observe(img));
     }
-    
+
     function setupPageLoader() {
         const loader = document.createElement("div");
         loader.className = "page-loader";
@@ -358,8 +358,8 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("load", function() {
             setTimeout(() => {
                 loader.style.opacity = "0";
-                setTimeout(() => loader.remove(), 20);
-            }, 20);
+                setTimeout(() => loader.remove(), 500);
+            }, 500);
         });
     }
 
@@ -441,24 +441,4 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error(error);
         });
     });
-});
-// في ملف script.js
-document.addEventListener('DOMContentLoaded', function() {
-    // القائمة المنسدلة للهواتف
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    
-    menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-    });
-    
-    // إغلاق القائمة عند النقر على رابط
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mainNav.classList.remove('active');
-        });
-    });
-    
-    // يمكنك إضافة المزيد من الوظائف هنا
 });
