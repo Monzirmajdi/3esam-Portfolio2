@@ -477,6 +477,8 @@ body::before {
     grid-template-columns: 2fr 1fr;
     gap: 60px;
     margin-bottom: 80px;
+    object-fit: contain;
+    
 }
 
 .about-text {
@@ -523,14 +525,12 @@ body::before {
     color: #ccc;
     line-height: 1.7;
     margin-bottom: 20px;
-    object-fit: contain;
 }
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
-    object-fit: contain;
 }
 
 .skill-tag {
