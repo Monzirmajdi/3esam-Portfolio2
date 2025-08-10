@@ -509,6 +509,7 @@ body::before {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    object-fit: contain;
 }
 
 .about-detail-item h4 {
@@ -522,6 +523,7 @@ body::before {
     color: #ccc;
     line-height: 1.7;
     margin-bottom: 20px;
+    object-fit: contain;
 }
 
 .skills-grid {
